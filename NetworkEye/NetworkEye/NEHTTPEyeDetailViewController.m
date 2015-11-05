@@ -36,8 +36,9 @@
     
     
     UIButton *backBt=[UIButton buttonWithType:UIButtonTypeCustom];
-    backBt.frame=CGRectMake(10, 27, 30, 30);
-    [backBt setImage:[UIImage imageNamed:@"ne_arrow_back_white_48pt"] forState:UIControlStateNormal];
+    backBt.frame=CGRectMake(10, 27, 40, 30);
+    [backBt setTitle:@"back" forState:UIControlStateNormal];
+    backBt.titleLabel.font=[UIFont systemFontOfSize:15];
     [backBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [backBt addTarget:self action:@selector(backBtAction) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:backBt];

@@ -17,9 +17,6 @@
 		0A4EF88F1BEB6735000D2D7E /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8791BEB6735000D2D7E /* Aspects.m */; settings = {ASSET_TAGS = (); }; };
 		0A4EF8901BEB6735000D2D7E /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF87A1BEB6735000D2D7E /* LICENSE */; settings = {ASSET_TAGS = (); }; };
 		0A4EF8911BEB6735000D2D7E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF87B1BEB6735000D2D7E /* README.md */; settings = {ASSET_TAGS = (); }; };
-		0A4EF8921BEB6735000D2D7E /* ne_arrow_back_white_48pt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF87C1BEB6735000D2D7E /* ne_arrow_back_white_48pt.png */; settings = {ASSET_TAGS = (); }; };
-		0A4EF8931BEB6735000D2D7E /* ne_arrow_back_white_48pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF87D1BEB6735000D2D7E /* ne_arrow_back_white_48pt@2x.png */; settings = {ASSET_TAGS = (); }; };
-		0A4EF8941BEB6735000D2D7E /* ne_arrow_back_white_48pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF87E1BEB6735000D2D7E /* ne_arrow_back_white_48pt@3x.png */; settings = {ASSET_TAGS = (); }; };
 		0A4EF8951BEB6735000D2D7E /* NEHTTPEye.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8801BEB6735000D2D7E /* NEHTTPEye.m */; settings = {ASSET_TAGS = (); }; };
 		0A4EF8961BEB6735000D2D7E /* NEHTTPEyeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8821BEB6735000D2D7E /* NEHTTPEyeDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0A4EF8971BEB6735000D2D7E /* NEHTTPEyeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8841BEB6735000D2D7E /* NEHTTPEyeViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -68,9 +65,6 @@
 		0A4EF8791BEB6735000D2D7E /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		0A4EF87A1BEB6735000D2D7E /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		0A4EF87B1BEB6735000D2D7E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		0A4EF87C1BEB6735000D2D7E /* ne_arrow_back_white_48pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ne_arrow_back_white_48pt.png; sourceTree = "<group>"; };
-		0A4EF87D1BEB6735000D2D7E /* ne_arrow_back_white_48pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ne_arrow_back_white_48pt@2x.png"; sourceTree = "<group>"; };
-		0A4EF87E1BEB6735000D2D7E /* ne_arrow_back_white_48pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ne_arrow_back_white_48pt@3x.png"; sourceTree = "<group>"; };
 		0A4EF87F1BEB6735000D2D7E /* NEHTTPEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEHTTPEye.h; sourceTree = "<group>"; };
 		0A4EF8801BEB6735000D2D7E /* NEHTTPEye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEHTTPEye.m; sourceTree = "<group>"; };
 		0A4EF8811BEB6735000D2D7E /* NEHTTPEyeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEHTTPEyeDetailViewController.h; sourceTree = "<group>"; };
@@ -186,9 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				0A4EF8771BEB6735000D2D7E /* Aspects */,
-				0A4EF87C1BEB6735000D2D7E /* ne_arrow_back_white_48pt.png */,
-				0A4EF87D1BEB6735000D2D7E /* ne_arrow_back_white_48pt@2x.png */,
-				0A4EF87E1BEB6735000D2D7E /* ne_arrow_back_white_48pt@3x.png */,
 				0A4EF87F1BEB6735000D2D7E /* NEHTTPEye.h */,
 				0A4EF8801BEB6735000D2D7E /* NEHTTPEye.m */,
 				0A4EF8811BEB6735000D2D7E /* NEHTTPEyeDetailViewController.h */,
@@ -332,10 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A4EF8531BEB66FF000D2D7E /* LaunchScreen.storyboard in Resources */,
-				0A4EF8921BEB6735000D2D7E /* ne_arrow_back_white_48pt.png in Resources */,
-				0A4EF8931BEB6735000D2D7E /* ne_arrow_back_white_48pt@2x.png in Resources */,
 				0A4EF8501BEB66FF000D2D7E /* Assets.xcassets in Resources */,
-				0A4EF8941BEB6735000D2D7E /* ne_arrow_back_white_48pt@3x.png in Resources */,
 				0A4EF8901BEB6735000D2D7E /* LICENSE in Resources */,
 				0A4EF84E1BEB66FF000D2D7E /* Main.storyboard in Resources */,
 			);
