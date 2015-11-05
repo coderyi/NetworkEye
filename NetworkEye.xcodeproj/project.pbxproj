@@ -1,0 +1,667 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A4EF7CD1BEB4C30000D2D7E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF7CC1BEB4C30000D2D7E /* main.m */; };
+		0A4EF7D01BEB4C30000D2D7E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF7CF1BEB4C30000D2D7E /* AppDelegate.m */; };
+		0A4EF7D61BEB4C30000D2D7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF7D41BEB4C30000D2D7E /* Main.storyboard */; };
+		0A4EF7D81BEB4C30000D2D7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF7D71BEB4C30000D2D7E /* Assets.xcassets */; };
+		0A4EF7DB1BEB4C30000D2D7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF7D91BEB4C30000D2D7E /* LaunchScreen.storyboard */; };
+		0A4EF7E61BEB4C31000D2D7E /* NetworkEyeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF7E51BEB4C31000D2D7E /* NetworkEyeTests.m */; };
+		0A4EF7F11BEB4C31000D2D7E /* NetworkEyeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF7F01BEB4C31000D2D7E /* NetworkEyeUITests.m */; };
+		0A4EF8191BEB4CCF000D2D7E /* NEHTTPEye.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8031BEB4CCF000D2D7E /* NEHTTPEye.m */; settings = {ASSET_TAGS = (); }; };
+		0A4EF81A1BEB4CCF000D2D7E /* NEHTTPEyeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8051BEB4CCF000D2D7E /* NEHTTPEyeDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0A4EF81B1BEB4CCF000D2D7E /* NEHTTPEyeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8071BEB4CCF000D2D7E /* NEHTTPEyeViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0A4EF81C1BEB4CCF000D2D7E /* NEHTTPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8091BEB4CCF000D2D7E /* NEHTTPModel.m */; settings = {ASSET_TAGS = (); }; };
+		0A4EF81D1BEB4CCF000D2D7E /* NEHTTPModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF80B1BEB4CCF000D2D7E /* NEHTTPModelManager.m */; settings = {ASSET_TAGS = (); }; };
+		0A4EF81E1BEB4CCF000D2D7E /* NESqliteDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF80D1BEB4CCF000D2D7E /* NESqliteDatabase.m */; settings = {ASSET_TAGS = (); }; };
+		0A4EF81F1BEB4CCF000D2D7E /* NESqliteDataReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF80F1BEB4CCF000D2D7E /* NESqliteDataReader.m */; settings = {ASSET_TAGS = (); }; };
+		0A4EF8251BEB4E9D000D2D7E /* NEShakeGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8241BEB4E9D000D2D7E /* NEShakeGestureManager.m */; settings = {ASSET_TAGS = (); }; };
+		0A4EF8281BEB4F24000D2D7E /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8271BEB4F24000D2D7E /* DemoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0A4EF82C1BEB54BC000D2D7E /* ne_arrow_back_white_48pt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF8291BEB54BC000D2D7E /* ne_arrow_back_white_48pt.png */; settings = {ASSET_TAGS = (); }; };
+		0A4EF82D1BEB54BC000D2D7E /* ne_arrow_back_white_48pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF82A1BEB54BC000D2D7E /* ne_arrow_back_white_48pt@2x.png */; settings = {ASSET_TAGS = (); }; };
+		0A4EF82E1BEB54BC000D2D7E /* ne_arrow_back_white_48pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF82B1BEB54BC000D2D7E /* ne_arrow_back_white_48pt@3x.png */; settings = {ASSET_TAGS = (); }; };
+		0D3CB8B07ECB3D736A411905 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC3DC9BE651787DA7BFBD47 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0A4EF7E21BEB4C31000D2D7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A4EF7C01BEB4C30000D2D7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A4EF7C71BEB4C30000D2D7E;
+			remoteInfo = NetworkEye;
+		};
+		0A4EF7ED1BEB4C31000D2D7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A4EF7C01BEB4C30000D2D7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A4EF7C71BEB4C30000D2D7E;
+			remoteInfo = NetworkEye;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0A4EF7C81BEB4C30000D2D7E /* NetworkEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A4EF7CC1BEB4C30000D2D7E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0A4EF7CE1BEB4C30000D2D7E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0A4EF7CF1BEB4C30000D2D7E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0A4EF7D51BEB4C30000D2D7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0A4EF7D71BEB4C30000D2D7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0A4EF7DA1BEB4C30000D2D7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0A4EF7DC1BEB4C30000D2D7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A4EF7E11BEB4C31000D2D7E /* NetworkEyeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkEyeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A4EF7E51BEB4C31000D2D7E /* NetworkEyeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkEyeTests.m; sourceTree = "<group>"; };
+		0A4EF7E71BEB4C31000D2D7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A4EF7EC1BEB4C31000D2D7E /* NetworkEyeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkEyeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A4EF7F01BEB4C31000D2D7E /* NetworkEyeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkEyeUITests.m; sourceTree = "<group>"; };
+		0A4EF7F21BEB4C31000D2D7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A4EF8021BEB4CCF000D2D7E /* NEHTTPEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEHTTPEye.h; sourceTree = "<group>"; };
+		0A4EF8031BEB4CCF000D2D7E /* NEHTTPEye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEHTTPEye.m; sourceTree = "<group>"; };
+		0A4EF8041BEB4CCF000D2D7E /* NEHTTPEyeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEHTTPEyeDetailViewController.h; sourceTree = "<group>"; };
+		0A4EF8051BEB4CCF000D2D7E /* NEHTTPEyeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEHTTPEyeDetailViewController.m; sourceTree = "<group>"; };
+		0A4EF8061BEB4CCF000D2D7E /* NEHTTPEyeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEHTTPEyeViewController.h; sourceTree = "<group>"; };
+		0A4EF8071BEB4CCF000D2D7E /* NEHTTPEyeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEHTTPEyeViewController.m; sourceTree = "<group>"; };
+		0A4EF8081BEB4CCF000D2D7E /* NEHTTPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEHTTPModel.h; sourceTree = "<group>"; };
+		0A4EF8091BEB4CCF000D2D7E /* NEHTTPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEHTTPModel.m; sourceTree = "<group>"; };
+		0A4EF80A1BEB4CCF000D2D7E /* NEHTTPModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEHTTPModelManager.h; sourceTree = "<group>"; };
+		0A4EF80B1BEB4CCF000D2D7E /* NEHTTPModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEHTTPModelManager.m; sourceTree = "<group>"; };
+		0A4EF80C1BEB4CCF000D2D7E /* NESqliteDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NESqliteDatabase.h; sourceTree = "<group>"; };
+		0A4EF80D1BEB4CCF000D2D7E /* NESqliteDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NESqliteDatabase.m; sourceTree = "<group>"; };
+		0A4EF80E1BEB4CCF000D2D7E /* NESqliteDataReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NESqliteDataReader.h; sourceTree = "<group>"; };
+		0A4EF80F1BEB4CCF000D2D7E /* NESqliteDataReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NESqliteDataReader.m; sourceTree = "<group>"; };
+		0A4EF8231BEB4E9D000D2D7E /* NEShakeGestureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEShakeGestureManager.h; sourceTree = "<group>"; };
+		0A4EF8241BEB4E9D000D2D7E /* NEShakeGestureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEShakeGestureManager.m; sourceTree = "<group>"; };
+		0A4EF8261BEB4F24000D2D7E /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		0A4EF8271BEB4F24000D2D7E /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		0A4EF8291BEB54BC000D2D7E /* ne_arrow_back_white_48pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ne_arrow_back_white_48pt.png; sourceTree = "<group>"; };
+		0A4EF82A1BEB54BC000D2D7E /* ne_arrow_back_white_48pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ne_arrow_back_white_48pt@2x.png"; sourceTree = "<group>"; };
+		0A4EF82B1BEB54BC000D2D7E /* ne_arrow_back_white_48pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ne_arrow_back_white_48pt@3x.png"; sourceTree = "<group>"; };
+		1DC3DC9BE651787DA7BFBD47 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		566AE66B15391B2B77059298 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		643D8ACB8E77A2AEC059828D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0A4EF7C51BEB4C30000D2D7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D3CB8B07ECB3D736A411905 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A4EF7DE1BEB4C31000D2D7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A4EF7E91BEB4C31000D2D7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A4EF7BF1BEB4C30000D2D7E = {
+			isa = PBXGroup;
+			children = (
+				0A4EF7CA1BEB4C30000D2D7E /* NetworkEye */,
+				0A4EF7E41BEB4C31000D2D7E /* NetworkEyeTests */,
+				0A4EF7EF1BEB4C31000D2D7E /* NetworkEyeUITests */,
+				0A4EF7C91BEB4C30000D2D7E /* Products */,
+				CE4A4576D5D75808FAA5BFE2 /* Pods */,
+				BBE793DEB2557E2A13ACADE9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0A4EF7C91BEB4C30000D2D7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0A4EF7C81BEB4C30000D2D7E /* NetworkEye.app */,
+				0A4EF7E11BEB4C31000D2D7E /* NetworkEyeTests.xctest */,
+				0A4EF7EC1BEB4C31000D2D7E /* NetworkEyeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0A4EF7CA1BEB4C30000D2D7E /* NetworkEye */ = {
+			isa = PBXGroup;
+			children = (
+				0A4EF7FE1BEB4CCF000D2D7E /* NetworkEye */,
+				0A4EF7CE1BEB4C30000D2D7E /* AppDelegate.h */,
+				0A4EF7CF1BEB4C30000D2D7E /* AppDelegate.m */,
+				0A4EF8261BEB4F24000D2D7E /* DemoViewController.h */,
+				0A4EF8271BEB4F24000D2D7E /* DemoViewController.m */,
+				0A4EF7D41BEB4C30000D2D7E /* Main.storyboard */,
+				0A4EF7D71BEB4C30000D2D7E /* Assets.xcassets */,
+				0A4EF7D91BEB4C30000D2D7E /* LaunchScreen.storyboard */,
+				0A4EF7DC1BEB4C30000D2D7E /* Info.plist */,
+				0A4EF7CB1BEB4C30000D2D7E /* Supporting Files */,
+			);
+			path = NetworkEye;
+			sourceTree = "<group>";
+		};
+		0A4EF7CB1BEB4C30000D2D7E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0A4EF7CC1BEB4C30000D2D7E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0A4EF7E41BEB4C31000D2D7E /* NetworkEyeTests */ = {
+			isa = PBXGroup;
+			children = (
+				0A4EF7E51BEB4C31000D2D7E /* NetworkEyeTests.m */,
+				0A4EF7E71BEB4C31000D2D7E /* Info.plist */,
+			);
+			path = NetworkEyeTests;
+			sourceTree = "<group>";
+		};
+		0A4EF7EF1BEB4C31000D2D7E /* NetworkEyeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0A4EF7F01BEB4C31000D2D7E /* NetworkEyeUITests.m */,
+				0A4EF7F21BEB4C31000D2D7E /* Info.plist */,
+			);
+			path = NetworkEyeUITests;
+			sourceTree = "<group>";
+		};
+		0A4EF7FE1BEB4CCF000D2D7E /* NetworkEye */ = {
+			isa = PBXGroup;
+			children = (
+				0A4EF8291BEB54BC000D2D7E /* ne_arrow_back_white_48pt.png */,
+				0A4EF82A1BEB54BC000D2D7E /* ne_arrow_back_white_48pt@2x.png */,
+				0A4EF82B1BEB54BC000D2D7E /* ne_arrow_back_white_48pt@3x.png */,
+				0A4EF8021BEB4CCF000D2D7E /* NEHTTPEye.h */,
+				0A4EF8031BEB4CCF000D2D7E /* NEHTTPEye.m */,
+				0A4EF8041BEB4CCF000D2D7E /* NEHTTPEyeDetailViewController.h */,
+				0A4EF8051BEB4CCF000D2D7E /* NEHTTPEyeDetailViewController.m */,
+				0A4EF8061BEB4CCF000D2D7E /* NEHTTPEyeViewController.h */,
+				0A4EF8071BEB4CCF000D2D7E /* NEHTTPEyeViewController.m */,
+				0A4EF8081BEB4CCF000D2D7E /* NEHTTPModel.h */,
+				0A4EF8091BEB4CCF000D2D7E /* NEHTTPModel.m */,
+				0A4EF80A1BEB4CCF000D2D7E /* NEHTTPModelManager.h */,
+				0A4EF80B1BEB4CCF000D2D7E /* NEHTTPModelManager.m */,
+				0A4EF80C1BEB4CCF000D2D7E /* NESqliteDatabase.h */,
+				0A4EF80D1BEB4CCF000D2D7E /* NESqliteDatabase.m */,
+				0A4EF80E1BEB4CCF000D2D7E /* NESqliteDataReader.h */,
+				0A4EF80F1BEB4CCF000D2D7E /* NESqliteDataReader.m */,
+				0A4EF8231BEB4E9D000D2D7E /* NEShakeGestureManager.h */,
+				0A4EF8241BEB4E9D000D2D7E /* NEShakeGestureManager.m */,
+			);
+			path = NetworkEye;
+			sourceTree = "<group>";
+		};
+		BBE793DEB2557E2A13ACADE9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3DC9BE651787DA7BFBD47 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE4A4576D5D75808FAA5BFE2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				566AE66B15391B2B77059298 /* Pods.debug.xcconfig */,
+				643D8ACB8E77A2AEC059828D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0A4EF7C71BEB4C30000D2D7E /* NetworkEye */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A4EF7F51BEB4C31000D2D7E /* Build configuration list for PBXNativeTarget "NetworkEye" */;
+			buildPhases = (
+				848E07EF66DB2997FDBEEEF8 /* Check Pods Manifest.lock */,
+				0A4EF7C41BEB4C30000D2D7E /* Sources */,
+				0A4EF7C51BEB4C30000D2D7E /* Frameworks */,
+				0A4EF7C61BEB4C30000D2D7E /* Resources */,
+				2968FB5F443028C38448B872 /* Embed Pods Frameworks */,
+				5AF4D5D52E8B9F48C9B50DB0 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NetworkEye;
+			productName = NetworkEye;
+			productReference = 0A4EF7C81BEB4C30000D2D7E /* NetworkEye.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0A4EF7E01BEB4C31000D2D7E /* NetworkEyeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A4EF7F81BEB4C31000D2D7E /* Build configuration list for PBXNativeTarget "NetworkEyeTests" */;
+			buildPhases = (
+				0A4EF7DD1BEB4C31000D2D7E /* Sources */,
+				0A4EF7DE1BEB4C31000D2D7E /* Frameworks */,
+				0A4EF7DF1BEB4C31000D2D7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A4EF7E31BEB4C31000D2D7E /* PBXTargetDependency */,
+			);
+			name = NetworkEyeTests;
+			productName = NetworkEyeTests;
+			productReference = 0A4EF7E11BEB4C31000D2D7E /* NetworkEyeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0A4EF7EB1BEB4C31000D2D7E /* NetworkEyeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A4EF7FB1BEB4C31000D2D7E /* Build configuration list for PBXNativeTarget "NetworkEyeUITests" */;
+			buildPhases = (
+				0A4EF7E81BEB4C31000D2D7E /* Sources */,
+				0A4EF7E91BEB4C31000D2D7E /* Frameworks */,
+				0A4EF7EA1BEB4C31000D2D7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A4EF7EE1BEB4C31000D2D7E /* PBXTargetDependency */,
+			);
+			name = NetworkEyeUITests;
+			productName = NetworkEyeUITests;
+			productReference = 0A4EF7EC1BEB4C31000D2D7E /* NetworkEyeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0A4EF7C01BEB4C30000D2D7E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = coderyi;
+				TargetAttributes = {
+					0A4EF7C71BEB4C30000D2D7E = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					0A4EF7E01BEB4C31000D2D7E = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 0A4EF7C71BEB4C30000D2D7E;
+					};
+					0A4EF7EB1BEB4C31000D2D7E = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 0A4EF7C71BEB4C30000D2D7E;
+					};
+				};
+			};
+			buildConfigurationList = 0A4EF7C31BEB4C30000D2D7E /* Build configuration list for PBXProject "NetworkEye" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0A4EF7BF1BEB4C30000D2D7E;
+			productRefGroup = 0A4EF7C91BEB4C30000D2D7E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0A4EF7C71BEB4C30000D2D7E /* NetworkEye */,
+				0A4EF7E01BEB4C31000D2D7E /* NetworkEyeTests */,
+				0A4EF7EB1BEB4C31000D2D7E /* NetworkEyeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0A4EF7C61BEB4C30000D2D7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A4EF82D1BEB54BC000D2D7E /* ne_arrow_back_white_48pt@2x.png in Resources */,
+				0A4EF7DB1BEB4C30000D2D7E /* LaunchScreen.storyboard in Resources */,
+				0A4EF7D81BEB4C30000D2D7E /* Assets.xcassets in Resources */,
+				0A4EF82E1BEB54BC000D2D7E /* ne_arrow_back_white_48pt@3x.png in Resources */,
+				0A4EF7D61BEB4C30000D2D7E /* Main.storyboard in Resources */,
+				0A4EF82C1BEB54BC000D2D7E /* ne_arrow_back_white_48pt.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A4EF7DF1BEB4C31000D2D7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A4EF7EA1BEB4C31000D2D7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2968FB5F443028C38448B872 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5AF4D5D52E8B9F48C9B50DB0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		848E07EF66DB2997FDBEEEF8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0A4EF7C41BEB4C30000D2D7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A4EF8191BEB4CCF000D2D7E /* NEHTTPEye.m in Sources */,
+				0A4EF7D01BEB4C30000D2D7E /* AppDelegate.m in Sources */,
+				0A4EF8281BEB4F24000D2D7E /* DemoViewController.m in Sources */,
+				0A4EF81F1BEB4CCF000D2D7E /* NESqliteDataReader.m in Sources */,
+				0A4EF81B1BEB4CCF000D2D7E /* NEHTTPEyeViewController.m in Sources */,
+				0A4EF81C1BEB4CCF000D2D7E /* NEHTTPModel.m in Sources */,
+				0A4EF8251BEB4E9D000D2D7E /* NEShakeGestureManager.m in Sources */,
+				0A4EF81A1BEB4CCF000D2D7E /* NEHTTPEyeDetailViewController.m in Sources */,
+				0A4EF81D1BEB4CCF000D2D7E /* NEHTTPModelManager.m in Sources */,
+				0A4EF81E1BEB4CCF000D2D7E /* NESqliteDatabase.m in Sources */,
+				0A4EF7CD1BEB4C30000D2D7E /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A4EF7DD1BEB4C31000D2D7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A4EF7E61BEB4C31000D2D7E /* NetworkEyeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A4EF7E81BEB4C31000D2D7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A4EF7F11BEB4C31000D2D7E /* NetworkEyeUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0A4EF7E31BEB4C31000D2D7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A4EF7C71BEB4C30000D2D7E /* NetworkEye */;
+			targetProxy = 0A4EF7E21BEB4C31000D2D7E /* PBXContainerItemProxy */;
+		};
+		0A4EF7EE1BEB4C31000D2D7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A4EF7C71BEB4C30000D2D7E /* NetworkEye */;
+			targetProxy = 0A4EF7ED1BEB4C31000D2D7E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0A4EF7D41BEB4C30000D2D7E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A4EF7D51BEB4C30000D2D7E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0A4EF7D91BEB4C30000D2D7E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A4EF7DA1BEB4C30000D2D7E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0A4EF7F31BEB4C31000D2D7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0A4EF7F41BEB4C31000D2D7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0A4EF7F61BEB4C31000D2D7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 566AE66B15391B2B77059298 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NetworkEye/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = coderyi.NetworkEye;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0A4EF7F71BEB4C31000D2D7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 643D8ACB8E77A2AEC059828D /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NetworkEye/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = coderyi.NetworkEye;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0A4EF7F91BEB4C31000D2D7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NetworkEyeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = coderyi.NetworkEyeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetworkEye.app/NetworkEye";
+			};
+			name = Debug;
+		};
+		0A4EF7FA1BEB4C31000D2D7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NetworkEyeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = coderyi.NetworkEyeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetworkEye.app/NetworkEye";
+			};
+			name = Release;
+		};
+		0A4EF7FC1BEB4C31000D2D7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = NetworkEyeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = coderyi.NetworkEyeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = NetworkEye;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		0A4EF7FD1BEB4C31000D2D7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = NetworkEyeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = coderyi.NetworkEyeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = NetworkEye;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0A4EF7C31BEB4C30000D2D7E /* Build configuration list for PBXProject "NetworkEye" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A4EF7F31BEB4C31000D2D7E /* Debug */,
+				0A4EF7F41BEB4C31000D2D7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A4EF7F51BEB4C31000D2D7E /* Build configuration list for PBXNativeTarget "NetworkEye" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A4EF7F61BEB4C31000D2D7E /* Debug */,
+				0A4EF7F71BEB4C31000D2D7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A4EF7F81BEB4C31000D2D7E /* Build configuration list for PBXNativeTarget "NetworkEyeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A4EF7F91BEB4C31000D2D7E /* Debug */,
+				0A4EF7FA1BEB4C31000D2D7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A4EF7FB1BEB4C31000D2D7E /* Build configuration list for PBXNativeTarget "NetworkEyeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A4EF7FC1BEB4C31000D2D7E /* Debug */,
+				0A4EF7FD1BEB4C31000D2D7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0A4EF7C01BEB4C30000D2D7E /* Project object */;
+}
