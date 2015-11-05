@@ -1,7 +1,20 @@
 # NetworkEye
+[![Pod Version](http://img.shields.io/cocoapods/v/NetworkEye.svg?style=flat)](http://cocoadocs.org/docsets/NetworkEye/)
+[![Pod Platform](http://img.shields.io/cocoapods/p/NetworkEye.svg?style=flat)](http://cocoadocs.org/docsets/NetworkEye/)
+[![Pod License](http://img.shields.io/cocoapods/l/NetworkEye.svg?style=flat)](https://opensource.org/licenses/MIT)
+
 NetworkEye可以监控App内所有HTTP请求并显示请求相关的所有信息，方便App开发的网络调试。
 
 可以检测到包括网页，NSURLConnecttion,NSURLSession，AFNetworking,第三方库，第三方SDK等的HTTP请求，非常方便实用。
+
+#### Podfile
+
+```ruby
+platform :ios, '7.0'
+pod "NetworkEye", "~> 0.9.3"
+```
+
+
 ######使用:
 在AppDelegate.m里面加入下面代码就可以了
 <pre>
@@ -23,6 +36,9 @@ NetworkEye可以监控App内所有HTTP请求并显示请求相关的所有信息
 
 #define kSaveRequestMaxCount 300
 </pre>
+
+NetworkEye使用了Aspects并且依赖仓库SQLCipher。
+Aspects用于摇一摇手势，SQLCipher用于加密数据库。
 
 NetworkEye的监控数据界面如图：
 
