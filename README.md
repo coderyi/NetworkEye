@@ -16,18 +16,22 @@ pod "NetworkEye", "~> 0.9.3"
 
 
 ######使用:
+注意请在DEBUG模式下使用NetworkEye
 在AppDelegate.m里面加入下面代码就可以了
 <pre>
 #import "NEHTTPEye.h"
-[NSURLProtocol registerClass:[NEHTTPEye class]];
-
+#if defined(DEBUG)||defined(_DEBUG)
+    [NSURLProtocol registerClass:[NEHTTPEye class]];
+#endif
 </pre>
 
 使用的时候可以通过摇一摇（Shake Gesture）手势调出监控数据界面NEHTTPEyeViewController
 也可以用如下代码直接present出来。
 <pre>
-   NEHTTPEyeViewController *vc=[[NEHTTPEyeViewController alloc] init];
+#if defined(DEBUG)||defined(_DEBUG)
+    NEHTTPEyeViewController *vc=[[NEHTTPEyeViewController alloc] init];
     [self presentViewController:vc animated:YES completion:nil];
+#endif
 </pre>
 
 在NEHTTPEye.h里面有两个可以配置的参数即默认数据库密码是networkeye和默认监控最多300条请求，请求的保存位置在缓存目录的networkeye.sqlite内。

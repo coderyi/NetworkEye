@@ -73,8 +73,11 @@
 
 
 - (void)btAction{
+#if defined(DEBUG)||defined(_DEBUG)
     NEHTTPEyeViewController *vc=[[NEHTTPEyeViewController alloc] init];
     [self presentViewController:vc animated:YES completion:nil];
+#endif
+
     
     
 }
