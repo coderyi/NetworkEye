@@ -5,11 +5,10 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/coderyi/NetworkEye"
   s.license      = "MIT"
   s.authors      = { "coderyi" => "coderyi@163.com" }
-  s.source       = { :git => "https://github.com/coderyi/NetworkEye.git", :commit => "23849acc935d19623c15b39d5c854b716681b54d" }
-  s.frameworks   = 'Foundation', 'CoreGraphics', 'UIKit'
+  s.source       = { :git => "https://github.com/coderyi/NetworkEye.git", :commit => "bbc167dc29514f84e4c8a6207c074827d44e8eeb" }
+  s.frameworks   = 'Foundation', 'CoreGraphics', 'UIKit', 'libsqlite3.0'
   s.platform     = :ios, '7.0'
   s.source_files = 'NetworkEye/NetworkEye/**/*.{h,m,png}'
   s.requires_arc = true
-  s.dependency "SQLCipher", "~> 3.1.0"
-  s.dependency "Aspects", "~> 1.4.1"
+
 end

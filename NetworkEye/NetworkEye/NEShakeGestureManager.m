@@ -7,7 +7,7 @@
 //
 
 #import "NEShakeGestureManager.h"
-#import <Aspects/Aspects.h>
+#import "Aspects.h"
 #import <UIKit/UIKit.h>
 #import "NEHTTPEyeViewController.h"
 

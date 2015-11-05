@@ -22,8 +22,7 @@
 }
 - (int)open{
     int rc=sqlite3_open([filename UTF8String], &database);
-    NSString *sqlite3_password=kSqlitePassword;
-    sqlite3_key(database,[sqlite3_password UTF8String],(int)sqlite3_password.length);
+ 
     //SQLITE_OK=0
     if (rc) {
         

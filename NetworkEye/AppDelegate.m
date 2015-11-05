@@ -24,7 +24,6 @@
     nav.navigationBar.barTintColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f];
     nav.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     self.window.rootViewController=nav;
-    
     return YES;
 }
 
