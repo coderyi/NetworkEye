@@ -7,6 +7,7 @@ NetworkEye可以监控App内所有HTTP请求并显示请求相关的所有信息
 
 可以检测到包括网页，NSURLConnecttion,NSURLSession，AFNetworking,第三方库，第三方SDK等的HTTP请求，非常方便实用。
 
+NetworkEye,a iOS network debug library,It can monitor all HTTP requests within the App and displays all information related to the request.
 #### Podfile
 
 ```ruby
