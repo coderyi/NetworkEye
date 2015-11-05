@@ -38,8 +38,11 @@ static NEHTTPModelManager *staticManager;
     
     
     NESqliteDatabase *db=[[NESqliteDatabase alloc] initWithFilename:[NEHTTPModelManager filename]];
-    [db executeNonQuery:init_sqls error:nil];
-    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        // something
+        [db executeNonQuery:init_sqls error:nil];
+
+    });
 
 }
 
@@ -66,16 +69,16 @@ static NEHTTPModelManager *staticManager;
     BOOL isRead=NO;
     int i;
     int rc;
-    sqliteDatabase=[[NESqliteDatabase alloc] initWithFilename:[NEHTTPModelManager filename]];
-    
-    [sqliteDatabase open];
-    NSString *sql =[NSString stringWithFormat:@"select * from nenetworkhttpeyes where myID='%lf'",aModel.myID];
-    
-    NESqliteDataReader *dr=[sqliteDatabase executeQuery:sql];
-    
-    isRead=[dr read];
-    [dr close];
-    [sqliteDatabase close];
+//    sqliteDatabase=[[NESqliteDatabase alloc] initWithFilename:[NEHTTPModelManager filename]];
+//    
+//    [sqliteDatabase open];
+//    NSString *sql =[NSString stringWithFormat:@"select * from nenetworkhttpeyes where myID='%lf'",aModel.myID];
+//    
+//    NESqliteDataReader *dr=[sqliteDatabase executeQuery:sql];
+//    
+//    isRead=[dr read];
+//    [dr close];
+//    [sqliteDatabase close];
     if (isRead) {
         i=1;
         return 1;
@@ -92,15 +95,22 @@ static NEHTTPModelManager *staticManager;
             aModel.receiveJSONData=@"";
         }
 
-        NSString *sql=[NSString stringWithFormat:@"insert into nenetworkhttpeyes values('%lf','%@','%@','%@','%@','%lf','%@','%@','%@','%@','%@','%@','%@','%d','%@','%@')",aModel.myID,aModel.startDateString,aModel.endDateString,aModel.requestURLString,aModel.requestCachePolicy,aModel.requestTimeoutInterval,aModel.requestHTTPMethod,aModel.requestAllHTTPHeaderFields,aModel.requestHTTPBody,aModel.responseMIMEType,aModel.responseExpectedContentLength,aModel.responseTextEncodingName,aModel.responseSuggestedFilename,aModel.responseStatusCode,[self stringToSQLFilter:aModel.responseAllHeaderFields],[self stringToSQLFilter:aModel.receiveJSONData]];
-
+//        NSString *sql=[NSString stringWithFormat:@"insert into nenetworkhttpeyes values('%lf','%@','%@','%@','%@','%lf','%@','%@','%@','%@','%@','%@','%@','%d','%@','%@')",aModel.myID,aModel.startDateString,aModel.endDateString,aModel.requestURLString,aModel.requestCachePolicy,aModel.requestTimeoutInterval,aModel.requestHTTPMethod,aModel.requestAllHTTPHeaderFields,aModel.requestHTTPBody,aModel.responseMIMEType,aModel.responseExpectedContentLength,aModel.responseTextEncodingName,aModel.responseSuggestedFilename,aModel.responseStatusCode,[self stringToSQLFilter:aModel.responseAllHeaderFields],[self stringToSQLFilter:aModel.receiveJSONData]];
+        NSString *receiveJSONData;
         
+        receiveJSONData=[self stringToSQLFilter:aModel.receiveJSONData];
         
-        rc=[sqliteDatabase executeNonQuery:sql error:error];
-        if (rc!=0) {
-
-            NSLog(@"add model to sqlite error:url is %@ ",aModel.requestURLString);
-        }
+                NSString *sql=[NSString stringWithFormat:@"insert into nenetworkhttpeyes values('%lf','%@','%@','%@','%@','%lf','%@','%@','%@','%@','%@','%@','%@','%d','%@','%@')",aModel.myID,aModel.startDateString,aModel.endDateString,aModel.requestURLString,aModel.requestCachePolicy,aModel.requestTimeoutInterval,aModel.requestHTTPMethod,aModel.requestAllHTTPHeaderFields,aModel.requestHTTPBody,aModel.responseMIMEType,aModel.responseExpectedContentLength,aModel.responseTextEncodingName,aModel.responseSuggestedFilename,aModel.responseStatusCode,[self stringToSQLFilter:aModel.responseAllHeaderFields],receiveJSONData];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            // something
+            int result;
+            result=[sqliteDatabase executeNonQuery:sql error:error];
+            if (result!=0) {
+                
+                NSLog(@"add model to sqlite error:url is %@ ",aModel.requestURLString);
+            }
+        });
+        
         
     }
     return i;

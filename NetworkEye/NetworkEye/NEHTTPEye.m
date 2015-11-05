@@ -146,8 +146,11 @@ didReceiveResponse:(NSURLResponse *)response
     NSError *error = nil;
     id returnValue = [NSJSONSerialization JSONObjectWithData:[self data] options:0 error:&error];
     if(error) NSLog(@"JSON Parsing Error: %@", error);
+
+    NSData *dt = [NSJSONSerialization dataWithJSONObject:returnValue options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *str = [[NSString alloc]initWithData:dt encoding:NSUTF8StringEncoding];
     
-    return returnValue;
+    return str;
 }
 - (NSString *)stringWithDate:(NSDate *)date{
     
