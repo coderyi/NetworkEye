@@ -15,9 +15,8 @@ NetworkEye可以监控App内所有HTTP请求并显示请求相关的所有信息
     [self presentViewController:vc animated:YES completion:nil];
 </pre>
 
-在NEHTTPEye.h里面有两个可以配置的参数,分别是默认数据库密码为networkeye，以及监控最多300条请求，请求的保存位置在缓存目录的networkeye.sqlite内。
+在NEHTTPEye.h里面有一个可以配置的参数即磨人监控最多300条请求，请求的保存位置在缓存目录的networkeye.sqlite内。
 <pre>
-#define kSqlitePassword @"networkeye"
 #define kSaveRequestMaxCount 300
 </pre>
 
