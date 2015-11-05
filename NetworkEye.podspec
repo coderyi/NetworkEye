@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/coderyi/NetworkEye"
   s.license      = "MIT"
   s.authors      = { "coderyi" => "coderyi@163.com" }
-  s.source       = { :git => "https://github.com/coderyi/NetworkEye.git", :commit => "bbc167dc29514f84e4c8a6207c074827d44e8eeb" }
+  s.source       = { :git => "https://github.com/coderyi/NetworkEye.git", :commit => "1627b9d6020ef031a29aeffc2a390f2d00252337" }
   s.frameworks   = 'Foundation', 'CoreGraphics', 'UIKit', 'libsqlite3.0'
   s.platform     = :ios, '7.0'
   s.source_files = 'NetworkEye/NetworkEye/**/*.{h,m,png}'
