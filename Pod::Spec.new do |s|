@@ -11,13 +11,9 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '7.0'
   s.source_files = 'NetworkEye/NetworkEye/**/*.{h,m,png}'
   s.requires_arc = true
-  # use SQLCipher and enable -DSQLITE_HAS_CODEC flag
-  s.subspec 'SQLCipher' do |ss|
-    s.xcconfig     = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC' }
-    s.dependency 'SQLCipher'
-  end
 
 
- 
+  s.xcconfig     = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC' }
+  s.dependency 'SQLCipher'
 
 end
