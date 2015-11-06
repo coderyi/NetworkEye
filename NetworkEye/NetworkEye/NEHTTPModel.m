@@ -75,45 +75,41 @@
         }
     }
     
-    
 }
 
 -(void)setNe_response:(NSHTTPURLResponse *)ne_response_new{
+    
     ne_response=ne_response_new;
+    
     self.responseMIMEType=@"";
     self.responseExpectedContentLength=@"";
-    
     self.responseTextEncodingName=@"";
     self.responseSuggestedFilename=@"";
     self.responseStatusCode=200;
-        self.responseAllHeaderFields=@"";
-        
-   
+    self.responseAllHeaderFields=@"";
+    
     self.responseMIMEType=[ne_response MIMEType];
     self.responseExpectedContentLength=[NSString stringWithFormat:@"%lld",[ne_response expectedContentLength]];
     self.responseTextEncodingName=[ne_response textEncodingName];
     self.responseSuggestedFilename=[ne_response suggestedFilename];
     self.responseStatusCode=(int)ne_response.statusCode;
+    
     for (NSString *key in [ne_response.allHeaderFields allKeys]) {
-
         NSString *headerFieldValue=[ne_response.allHeaderFields objectForKey:key];
-        
         if ([key isEqualToString:@"Content-Security-Policy"]) {
-            
             if ([[headerFieldValue substringFromIndex:12] isEqualToString:@"'none'"]) {
                 headerFieldValue=[headerFieldValue substringToIndex:11];
             }
         }
-        
-                self.responseAllHeaderFields=[NSString stringWithFormat:@"%@%@:%@\n",self.responseAllHeaderFields,key,headerFieldValue];
+        self.responseAllHeaderFields=[NSString stringWithFormat:@"%@%@:%@\n",self.responseAllHeaderFields,key,headerFieldValue];
         
     }
+    
     if (self.responseAllHeaderFields.length>1) {
         if ([[self.responseAllHeaderFields substringFromIndex:self.responseAllHeaderFields.length-1] isEqualToString:@"\n"]) {
             self.responseAllHeaderFields=[self.responseAllHeaderFields substringToIndex:self.responseAllHeaderFields.length-1];
         }
     }
-    
     
 }
 

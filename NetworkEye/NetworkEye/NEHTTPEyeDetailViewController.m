@@ -7,7 +7,7 @@
 //
 
 #import "NEHTTPEyeDetailViewController.h"
-
+#import "NEHTTPModel.h"
 @interface NEHTTPEyeDetailViewController (){
 
     UITextView *tableView1;
@@ -28,12 +28,10 @@
     }
     self.automaticallyAdjustsScrollViewInsets=NO;
     self.view.backgroundColor=[UIColor whiteColor];
-    
-    
+
     UINavigationBar *bar=[[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64)];
     [self.view addSubview:bar];
     bar.barTintColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f];
-    
     
     UIButton *backBt=[UIButton buttonWithType:UIButtonTypeCustom];
     backBt.frame=CGRectMake(10, 27, 40, 30);
@@ -42,7 +40,6 @@
     [backBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [backBt addTarget:self action:@selector(backBtAction) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:backBt];
-    
     
     UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(([[UIScreen mainScreen] bounds].size.width-230)/2, 20, 230, 44)];
     titleText.backgroundColor = [UIColor clearColor];
@@ -55,7 +52,6 @@
     tableView1=[[UITextView alloc] initWithFrame:CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64)];
     [self.view addSubview:tableView1];
 
-   
     [self setupAttributedString];
 }
 
@@ -93,10 +89,12 @@
     NSAttributedString *responseStatusCodeDetail;
     NSAttributedString *responseAllHeaderFieldsDetail;
     NSAttributedString *receiveJSONDataDetail;
+    
     UIColor *titleColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f];
     UIFont *titleFont=[UIFont systemFontOfSize:14.0];
     UIColor *detailColor=[UIColor blackColor];
     UIFont *detailFont=[UIFont systemFontOfSize:14.0];
+    
     startDateString = [[NSMutableAttributedString alloc] initWithString:@"[startDate]:"
                                                        attributes:@{
                                                                     NSFontAttributeName : titleFont,
@@ -297,7 +295,10 @@
                                                                                    NSFontAttributeName : detailFont,
                                                                                    NSForegroundColorAttributeName: detailColor
                                                                                    }];
+    
+    
     NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] init];
+    
     [attrText appendAttributedString:startDateString];
     [attrText appendAttributedString:startDateStringDetail];
 
@@ -324,7 +325,6 @@
     
     [attrText appendAttributedString:responseMIMEType];
     [attrText appendAttributedString:responseMIMETypeDetail];
-
     
     [attrText appendAttributedString:responseExpectedContentLength];
     [attrText appendAttributedString:responseExpectedContentLengthDetail];
@@ -360,12 +360,10 @@
 {
     
     NSString *tempStr1 = [aUnicodeString stringByReplacingOccurrencesOfString:@"\\u"withString:@"\\U"];
-    
     NSString *tempStr2 = [tempStr1 stringByReplacingOccurrencesOfString:@"\""withString:@"\\\""];
-    
     NSString *tempStr3 = [[@"\""stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
-    
     NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
+    
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     NSString* returnStr = [NSPropertyListSerialization propertyListFromData:tempData
@@ -376,19 +374,8 @@
                            
                                                           errorDescription:NULL];
 #pragma clang diagnostic pop
-
-    
     
     return [returnStr stringByReplacingOccurrencesOfString:@"\\r\\n"withString:@"\n"];
-    
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    
-    
     
 }
 

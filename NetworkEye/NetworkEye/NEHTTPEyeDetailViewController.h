@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NEHTTPModel.h"
+
+@class NEHTTPModel;
 
 @interface NEHTTPEyeDetailViewController : UIViewController
+
 @property (nonatomic,strong) NEHTTPModel *model;
 
 @end

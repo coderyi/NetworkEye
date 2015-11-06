@@ -12,28 +12,28 @@
 #import "NEHTTPModelManager.h"
 #import "UIWindow+NEShakeGesture.h"
 @interface NEHTTPEye ()<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
-
 @property (nonatomic, strong) NSURLConnection *connection;
-
 @property (nonatomic, strong) NSURLResponse *response;
-
 @property (nonatomic, strong) NSMutableData *data;
-
 @property (nonatomic, strong) NSDate *startDate;
-
 @property (nonatomic,strong) NEHTTPModel *ne_HTTPModel;
 @end
+
 @implementation NEHTTPEye
 @synthesize ne_HTTPModel;
+
+#pragma mark - superclass methods
 
 + (void)load {
 }
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
+    
     if (![request.URL.scheme isEqualToString:@"http"] &&
         ![request.URL.scheme isEqualToString:@"https"]) {
         return NO;
     }
+    
     if ([NSURLProtocol propertyForKey:@"NEHTTPEye" inRequest:request] ) {
         return NO;
     }
@@ -42,22 +42,18 @@
 }
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
+    
     NSMutableURLRequest *mutableReqeust = [request mutableCopy];
     [NSURLProtocol setProperty:@YES
                         forKey:@"NEHTTPEye"
                      inRequest:mutableReqeust];
-
     return [mutableReqeust copy];
 }
 
 - (void)startLoading {
     self.startDate = [NSDate date];
-    
-    
-    
-   
-  
     self.data = [NSMutableData data];
+    
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     self.connection = [[NSURLConnection alloc] initWithRequest:[[self class] canonicalRequestForRequest:self.request] delegate:self startImmediately:YES];
@@ -68,20 +64,16 @@
     ne_HTTPModel.startDateString=[self stringWithDate:[NSDate date]];
 
     NSTimeInterval myID=[[NSDate date] timeIntervalSince1970];
-    srand((unsigned)time(0));  //不加这句每次产生的随机数不变
-    double i =  arc4random() % 100;
-    double i1=i/10000;
-    ne_HTTPModel.myID=myID+i1;
+    double randomNum=((double)(arc4random() % 100))/10000;
+    ne_HTTPModel.myID=myID+randomNum;
     
 }
 
 - (void)stopLoading {
+    
     [self.connection cancel];
     ne_HTTPModel.ne_response=(NSHTTPURLResponse *)self.response;
-    
     ne_HTTPModel.endDateString=[self stringWithDate:[NSDate date]];
-    
-    
     if ([self.response.MIMEType isEqualToString:@"application/json"]) {
         ne_HTTPModel.receiveJSONData=[self responseJSON];
     }
@@ -90,11 +82,11 @@
         flowCount=0.0;
     }
     flowCount=flowCount+self.response.expectedContentLength/(1024.0*1024.0);
-
     [[NSUserDefaults standardUserDefaults] setDouble:flowCount forKey:@"flowCount"];
-    
     [[NEHTTPModelManager defaultManager] addModel:ne_HTTPModel error:nil];
+    
 }
+
 
 #pragma mark - NSURLConnectionDelegate
 
@@ -117,6 +109,7 @@ didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
 didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     [[self client] URLProtocol:self didCancelAuthenticationChallenge:challenge];
 }
+
 
 #pragma mark - NSURLConnectionDataDelegate
 
@@ -153,23 +146,19 @@ didReceiveResponse:(NSURLResponse *)response
     if(self.data == nil) return nil;
     NSError *error = nil;
     id returnValue = [NSJSONSerialization JSONObjectWithData:[self data] options:0 error:&error];
-    if(error) NSLog(@"JSON Parsing Error: %@", error);
-
-    NSData *dt = [NSJSONSerialization dataWithJSONObject:returnValue options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *str = [[NSString alloc]initWithData:dt encoding:NSUTF8StringEncoding];
+    if(error){
+        NSLog(@"JSON Parsing Error: %@", error);
+    }
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:returnValue options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return jsonString;
     
-    return str;
 }
 - (NSString *)stringWithDate:(NSDate *)date{
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-
-    //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
-    
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
-
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];//zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
     NSString *destDateString = [dateFormatter stringFromDate:date];
-
     return destDateString;
     
 }
