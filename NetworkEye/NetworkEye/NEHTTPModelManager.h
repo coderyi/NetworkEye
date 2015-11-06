@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-@class NESqliteDatabase;
+#import "FMDB.h"
+#import "NEHTTPEye.h"
 @class NEHTTPModel;
 
 
 @interface NEHTTPModelManager : NSObject
 {
-    NESqliteDatabase *sqliteDatabase;
+    FMDatabaseQueue *sqliteDatabase;
     NSMutableArray *allobjects;
 }
 +(NSString *)filename;

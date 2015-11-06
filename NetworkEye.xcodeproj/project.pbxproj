@@ -23,8 +23,6 @@
 		0A4EF8981BEB6735000D2D7E /* NEHTTPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8861BEB6735000D2D7E /* NEHTTPModel.m */; settings = {ASSET_TAGS = (); }; };
 		0A4EF8991BEB6735000D2D7E /* NEHTTPModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8881BEB6735000D2D7E /* NEHTTPModelManager.m */; settings = {ASSET_TAGS = (); }; };
 		0A4EF89A1BEB6735000D2D7E /* NEShakeGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF88A1BEB6735000D2D7E /* NEShakeGestureManager.m */; settings = {ASSET_TAGS = (); }; };
-		0A4EF89B1BEB6735000D2D7E /* NESqliteDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF88C1BEB6735000D2D7E /* NESqliteDatabase.m */; settings = {ASSET_TAGS = (); }; };
-		0A4EF89C1BEB6735000D2D7E /* NESqliteDataReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF88E1BEB6735000D2D7E /* NESqliteDataReader.m */; settings = {ASSET_TAGS = (); }; };
 		0A4EF89F1BEB673D000D2D7E /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF89E1BEB673D000D2D7E /* DemoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0A4EF8A11BEB676C000D2D7E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4EF8A01BEB676C000D2D7E /* libsqlite3.0.tbd */; };
 		C760F0CEFA97EB4BD8DBA01E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C930D2267FBA00A4A817F49 /* libPods.a */; };
@@ -78,10 +76,6 @@
 		0A4EF8881BEB6735000D2D7E /* NEHTTPModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEHTTPModelManager.m; sourceTree = "<group>"; };
 		0A4EF8891BEB6735000D2D7E /* NEShakeGestureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEShakeGestureManager.h; sourceTree = "<group>"; };
 		0A4EF88A1BEB6735000D2D7E /* NEShakeGestureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEShakeGestureManager.m; sourceTree = "<group>"; };
-		0A4EF88B1BEB6735000D2D7E /* NESqliteDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NESqliteDatabase.h; sourceTree = "<group>"; };
-		0A4EF88C1BEB6735000D2D7E /* NESqliteDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NESqliteDatabase.m; sourceTree = "<group>"; };
-		0A4EF88D1BEB6735000D2D7E /* NESqliteDataReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NESqliteDataReader.h; sourceTree = "<group>"; };
-		0A4EF88E1BEB6735000D2D7E /* NESqliteDataReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NESqliteDataReader.m; sourceTree = "<group>"; };
 		0A4EF89D1BEB673D000D2D7E /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
 		0A4EF89E1BEB673D000D2D7E /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 		0A4EF8A01BEB676C000D2D7E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -198,10 +192,6 @@
 				0A4EF8881BEB6735000D2D7E /* NEHTTPModelManager.m */,
 				0A4EF8891BEB6735000D2D7E /* NEShakeGestureManager.h */,
 				0A4EF88A1BEB6735000D2D7E /* NEShakeGestureManager.m */,
-				0A4EF88B1BEB6735000D2D7E /* NESqliteDatabase.h */,
-				0A4EF88C1BEB6735000D2D7E /* NESqliteDatabase.m */,
-				0A4EF88D1BEB6735000D2D7E /* NESqliteDataReader.h */,
-				0A4EF88E1BEB6735000D2D7E /* NESqliteDataReader.m */,
 			);
 			path = NetworkEye;
 			sourceTree = "<group>";
@@ -418,12 +408,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A4EF8951BEB6735000D2D7E /* NEHTTPEye.m in Sources */,
-				0A4EF89C1BEB6735000D2D7E /* NESqliteDataReader.m in Sources */,
 				0A4EF89A1BEB6735000D2D7E /* NEShakeGestureManager.m in Sources */,
 				0A4EF8481BEB66FF000D2D7E /* AppDelegate.m in Sources */,
 				0A4EF89F1BEB673D000D2D7E /* DemoViewController.m in Sources */,
 				0A4EF8451BEB66FF000D2D7E /* main.m in Sources */,
-				0A4EF89B1BEB6735000D2D7E /* NESqliteDatabase.m in Sources */,
 				0A4EF8911BEB6735000D2D7E /* README.md in Sources */,
 				0A4EF8981BEB6735000D2D7E /* NEHTTPModel.m in Sources */,
 				0A4EF8961BEB6735000D2D7E /* NEHTTPEyeDetailViewController.m in Sources */,
@@ -570,6 +558,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NetworkEye/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = coderyi.NetworkEye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -582,6 +571,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NetworkEye/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = coderyi.NetworkEye;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -8,7 +8,6 @@
 
 #import "NEHTTPModelManager.h"
 #import "NEShakeGestureManager.h"
-#import "NESqliteDatabase.h"
 #import "NEHTTPModel.h"
 #include "sqlite3.h"
 
@@ -36,26 +35,34 @@ static NEHTTPModelManager *staticManager;
     
     
     
-    
-    NESqliteDatabase *db=[[NESqliteDatabase alloc] initWithFilename:[NEHTTPModelManager filename]];
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        // something
-        [db executeNonQuery:init_sqls error:nil];
+    FMDatabaseQueue *queue= [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
+    [queue inDatabase:^(FMDatabase *db) {
+        
+        [db setKey:kSQLitePassword];
+        
+        [db executeUpdate:init_sqls];
+        
+    }];
 
-    });
 
 }
 
 
 +(NEHTTPModelManager *)defaultManager{
     
-    if (staticManager==nil) {
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        
         staticManager=[[NEHTTPModelManager alloc] init];
         [NEHTTPModelManager createTable];
         NEShakeGestureManager *hooker=[[NEShakeGestureManager alloc] init];
         [hooker install];
-    }
+        
+    });
+    
     return staticManager;
+
 }
 -(int)addModel:(NEHTTPModel *) aModel error:(NSError **) error{
     if ([aModel.responseMIMEType isEqualToString:@"text/html"]) {
@@ -69,23 +76,14 @@ static NEHTTPModelManager *staticManager;
     BOOL isRead=NO;
     int i;
     int rc;
-//    sqliteDatabase=[[NESqliteDatabase alloc] initWithFilename:[NEHTTPModelManager filename]];
-//    
-//    [sqliteDatabase open];
-//    NSString *sql =[NSString stringWithFormat:@"select * from nenetworkhttpeyes where myID='%lf'",aModel.myID];
-//    
-//    NESqliteDataReader *dr=[sqliteDatabase executeQuery:sql];
-//    
-//    isRead=[dr read];
-//    [dr close];
-//    [sqliteDatabase close];
+
     if (isRead) {
         i=1;
         return 1;
         
     }else{
         i=0;
-        sqliteDatabase=[[NESqliteDatabase alloc] initWithFilename:[NEHTTPModelManager filename]];
+        FMDatabaseQueue *queue= [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
 
         BOOL isNull;
         isNull=(aModel.receiveJSONData==nil);
@@ -95,21 +93,26 @@ static NEHTTPModelManager *staticManager;
             aModel.receiveJSONData=@"";
         }
 
-//        NSString *sql=[NSString stringWithFormat:@"insert into nenetworkhttpeyes values('%lf','%@','%@','%@','%@','%lf','%@','%@','%@','%@','%@','%@','%@','%d','%@','%@')",aModel.myID,aModel.startDateString,aModel.endDateString,aModel.requestURLString,aModel.requestCachePolicy,aModel.requestTimeoutInterval,aModel.requestHTTPMethod,aModel.requestAllHTTPHeaderFields,aModel.requestHTTPBody,aModel.responseMIMEType,aModel.responseExpectedContentLength,aModel.responseTextEncodingName,aModel.responseSuggestedFilename,aModel.responseStatusCode,[self stringToSQLFilter:aModel.responseAllHeaderFields],[self stringToSQLFilter:aModel.receiveJSONData]];
+
         NSString *receiveJSONData;
         
         receiveJSONData=[self stringToSQLFilter:aModel.receiveJSONData];
         
                 NSString *sql=[NSString stringWithFormat:@"insert into nenetworkhttpeyes values('%lf','%@','%@','%@','%@','%lf','%@','%@','%@','%@','%@','%@','%@','%d','%@','%@')",aModel.myID,aModel.startDateString,aModel.endDateString,aModel.requestURLString,aModel.requestCachePolicy,aModel.requestTimeoutInterval,aModel.requestHTTPMethod,aModel.requestAllHTTPHeaderFields,aModel.requestHTTPBody,aModel.responseMIMEType,aModel.responseExpectedContentLength,aModel.responseTextEncodingName,aModel.responseSuggestedFilename,aModel.responseStatusCode,[self stringToSQLFilter:aModel.responseAllHeaderFields],receiveJSONData];
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            // something
+
             int result;
-            result=[sqliteDatabase executeNonQuery:sql error:error];
+            [queue inDatabase:^(FMDatabase *db) {
+                [db setKey:kSQLitePassword];
+
+                [db executeUpdate:sql];
+               
+            }];
+            
+            
             if (result!=0) {
                 
-                NSLog(@"add model to sqlite error:url is %@ ",aModel.requestURLString);
             }
-        });
+
         
         
     }
@@ -117,44 +120,40 @@ static NEHTTPModelManager *staticManager;
 }
 
 
-
 -(NSMutableArray *)allobjects{
-    
-    sqliteDatabase=[[NESqliteDatabase alloc] initWithFilename:[NEHTTPModelManager filename]];
-    
-    [sqliteDatabase open];
+    FMDatabaseQueue *queue= [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
     NSString *sql =[NSString stringWithFormat:@"select * from nenetworkhttpeyes order by myID desc"];
-    NESqliteDataReader *dr= [sqliteDatabase executeQuery:sql];
-    
     NSMutableArray *array=[NSMutableArray array];
-    if (dr!=nil){
-        while ([dr read]) {
+
+    [queue inDatabase:^(FMDatabase *db) {
+        [db setKey:kSQLitePassword];
+
+        FMResultSet *rs = [db executeQuery:sql];
+        while ([rs next]) {
             NEHTTPModel *model=[[NEHTTPModel alloc] init];
-            model.myID=[dr doubleValueForColumnIndex:0];
-            model.startDateString=[dr stringValueForColumnIndex:1];
-            model.endDateString=[dr stringValueForColumnIndex:2];
-            model.requestURLString=[dr stringValueForColumnIndex:3];
-            model.requestCachePolicy=[dr stringValueForColumnIndex:4];
-            model.requestTimeoutInterval=[dr doubleValueForColumnIndex:5];
-            model.requestHTTPMethod=[dr stringValueForColumnIndex:6];
-            model.requestAllHTTPHeaderFields=[dr stringValueForColumnIndex:7];
-            model.requestHTTPBody=[dr stringValueForColumnIndex:8];
+            model.myID=[rs doubleForColumn:@"myID"];
+            model.startDateString=[rs stringForColumn:@"startDateString"];
+            model.endDateString=[rs stringForColumn:@"endDateString"];
+            model.requestURLString=[rs stringForColumn:@"requestURLString"];
+            model.requestCachePolicy=[rs stringForColumn:@"requestCachePolicy"];
+            model.requestTimeoutInterval=[rs doubleForColumn:@"requestTimeoutInterval"];
+            model.requestHTTPMethod=[rs stringForColumn:@"requestHTTPMethod"];
+            model.requestAllHTTPHeaderFields=[rs stringForColumn:@"requestAllHTTPHeaderFields"];
+            model.requestHTTPBody=[rs stringForColumn:@"requestHTTPBody"];
             
-            model.responseMIMEType=[dr stringValueForColumnIndex:9];
-            model.responseExpectedContentLength=[dr stringValueForColumnIndex:10];
-            model.responseTextEncodingName=[dr stringValueForColumnIndex:11];
-            model.responseSuggestedFilename=[dr stringValueForColumnIndex:12];
-            model.responseStatusCode=[dr integerValueForColumnIndex:13];
-            model.responseAllHeaderFields=[self stringToSQLFilter:[dr stringValueForColumnIndex:14]];
-            model.receiveJSONData=[self stringToOBJFilter:[dr stringValueForColumnIndex:15]];
-           
-
-
+            model.responseMIMEType=[rs stringForColumn:@"responseMIMEType"];
+            model.responseExpectedContentLength=[rs stringForColumn:@"responseExpectedContentLength"];
+            model.responseTextEncodingName=[rs stringForColumn:@"responseTextEncodingName"];
+            model.responseSuggestedFilename=[rs stringForColumn:@"responseSuggestedFilename"];
+            model.responseStatusCode=[rs intForColumn:@"responseStatusCode"];
+            model.responseAllHeaderFields=[self stringToSQLFilter:[rs stringForColumn:@"responseAllHeaderFields"]];
+            model.receiveJSONData=[self stringToOBJFilter:[rs stringForColumn:@"receiveJSONData"]];
+            
+            
+            
             [array addObject:model];
         }
-        [dr close];
-    }
-    [sqliteDatabase close];
+    }];
     if (array.count>=kSaveRequestMaxCount) {
         [[NSUserDefaults standardUserDefaults] setObject:@"a" forKey:@"nenetworkhttpeyecache"];
     }
@@ -162,11 +161,16 @@ static NEHTTPModelManager *staticManager;
     
 }
 - (int) deleteAllItem:(NSError **) error{
-    sqliteDatabase=[[NESqliteDatabase alloc] initWithFilename:[NEHTTPModelManager filename]];
     NSString *sql=[NSString stringWithFormat:@"delete from nenetworkhttpeyes"];
-    int rc=[sqliteDatabase executeNonQuery:sql error:error];
-    
-    
+    int rc;
+//
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
+    [queue inDatabase:^(FMDatabase *db) {
+        [db setKey:kSQLitePassword];
+
+        [db executeUpdate:sql];
+        
+    }];
     
     return rc;
 }
