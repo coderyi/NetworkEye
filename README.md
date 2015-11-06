@@ -5,7 +5,7 @@
 
 NetworkEye是一个网络调试库，可以监控App内所有HTTP请求并显示请求相关的所有信息，方便App开发的网络调试。
 
-可以检测到包括网页，NSURLConnecttion,NSURLSession，AFNetworking,第三方库，第三方SDK等的HTTP请求，非常方便实用。并且可以统计App内流量
+可以检测到包括网页，NSURLConnecttion，AFNetworking,第三方库，第三方SDK等的HTTP请求，非常方便实用。并且可以统计App内流量
 
 NetworkEye,a iOS network debug library,It can monitor all HTTP requests within the App and displays all information related to the request.
 #### Podfile
@@ -26,7 +26,7 @@ pod "NetworkEye", "~> 0.9.4"
 #endif
 </pre>
 
-使用的时候可以通过摇一摇（Shake Gesture）手势调出监控数据界面NEHTTPEyeViewController
+使用的时候可以通过双指轻拍或者摇一摇（Shake Gesture）手势调出监控数据界面NEHTTPEyeViewController
 也可以用如下代码直接present出来。
 <pre>
 #if defined(DEBUG)||defined(_DEBUG)
