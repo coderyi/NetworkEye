@@ -11,10 +11,9 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '7.0'
   s.source_files = 'NetworkEye/NetworkEye/**/*.{h,m,png}'
   s.requires_arc = true
-  s.subspec 'SQLCipher' do |ss|
-    ss.xcconfig     = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC' }
-    ss.dependency 'SQLCipher'
-  end
+  
+  s.dependency "FMDB/SQLCipher", "~> 2.5"
+
 
 
  

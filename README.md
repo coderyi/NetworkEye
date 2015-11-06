@@ -42,8 +42,8 @@ pod "NetworkEye", "~> 0.9.3"
 #define kSaveRequestMaxCount 300
 </pre>
 
-NetworkEye使用了Aspects并且依赖仓库SQLCipher。
-Aspects用于摇一摇手势，SQLCipher用于加密数据库。
+NetworkEye使用了Aspects并且依赖仓库FMDB和SQLCipher。
+Aspects用于摇一摇手势，FMDB用于存储监控数据，SQLCipher用于加密数据库。
 
 NetworkEye的监控数据界面如图：
 

@@ -73,50 +73,35 @@ static NEHTTPModelManager *staticManager;
         [self deleteAllItem:nil];
         [[NSUserDefaults standardUserDefaults] setObject:@"b" forKey:@"nenetworkhttpeyecache"];
     }
-    BOOL isRead=NO;
-    int i;
-    int rc;
 
-    if (isRead) {
-        i=1;
-        return 1;
-        
-    }else{
-        i=0;
-        FMDatabaseQueue *queue= [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
+    
+    FMDatabaseQueue *queue= [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
 
-        BOOL isNull;
-        isNull=(aModel.receiveJSONData==nil);
+    BOOL isNull;
+    isNull=(aModel.receiveJSONData==nil);
         
         
-        if (isNull) {
-            aModel.receiveJSONData=@"";
-        }
-
-
-        NSString *receiveJSONData;
-        
-        receiveJSONData=[self stringToSQLFilter:aModel.receiveJSONData];
-        
-                NSString *sql=[NSString stringWithFormat:@"insert into nenetworkhttpeyes values('%lf','%@','%@','%@','%@','%lf','%@','%@','%@','%@','%@','%@','%@','%d','%@','%@')",aModel.myID,aModel.startDateString,aModel.endDateString,aModel.requestURLString,aModel.requestCachePolicy,aModel.requestTimeoutInterval,aModel.requestHTTPMethod,aModel.requestAllHTTPHeaderFields,aModel.requestHTTPBody,aModel.responseMIMEType,aModel.responseExpectedContentLength,aModel.responseTextEncodingName,aModel.responseSuggestedFilename,aModel.responseStatusCode,[self stringToSQLFilter:aModel.responseAllHeaderFields],receiveJSONData];
-
-            int result;
-            [queue inDatabase:^(FMDatabase *db) {
-                [db setKey:kSQLitePassword];
-
-                [db executeUpdate:sql];
-               
-            }];
-            
-            
-            if (result!=0) {
-                
-            }
-
-        
-        
+    if (isNull) {
+        aModel.receiveJSONData=@"";
     }
-    return i;
+
+
+    NSString *receiveJSONData;
+        
+    receiveJSONData=[self stringToSQLFilter:aModel.receiveJSONData];
+        
+    NSString *sql=[NSString stringWithFormat:@"insert into nenetworkhttpeyes values('%lf','%@','%@','%@','%@','%lf','%@','%@','%@','%@','%@','%@','%@','%d','%@','%@')",aModel.myID,aModel.startDateString,aModel.endDateString,aModel.requestURLString,aModel.requestCachePolicy,aModel.requestTimeoutInterval,aModel.requestHTTPMethod,aModel.requestAllHTTPHeaderFields,aModel.requestHTTPBody,aModel.responseMIMEType,aModel.responseExpectedContentLength,aModel.responseTextEncodingName,aModel.responseSuggestedFilename,aModel.responseStatusCode,[self stringToSQLFilter:aModel.responseAllHeaderFields],receiveJSONData];
+
+    [queue inDatabase:^(FMDatabase *db) {
+        [db setKey:kSQLitePassword];
+
+        [db executeUpdate:sql];
+               
+    }];
+            
+        
+
+    return 0;
 }
 
 
@@ -162,8 +147,7 @@ static NEHTTPModelManager *staticManager;
 }
 - (int) deleteAllItem:(NSError **) error{
     NSString *sql=[NSString stringWithFormat:@"delete from nenetworkhttpeyes"];
-    int rc;
-//
+
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
     [queue inDatabase:^(FMDatabase *db) {
         [db setKey:kSQLitePassword];
@@ -172,7 +156,7 @@ static NEHTTPModelManager *staticManager;
         
     }];
     
-    return rc;
+    return 0;
 }
 
 #pragma mark - Utils
