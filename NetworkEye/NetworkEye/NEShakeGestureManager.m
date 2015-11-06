@@ -7,7 +7,7 @@
 //
 
 #import "NEShakeGestureManager.h"
-#import "Aspects.h"
+
 #import <UIKit/UIKit.h>
 #import "NEHTTPEyeViewController.h"
 
@@ -18,35 +18,24 @@
 @property (nonatomic, strong) UIAlertView *alertView;
 #pragma clang diagnostic pop
 
-@property (nonatomic, strong) id<AspectToken> viewDidAppearToken;
-@property (nonatomic, strong) id<AspectToken> motionEndToken;
 
 @end
 @implementation NEShakeGestureManager
 
-- (void)install {
-    self.viewDidAppearToken = [UIViewController aspect_hookSelector:@selector(viewDidAppear:)
-                                                        withOptions:AspectPositionAfter
-                                                         usingBlock:^(id<AspectInfo> info){
-                                                             UIViewController *viewController = [info instance];
-                                                             [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
-                                                             [viewController becomeFirstResponder];
-                                                         }
-                                                              error:NULL];
-    self.motionEndToken = [UIResponder aspect_hookSelector:@selector(motionEnded:withEvent:)
-                                               withOptions:AspectPositionAfter
-                                                usingBlock:^(){
-           
-                                                    [self showAlertView];
-                                                }
-                                                     error:NULL];
++(NEShakeGestureManager *)defaultManager{
+    static NEShakeGestureManager *staticManager;
+    
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        
+        staticManager=[[NEShakeGestureManager alloc] init];
+        
+    });
+    
+    return staticManager;
+    
 }
-
-- (void)uninstall {
-    [self.viewDidAppearToken remove];
-    [self.motionEndToken remove];
-}
-
 - (void)showAlertView {
     [self.alertView show];
 }

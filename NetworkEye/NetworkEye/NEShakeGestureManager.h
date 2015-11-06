@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NEShakeGestureManager : NSObject
-- (void)install;
-
-- (void)uninstall;
++(NEShakeGestureManager *)defaultManager;
+- (void)showAlertView;
 @end

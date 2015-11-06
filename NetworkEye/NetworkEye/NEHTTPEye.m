@@ -10,7 +10,7 @@
 
 #import "NEHTTPModel.h"
 #import "NEHTTPModelManager.h"
-
+#import "UIWindow+NEShakeGesture.h"
 @interface NEHTTPEye ()<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
 @property (nonatomic, strong) NSURLConnection *connection;

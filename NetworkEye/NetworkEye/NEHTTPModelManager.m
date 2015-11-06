@@ -56,8 +56,7 @@ static NEHTTPModelManager *staticManager;
         
         staticManager=[[NEHTTPModelManager alloc] init];
         [NEHTTPModelManager createTable];
-        NEShakeGestureManager *hooker=[[NEShakeGestureManager alloc] init];
-        [hooker install];
+        
         
     });
     

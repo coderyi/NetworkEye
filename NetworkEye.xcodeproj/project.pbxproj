@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1202451BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1202441BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m */; settings = {ASSET_TAGS = (); }; };
 		0A4EF8451BEB66FF000D2D7E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8441BEB66FF000D2D7E /* main.m */; };
 		0A4EF8481BEB66FF000D2D7E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8471BEB66FF000D2D7E /* AppDelegate.m */; };
 		0A4EF84E1BEB66FF000D2D7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF84C1BEB66FF000D2D7E /* Main.storyboard */; };
@@ -14,9 +15,6 @@
 		0A4EF8531BEB66FF000D2D7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF8511BEB66FF000D2D7E /* LaunchScreen.storyboard */; };
 		0A4EF85E1BEB66FF000D2D7E /* NetworkEyeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF85D1BEB66FF000D2D7E /* NetworkEyeTests.m */; };
 		0A4EF8691BEB66FF000D2D7E /* NetworkEyeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8681BEB66FF000D2D7E /* NetworkEyeUITests.m */; };
-		0A4EF88F1BEB6735000D2D7E /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8791BEB6735000D2D7E /* Aspects.m */; settings = {ASSET_TAGS = (); }; };
-		0A4EF8901BEB6735000D2D7E /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF87A1BEB6735000D2D7E /* LICENSE */; settings = {ASSET_TAGS = (); }; };
-		0A4EF8911BEB6735000D2D7E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF87B1BEB6735000D2D7E /* README.md */; settings = {ASSET_TAGS = (); }; };
 		0A4EF8951BEB6735000D2D7E /* NEHTTPEye.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8801BEB6735000D2D7E /* NEHTTPEye.m */; settings = {ASSET_TAGS = (); }; };
 		0A4EF8961BEB6735000D2D7E /* NEHTTPEyeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8821BEB6735000D2D7E /* NEHTTPEyeDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0A4EF8971BEB6735000D2D7E /* NEHTTPEyeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8841BEB6735000D2D7E /* NEHTTPEyeViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -46,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A1202431BEC8C9700B710A9 /* UIWindow+NEShakeGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+NEShakeGesture.h"; sourceTree = "<group>"; };
+		0A1202441BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+NEShakeGesture.m"; sourceTree = "<group>"; };
 		0A4EF8401BEB66FF000D2D7E /* NetworkEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A4EF8441BEB66FF000D2D7E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0A4EF8461BEB66FF000D2D7E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,10 +60,6 @@
 		0A4EF8641BEB66FF000D2D7E /* NetworkEyeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkEyeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A4EF8681BEB66FF000D2D7E /* NetworkEyeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkEyeUITests.m; sourceTree = "<group>"; };
 		0A4EF86A1BEB66FF000D2D7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A4EF8781BEB6735000D2D7E /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
-		0A4EF8791BEB6735000D2D7E /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
-		0A4EF87A1BEB6735000D2D7E /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		0A4EF87B1BEB6735000D2D7E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0A4EF87F1BEB6735000D2D7E /* NEHTTPEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEHTTPEye.h; sourceTree = "<group>"; };
 		0A4EF8801BEB6735000D2D7E /* NEHTTPEye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEHTTPEye.m; sourceTree = "<group>"; };
 		0A4EF8811BEB6735000D2D7E /* NEHTTPEyeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEHTTPEyeDetailViewController.h; sourceTree = "<group>"; };
@@ -179,7 +175,6 @@
 		0A4EF8761BEB6735000D2D7E /* NetworkEye */ = {
 			isa = PBXGroup;
 			children = (
-				0A4EF8771BEB6735000D2D7E /* Aspects */,
 				0A4EF87F1BEB6735000D2D7E /* NEHTTPEye.h */,
 				0A4EF8801BEB6735000D2D7E /* NEHTTPEye.m */,
 				0A4EF8811BEB6735000D2D7E /* NEHTTPEyeDetailViewController.h */,
@@ -192,19 +187,10 @@
 				0A4EF8881BEB6735000D2D7E /* NEHTTPModelManager.m */,
 				0A4EF8891BEB6735000D2D7E /* NEShakeGestureManager.h */,
 				0A4EF88A1BEB6735000D2D7E /* NEShakeGestureManager.m */,
+				0A1202431BEC8C9700B710A9 /* UIWindow+NEShakeGesture.h */,
+				0A1202441BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m */,
 			);
 			path = NetworkEye;
-			sourceTree = "<group>";
-		};
-		0A4EF8771BEB6735000D2D7E /* Aspects */ = {
-			isa = PBXGroup;
-			children = (
-				0A4EF8781BEB6735000D2D7E /* Aspects.h */,
-				0A4EF8791BEB6735000D2D7E /* Aspects.m */,
-				0A4EF87A1BEB6735000D2D7E /* LICENSE */,
-				0A4EF87B1BEB6735000D2D7E /* README.md */,
-			);
-			path = Aspects;
 			sourceTree = "<group>";
 		};
 		0A4EF8A21BEB680F000D2D7E /* Frameworks */ = {
@@ -333,7 +319,6 @@
 			files = (
 				0A4EF8531BEB66FF000D2D7E /* LaunchScreen.storyboard in Resources */,
 				0A4EF8501BEB66FF000D2D7E /* Assets.xcassets in Resources */,
-				0A4EF8901BEB6735000D2D7E /* LICENSE in Resources */,
 				0A4EF84E1BEB66FF000D2D7E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,12 +397,11 @@
 				0A4EF8481BEB66FF000D2D7E /* AppDelegate.m in Sources */,
 				0A4EF89F1BEB673D000D2D7E /* DemoViewController.m in Sources */,
 				0A4EF8451BEB66FF000D2D7E /* main.m in Sources */,
-				0A4EF8911BEB6735000D2D7E /* README.md in Sources */,
 				0A4EF8981BEB6735000D2D7E /* NEHTTPModel.m in Sources */,
 				0A4EF8961BEB6735000D2D7E /* NEHTTPEyeDetailViewController.m in Sources */,
-				0A4EF88F1BEB6735000D2D7E /* Aspects.m in Sources */,
 				0A4EF8971BEB6735000D2D7E /* NEHTTPEyeViewController.m in Sources */,
 				0A4EF8991BEB6735000D2D7E /* NEHTTPModelManager.m in Sources */,
+				0A1202451BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
