@@ -256,7 +256,7 @@
                                                                           NSFontAttributeName : detailFont,
                                                                           NSForegroundColorAttributeName: detailColor
                                                                           }];
-    responseExpectedContentLengthDetail = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n",_model.responseExpectedContentLength]
+    responseExpectedContentLengthDetail = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%.2lfKB\n",[_model.responseExpectedContentLength doubleValue]/1024.0]
                                                                    attributes:@{
                                                                                 NSFontAttributeName : detailFont,
                                                                                 NSForegroundColorAttributeName: detailColor

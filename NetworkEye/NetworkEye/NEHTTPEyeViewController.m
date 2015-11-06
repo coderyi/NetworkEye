@@ -60,9 +60,16 @@
     }
     
     
-    
-   
-    
+    UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 25)];
+    tableView1.tableHeaderView=titleLabel;
+    titleLabel.textColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f];
+    titleLabel.font=[UIFont systemFontOfSize:12];
+    titleLabel.textAlignment=NSTextAlignmentCenter;
+    double flowCount=[[[NSUserDefaults standardUserDefaults] objectForKey:@"flowCount"] doubleValue];
+    if (!flowCount) {
+        flowCount=0.0;
+    }
+    titleLabel.text=[NSString stringWithFormat:@"App流量共计%.1lfMB",flowCount];
     tableView1.dataSource=self;
     tableView1.delegate=self;
     

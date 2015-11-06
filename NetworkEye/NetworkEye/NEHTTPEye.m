@@ -85,6 +85,14 @@
     if ([self.response.MIMEType isEqualToString:@"application/json"]) {
         ne_HTTPModel.receiveJSONData=[self responseJSON];
     }
+    double flowCount=[[[NSUserDefaults standardUserDefaults] objectForKey:@"flowCount"] doubleValue];
+    if (!flowCount) {
+        flowCount=0.0;
+    }
+    flowCount=flowCount+self.response.expectedContentLength/(1024.0*1024.0);
+
+    [[NSUserDefaults standardUserDefaults] setDouble:flowCount forKey:@"flowCount"];
+    
     [[NEHTTPModelManager defaultManager] addModel:ne_HTTPModel error:nil];
 }
 
