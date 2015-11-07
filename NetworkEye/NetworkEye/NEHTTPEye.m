@@ -149,6 +149,10 @@ didReceiveResponse:(NSURLResponse *)response
     if(error){
         NSLog(@"JSON Parsing Error: %@", error);
     }
+    //https://github.com/coderyi/NetworkEye/issues/1
+    if (!returnValue || returnValue == [NSNull null]) {
+        return nil;
+    }
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:returnValue options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
     return jsonString;
