@@ -47,7 +47,7 @@ Aspects用于摇一摇手势，FMDB用于存储监控数据，SQLCipher用于加
 
 NetworkEye的监控数据界面如图：
 
-<img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye1_1.png" width="320" height="570">
+<img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye1_2.png" width="320" height="570">
 
 <img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye2.png" width="320" height="570">
 
