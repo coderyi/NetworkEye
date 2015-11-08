@@ -241,8 +241,8 @@
 - (void)updateSearchResultsWithSearchString:(NSString *)searchString
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSArray *filterHTTPRequests1 = [httpRequests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NEHTTPModel *transaction, NSDictionary *bindings) {
-            return [transaction.requestURLString rangeOfString:searchString options:NSCaseInsensitiveSearch].length > 0;
+        NSArray *filterHTTPRequests1 = [httpRequests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NEHTTPModel *httpRequest, NSDictionary *bindings) {
+            return [httpRequest.requestURLString rangeOfString:searchString options:NSCaseInsensitiveSearch].length > 0;
         }]];
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([mySearchDisplayController.searchBar.text isEqual:searchString]) {
