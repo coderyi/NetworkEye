@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A1202451BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1202441BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m */; settings = {ASSET_TAGS = (); }; };
+		0A1202451BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1202441BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m */; };
 		0A4EF8451BEB66FF000D2D7E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8441BEB66FF000D2D7E /* main.m */; };
 		0A4EF8481BEB66FF000D2D7E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8471BEB66FF000D2D7E /* AppDelegate.m */; };
 		0A4EF84E1BEB66FF000D2D7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF84C1BEB66FF000D2D7E /* Main.storyboard */; };
@@ -15,13 +15,13 @@
 		0A4EF8531BEB66FF000D2D7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EF8511BEB66FF000D2D7E /* LaunchScreen.storyboard */; };
 		0A4EF85E1BEB66FF000D2D7E /* NetworkEyeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF85D1BEB66FF000D2D7E /* NetworkEyeTests.m */; };
 		0A4EF8691BEB66FF000D2D7E /* NetworkEyeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8681BEB66FF000D2D7E /* NetworkEyeUITests.m */; };
-		0A4EF8951BEB6735000D2D7E /* NEHTTPEye.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8801BEB6735000D2D7E /* NEHTTPEye.m */; settings = {ASSET_TAGS = (); }; };
-		0A4EF8961BEB6735000D2D7E /* NEHTTPEyeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8821BEB6735000D2D7E /* NEHTTPEyeDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
-		0A4EF8971BEB6735000D2D7E /* NEHTTPEyeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8841BEB6735000D2D7E /* NEHTTPEyeViewController.m */; settings = {ASSET_TAGS = (); }; };
-		0A4EF8981BEB6735000D2D7E /* NEHTTPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8861BEB6735000D2D7E /* NEHTTPModel.m */; settings = {ASSET_TAGS = (); }; };
-		0A4EF8991BEB6735000D2D7E /* NEHTTPModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8881BEB6735000D2D7E /* NEHTTPModelManager.m */; settings = {ASSET_TAGS = (); }; };
-		0A4EF89A1BEB6735000D2D7E /* NEShakeGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF88A1BEB6735000D2D7E /* NEShakeGestureManager.m */; settings = {ASSET_TAGS = (); }; };
-		0A4EF89F1BEB673D000D2D7E /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF89E1BEB673D000D2D7E /* DemoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0A4EF8951BEB6735000D2D7E /* NEHTTPEye.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8801BEB6735000D2D7E /* NEHTTPEye.m */; };
+		0A4EF8961BEB6735000D2D7E /* NEHTTPEyeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8821BEB6735000D2D7E /* NEHTTPEyeDetailViewController.m */; };
+		0A4EF8971BEB6735000D2D7E /* NEHTTPEyeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8841BEB6735000D2D7E /* NEHTTPEyeViewController.m */; };
+		0A4EF8981BEB6735000D2D7E /* NEHTTPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8861BEB6735000D2D7E /* NEHTTPModel.m */; };
+		0A4EF8991BEB6735000D2D7E /* NEHTTPModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8881BEB6735000D2D7E /* NEHTTPModelManager.m */; };
+		0A4EF89A1BEB6735000D2D7E /* NEShakeGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF88A1BEB6735000D2D7E /* NEShakeGestureManager.m */; };
+		0A4EF89F1BEB673D000D2D7E /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF89E1BEB673D000D2D7E /* DemoViewController.m */; };
 		0A4EF8A11BEB676C000D2D7E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4EF8A01BEB676C000D2D7E /* libsqlite3.0.tbd */; };
 		C760F0CEFA97EB4BD8DBA01E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C930D2267FBA00A4A817F49 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -281,6 +281,7 @@
 				TargetAttributes = {
 					0A4EF83F1BEB66FF000D2D7E = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = BZEQUNN2J8;
 					};
 					0A4EF8581BEB66FF000D2D7E = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -541,10 +542,11 @@
 			baseConfigurationReference = 15823B9F703B6CCBECF33899 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NetworkEye/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = coderyi.NetworkEye;
+				PRODUCT_BUNDLE_IDENTIFIER = com.haier.3dprint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -554,10 +556,11 @@
 			baseConfigurationReference = 216D942C25AF00B3FEA1889C /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NetworkEye/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = coderyi.NetworkEye;
+				PRODUCT_BUNDLE_IDENTIFIER = com.haier.3dprint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
