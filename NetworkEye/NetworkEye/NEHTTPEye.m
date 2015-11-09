@@ -23,12 +23,11 @@
 @synthesize ne_HTTPModel;
 
 #pragma mark - superclass methods
-
 + (void)load {
+    
 }
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
-    
     if (![request.URL.scheme isEqualToString:@"http"] &&
         ![request.URL.scheme isEqualToString:@"https"]) {
         return NO;
@@ -37,7 +36,6 @@
     if ([NSURLProtocol propertyForKey:@"NEHTTPEye" inRequest:request] ) {
         return NO;
     }
-
     return YES;
 }
 
@@ -66,11 +64,9 @@
     NSTimeInterval myID=[[NSDate date] timeIntervalSince1970];
     double randomNum=((double)(arc4random() % 100))/10000;
     ne_HTTPModel.myID=myID+randomNum;
-    
 }
 
 - (void)stopLoading {
-    
     [self.connection cancel];
     ne_HTTPModel.ne_response=(NSHTTPURLResponse *)self.response;
     ne_HTTPModel.endDateString=[self stringWithDate:[NSDate date]];
@@ -83,10 +79,9 @@
     }
     flowCount=flowCount+self.response.expectedContentLength/(1024.0*1024.0);
     [[NSUserDefaults standardUserDefaults] setDouble:flowCount forKey:@"flowCount"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [[NEHTTPModelManager defaultManager] addModel:ne_HTTPModel error:nil];
-    
 }
-
 
 #pragma mark - NSURLConnectionDelegate
 
@@ -109,7 +104,6 @@ didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
 didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     [[self client] URLProtocol:self didCancelAuthenticationChallenge:challenge];
 }
-
 
 #pragma mark - NSURLConnectionDataDelegate
 
@@ -134,15 +128,12 @@ didReceiveResponse:(NSURLResponse *)response
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
- 
     [[self client] URLProtocolDidFinishLoading:self];
-   
 }
 
 #pragma mark - Utils
 
 -(id) responseJSON {
-    
     if(self.data == nil) return nil;
     NSError *error = nil;
     id returnValue = [NSJSONSerialization JSONObjectWithData:[self data] options:0 error:&error];
@@ -151,23 +142,17 @@ didReceiveResponse:(NSURLResponse *)response
         //https://github.com/coderyi/NetworkEye/issues/3
         return nil;
     }
-    //https://github.com/coderyi/NetworkEye/issues/1
-    if (!returnValue || returnValue == [NSNull null]) {
-        return nil;
-    }
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:returnValue options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
     return jsonString;
-    
 }
+
 - (NSString *)stringWithDate:(NSDate *)date{
-    
     NSString *destDateString = [[NEHTTPEye defaultDateFormatter] stringFromDate:date];
     return destDateString;
-    
 }
+
 +(NSDateFormatter *)defaultDateFormatter{
-    
     static NSDateFormatter *staticDateFormatter;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -176,8 +161,6 @@ didReceiveResponse:(NSURLResponse *)response
 
     });
     return staticDateFormatter;
-    
 }
-
 
 @end
