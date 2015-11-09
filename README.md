@@ -45,6 +45,8 @@ pod "NetworkEye", "~> 0.9.5"
 NetworkEye依赖仓库FMDB和SQLCipher。
 FMDB用于存储监控数据，SQLCipher用于加密数据库。
 
+监控数据界面支持的搜索条件为URL，statusCode，HTTPMethod，MIMEType。
+
 NetworkEye的监控数据界面如图：
 
 <img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye1_2.png" width="320" height="570">
