@@ -12,7 +12,7 @@ NetworkEye,a iOS network debug library,It can monitor all HTTP requests within t
 
 ```ruby
 platform :ios, '7.0'
-pod "NetworkEye", "~> 0.9.7"
+pod "NetworkEye"
 ```
 
 
