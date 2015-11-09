@@ -27,7 +27,7 @@
     Method originalMethod = class_getInstanceMethod(original, selector);
     Method stubMethod = class_getInstanceMethod(stub, selector);
     if (!originalMethod || !stubMethod) {
-        [NSException raise:NSInternalInconsistencyException format:@"Couldn't load NSURLSession hook."];
+        [NSException raise:NSInternalInconsistencyException format:@"Couldn't load NEURLSessionConfiguration."];
     }
     method_exchangeImplementations(originalMethod, stubMethod);
 }

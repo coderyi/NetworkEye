@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "NetworkEye"
-  s.version      = "0.9.6"
+  s.version      = "0.9.7"
   s.summary      = "NetworkEye - iOS网络调试库，NetworkEye可以监控App内HTTP请求并显示请求相关的详细信息，方便App开发的网络调试。"
   s.homepage     = "https://github.com/coderyi/NetworkEye"
   s.license      = "MIT"
