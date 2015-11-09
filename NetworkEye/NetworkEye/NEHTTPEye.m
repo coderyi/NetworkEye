@@ -148,6 +148,7 @@ didReceiveResponse:(NSURLResponse *)response
     id returnValue = [NSJSONSerialization JSONObjectWithData:[self data] options:0 error:&error];
     if(error){
         NSLog(@"JSON Parsing Error: %@", error);
+        return nil;
     }
     //https://github.com/coderyi/NetworkEye/issues/1
     if (!returnValue || returnValue == [NSNull null]) {
