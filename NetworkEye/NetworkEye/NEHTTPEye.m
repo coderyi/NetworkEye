@@ -79,7 +79,7 @@
     }
     flowCount=flowCount+self.response.expectedContentLength/(1024.0*1024.0);
     [[NSUserDefaults standardUserDefaults] setDouble:flowCount forKey:@"flowCount"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] synchronize];//https://github.com/coderyi/NetworkEye/pull/6
     [[NEHTTPModelManager defaultManager] addModel:ne_HTTPModel error:nil];
 }
 
@@ -142,6 +142,11 @@ didReceiveResponse:(NSURLResponse *)response
         //https://github.com/coderyi/NetworkEye/issues/3
         return nil;
     }
+    //https://github.com/coderyi/NetworkEye/issues/1
+    if (!returnValue || returnValue == [NSNull null]) {
+        return nil;
+    }
+
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:returnValue options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
     return jsonString;
