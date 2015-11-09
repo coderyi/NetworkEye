@@ -162,10 +162,20 @@ didReceiveResponse:(NSURLResponse *)response
 }
 - (NSString *)stringWithDate:(NSDate *)date{
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];//zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
-    NSString *destDateString = [dateFormatter stringFromDate:date];
+    NSString *destDateString = [[NEHTTPEye defaultDateFormatter] stringFromDate:date];
     return destDateString;
+    
+}
++(NSDateFormatter *)defaultDateFormatter{
+    
+    static NSDateFormatter *staticDateFormatter;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        staticDateFormatter=[[NSDateFormatter alloc] init];
+        [staticDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];//zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
+
+    });
+    return staticDateFormatter;
     
 }
 
