@@ -46,7 +46,7 @@
     UIButton *btGoMonitorViewController=[UIButton buttonWithType:UIButtonTypeCustom];
     [self.view addSubview:btGoMonitorViewController];
     [btGoMonitorViewController addTarget:self action:@selector(goMonitorAction) forControlEvents:UIControlEventTouchUpInside];
-    btGoMonitorViewController.frame=CGRectMake(([[UIScreen mainScreen] bounds].size.width-160)/2, 90, 160, 50);
+    btGoMonitorViewController.frame=CGRectMake(([[UIScreen mainScreen] bounds].size.width-160)/2, 80, 160, 45);
     [btGoMonitorViewController setTitle:@"Go NetworkEye" forState:UIControlStateNormal];
     [btGoMonitorViewController setTitleColor:[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f] forState:UIControlStateNormal];
     btGoMonitorViewController.layer.borderColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f].CGColor;
@@ -56,22 +56,37 @@
     UIButton *btRightRequest=[UIButton buttonWithType:UIButtonTypeCustom];
     [self.view addSubview:btRightRequest];
     [btRightRequest addTarget:self action:@selector(btRightRequestAction) forControlEvents:UIControlEventTouchUpInside];
-    btRightRequest.frame=CGRectMake(([[UIScreen mainScreen] bounds].size.width-190)/2, 170, 190, 40);
+    btRightRequest.frame=CGRectMake(([[UIScreen mainScreen] bounds].size.width-190)/2, 160, 190, 35);
     [btRightRequest setTitle:@"Click to right request" forState:UIControlStateNormal];
     [btRightRequest setTitleColor:[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f] forState:UIControlStateNormal];
     btRightRequest.layer.borderColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f].CGColor;
     btRightRequest.layer.borderWidth=0.4;
-    
+    btRightRequest.titleLabel.font=[UIFont systemFontOfSize:15];
+
     UIButton *btErrorRequest=[UIButton buttonWithType:UIButtonTypeCustom];
     [self.view addSubview:btErrorRequest];
     [btErrorRequest addTarget:self action:@selector(btErrorRequestAction) forControlEvents:UIControlEventTouchUpInside];
-    btErrorRequest.frame=CGRectMake(([[UIScreen mainScreen] bounds].size.width-190)/2, 225, 190, 40);
+    btErrorRequest.frame=CGRectMake(([[UIScreen mainScreen] bounds].size.width-190)/2, 200, 190, 35);
     [btErrorRequest setTitle:@"Click to error request" forState:UIControlStateNormal];
     [btErrorRequest setTitleColor:[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f] forState:UIControlStateNormal];
     btErrorRequest.layer.borderColor=[UIColor colorWithRed:0.9 green:0.31 blue:0.28 alpha:1].CGColor;
     btErrorRequest.layer.borderWidth=0.4;
+    btErrorRequest.titleLabel.font=[UIFont systemFontOfSize:15];
+
+    UIButton *btSessionRequest=[UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:btSessionRequest];
+    [btSessionRequest addTarget:self action:@selector(btSessionRequestAction) forControlEvents:UIControlEventTouchUpInside];
+    btSessionRequest.frame=CGRectMake(([[UIScreen mainScreen] bounds].size.width-190)/2, 240, 190, 35);
+    [btSessionRequest setTitle:@"Click to session request" forState:UIControlStateNormal];
+    [btSessionRequest setTitleColor:[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f] forState:UIControlStateNormal];
+    btSessionRequest.layer.borderColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f].CGColor;
+    btSessionRequest.layer.borderWidth=0.4;
+    btSessionRequest.titleLabel.font=[UIFont systemFontOfSize:15];
+
     
-    UIWebView *webView=[[UIWebView alloc] initWithFrame:CGRectMake(0, 280, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-280)];
+
+    
+    UIWebView *webView=[[UIWebView alloc] initWithFrame:CGRectMake(0, 300, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-330)];
     [self.view addSubview:webView];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.github.com"]]];
     
@@ -84,6 +99,7 @@
     [self presentViewController:vc animated:YES completion:nil];
 #endif
     
+
 }
 
 #pragma clang diagnostic push
@@ -99,6 +115,36 @@
     
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.github.com/yy"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
     }];
+    
+}
+- (void)btSessionRequestAction{
+    
+    NSURL *url = [NSURL URLWithString:@"http://www.example.com"];
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    config.protocolClasses=@[[NEHTTPEye class]];//在NEURLSessionConfiguration里面注册了，所以不用在这里重复注册了
+    
+    NSURLSession *urlsession = [NSURLSession sessionWithConfiguration:config];
+    
+    NSURLSessionDataTask *datatask = [urlsession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if(error) {
+            NSLog(@"error: %@", error);
+        }
+        else {
+            NSLog(@"Success");
+        }
+    }];
+    [datatask resume];
+    
+    
+    NSURLSessionDataTask *datatask1 = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"http://www.example1.com"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if(error) {
+            NSLog(@"error: %@", error);
+        }
+        else {
+            NSLog(@"Success");
+        }
+    }];
+    [datatask1 resume];
     
 }
 

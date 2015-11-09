@@ -11,6 +11,7 @@
 #import "NEHTTPModel.h"
 #import "NEHTTPModelManager.h"
 #import "UIWindow+NEShakeGesture.h"
+#import "NEURLSessionConfiguration.h"
 @interface NEHTTPEye ()<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, strong) NSURLResponse *response;
@@ -24,7 +25,8 @@
 
 #pragma mark - superclass methods
 + (void)load {
-    
+    NEURLSessionConfiguration * sessionConfiguration=[[NEURLSessionConfiguration alloc] init];
+    [sessionConfiguration load];
 }
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
