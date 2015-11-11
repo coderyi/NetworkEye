@@ -13,7 +13,7 @@ It can be detected HTTP request include web pages, NSURLConnection, NSURLSession
 
 ```ruby
 platform :ios, '7.0'
-pod "NetworkEye"
+pod 'NetworkEye', '~> 0.9.8'
 ```
 
 
