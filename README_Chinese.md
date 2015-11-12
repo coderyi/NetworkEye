@@ -24,7 +24,7 @@ pod 'NetworkEye', '~> 0.9.8'
 <pre>
 #import "NEHTTPEye.h"
 #if defined(DEBUG)||defined(_DEBUG)
-    [NSURLProtocol registerClass:[NEHTTPEye class]];
+    [NEHTTPEye setEnabled:NO];
 #endif
 </pre>
 

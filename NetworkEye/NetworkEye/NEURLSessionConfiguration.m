@@ -12,14 +12,47 @@
 
 @implementation NEURLSessionConfiguration
 
++(NEURLSessionConfiguration *)defaultConfiguration{
+    
+    static NEURLSessionConfiguration *staticConfiguration;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        staticConfiguration=[[NEURLSessionConfiguration alloc] init];
+    });
+    return staticConfiguration;
+    
+}
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.isSwizzle=NO;
+    }
+    return self;
+}
+
 - (void)load {
+    self.isSwizzle=YES;
+
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        Class cls = NSClassFromString(@"__NSCFURLSessionConfiguration") ?: NSClassFromString(@"NSURLSessionConfiguration");
+//        [self swizzleSelector:@selector(protocolClasses) fromClass:cls toClass:[self class]];
+//    });
     Class cls = NSClassFromString(@"__NSCFURLSessionConfiguration") ?: NSClassFromString(@"NSURLSessionConfiguration");
     [self swizzleSelector:@selector(protocolClasses) fromClass:cls toClass:[self class]];
+    
 }
 
 - (void)unload {
+    self.isSwizzle=NO;
+
     Class cls = NSClassFromString(@"__NSCFURLSessionConfiguration") ?: NSClassFromString(@"NSURLSessionConfiguration");
     [self swizzleSelector:@selector(protocolClasses) fromClass:cls toClass:[self class]];
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        Class cls = NSClassFromString(@"__NSCFURLSessionConfiguration") ?: NSClassFromString(@"NSURLSessionConfiguration");
+//        [self swizzleSelector:@selector(protocolClasses) fromClass:cls toClass:[self class]];
+//    });
 }
 
 - (void)swizzleSelector:(SEL)selector fromClass:(Class)original toClass:(Class)stub {
@@ -33,7 +66,11 @@
 }
 
 - (NSArray *)protocolClasses {
-    
+    BOOL NetworkEyeEnable=[[[NSUserDefaults standardUserDefaults] objectForKey:@"NetworkEyeEnable"] boolValue];
+   
+//    if (!NetworkEyeEnable) {
+//        return @[];
+//    }
     return @[[NEHTTPEye class]];//如果需要导入其他的自定义NSURLProtocol请在这里增加，当然在使用NSURLSessionConfiguration时增加也可以
 }
 

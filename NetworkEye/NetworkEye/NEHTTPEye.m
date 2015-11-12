@@ -22,11 +22,43 @@
 
 @implementation NEHTTPEye
 @synthesize ne_HTTPModel;
++ (void)setEnabled:(BOOL)enabled
+{
+//    BOOL previouslyEnabled =[NEHTTPEye isEnabled];
+    [[NSUserDefaults standardUserDefaults] setDouble:enabled forKey:@"NetworkEyeEnable"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    NEURLSessionConfiguration * sessionConfiguration=[NEURLSessionConfiguration defaultConfiguration];
 
+    if (enabled) {
+        
+        [NSURLProtocol registerClass:[NEHTTPEye class]];
+        if (![sessionConfiguration isSwizzle]) {
+            [sessionConfiguration load];
+
+        }
+    }else{
+        [NSURLProtocol unregisterClass:[NEHTTPEye class]];
+
+        if ([sessionConfiguration isSwizzle]) {
+            [sessionConfiguration unload];
+
+        }
+
+    }
+    
+}
+
++ (BOOL)isEnabled
+{
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"NetworkEyeEnable"] boolValue];
+;
+}
 #pragma mark - superclass methods
 + (void)load {
-    NEURLSessionConfiguration * sessionConfiguration=[[NEURLSessionConfiguration alloc] init];
-    [sessionConfiguration load];
+    
+    
+    
+    
 }
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {

@@ -24,6 +24,7 @@
 		0A4EF89A1BEB6735000D2D7E /* NEShakeGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF88A1BEB6735000D2D7E /* NEShakeGestureManager.m */; settings = {ASSET_TAGS = (); }; };
 		0A4EF89F1BEB673D000D2D7E /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF89E1BEB673D000D2D7E /* DemoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0A4EF8A11BEB676C000D2D7E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4EF8A01BEB676C000D2D7E /* libsqlite3.0.tbd */; };
+		0ADE8CFA1BF4999A0096A1E5 /* NEHTTPEyeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADE8CF91BF4999A0096A1E5 /* NEHTTPEyeSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C760F0CEFA97EB4BD8DBA01E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C930D2267FBA00A4A817F49 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,8 @@
 		0A4EF89D1BEB673D000D2D7E /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
 		0A4EF89E1BEB673D000D2D7E /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 		0A4EF8A01BEB676C000D2D7E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		0ADE8CF81BF4999A0096A1E5 /* NEHTTPEyeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEHTTPEyeSettingsViewController.h; sourceTree = "<group>"; };
+		0ADE8CF91BF4999A0096A1E5 /* NEHTTPEyeSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEHTTPEyeSettingsViewController.m; sourceTree = "<group>"; };
 		0C930D2267FBA00A4A817F49 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		15823B9F703B6CCBECF33899 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		216D942C25AF00B3FEA1889C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -184,6 +187,8 @@
 				0A4EF8821BEB6735000D2D7E /* NEHTTPEyeDetailViewController.m */,
 				0A4EF8831BEB6735000D2D7E /* NEHTTPEyeViewController.h */,
 				0A4EF8841BEB6735000D2D7E /* NEHTTPEyeViewController.m */,
+				0ADE8CF81BF4999A0096A1E5 /* NEHTTPEyeSettingsViewController.h */,
+				0ADE8CF91BF4999A0096A1E5 /* NEHTTPEyeSettingsViewController.m */,
 				0A4EF8851BEB6735000D2D7E /* NEHTTPModel.h */,
 				0A4EF8861BEB6735000D2D7E /* NEHTTPModel.m */,
 				0A4EF8871BEB6735000D2D7E /* NEHTTPModelManager.h */,
@@ -407,6 +412,7 @@
 				0A4EF8961BEB6735000D2D7E /* NEHTTPEyeDetailViewController.m in Sources */,
 				0A4EF8971BEB6735000D2D7E /* NEHTTPEyeViewController.m in Sources */,
 				0A4EF8991BEB6735000D2D7E /* NEHTTPModelManager.m in Sources */,
+				0ADE8CFA1BF4999A0096A1E5 /* NEHTTPEyeSettingsViewController.m in Sources */,
 				0A1202451BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

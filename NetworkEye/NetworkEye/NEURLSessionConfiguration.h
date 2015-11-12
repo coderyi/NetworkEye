@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface NEURLSessionConfiguration : NSObject
+@property (nonatomic,assign) BOOL isSwizzle;
++(NEURLSessionConfiguration *)defaultConfiguration;
 - (void)load;
+- (void)unload;
 @end

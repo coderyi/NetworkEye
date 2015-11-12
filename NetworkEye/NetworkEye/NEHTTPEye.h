@@ -12,5 +12,6 @@
 #define kSaveRequestMaxCount 300
 
 @interface NEHTTPEye : NSURLProtocol
-
++ (void)setEnabled:(BOOL)enabled;
++ (BOOL)isEnabled;
 @end

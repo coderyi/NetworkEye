@@ -11,7 +11,7 @@
 #import "NEHTTPModel.h"
 #import "NEHTTPModelManager.h"
 #import "NEHTTPEyeDetailViewController.h"
-
+#import "NEHTTPEyeSettingsViewController.h"
 @interface NEHTTPEyeViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate>{
     UITableView *tableView1;
     NSArray *httpRequests;
@@ -79,6 +79,16 @@
         [backBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [backBt addTarget:self action:@selector(backBtAction) forControlEvents:UIControlEventTouchUpInside];
         [bar addSubview:backBt];
+        
+        UIButton *settingsBt=[UIButton buttonWithType:UIButtonTypeCustom];
+        settingsBt.frame=CGRectMake([[UIScreen mainScreen] bounds].size.width-60, 27, 50, 30);
+        [settingsBt setTitle:@"settings" forState:UIControlStateNormal];
+        settingsBt.titleLabel.font=[UIFont systemFontOfSize:13];
+        [settingsBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [settingsBt addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
+        [bar addSubview:settingsBt];
+        
+        
         tableView1.frame=CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64);
         
         
@@ -90,6 +100,10 @@
     }else{
         titleText.frame=CGRectMake(([[UIScreen mainScreen] bounds].size.width-120)/2, 0, 120, 44);
         [self.navigationController.navigationBar addSubview:titleText];
+        UIBarButtonItem *right=[[UIBarButtonItem alloc] initWithTitle:@"settings" style:UIBarButtonItemStylePlain target:self action:@selector(rightAction)];
+        self.navigationItem.rightBarButtonItem=right;
+   
+        
 
     }
 
@@ -101,7 +115,17 @@
     httpRequests=[[NEHTTPModelManager defaultManager] allobjects];
 
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    httpRequests=[[NEHTTPModelManager defaultManager] allobjects];
 
+    [tableView1 reloadData];
+}
+- (void)rightAction{
+    NEHTTPEyeSettingsViewController *settings = [[NEHTTPEyeSettingsViewController alloc] init];
+    [self presentViewController:settings animated:YES completion:nil];
+}
 - (void)setupSearch{
     
     filterHTTPRequests=[[NSArray alloc] init];

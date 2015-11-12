@@ -21,5 +21,5 @@
 +(void)createTable;
 -(int)addModel:(NEHTTPModel *) aModel error:(NSError **) error;
 -(NSMutableArray *)allobjects;
-
+- (int) deleteAllItem:(NSError **) error;
 @end

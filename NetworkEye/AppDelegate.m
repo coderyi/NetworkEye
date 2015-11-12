@@ -19,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 #if defined(DEBUG)||defined(_DEBUG)
-    [NSURLProtocol registerClass:[NEHTTPEye class]];
+    [NEHTTPEye setEnabled:NO];
 #endif
 
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:[[DemoViewController alloc] init]];
