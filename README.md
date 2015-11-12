@@ -3,13 +3,13 @@
 [![Pod Platform](http://img.shields.io/cocoapods/p/NetworkEye.svg?style=flat)](http://cocoadocs.org/docsets/NetworkEye/)
 [![Pod License](http://img.shields.io/cocoapods/l/NetworkEye.svg?style=flat)](https://opensource.org/licenses/MIT)
 
-[README English](https://github.com/coderyi/NetworkEye/blob/master/README_English.md)
 
-NetworkEye是一个网络调试库，可以监控App内HTTP请求并显示请求相关的详细信息，方便App开发的网络调试。
+[README 中文](https://github.com/coderyi/NetworkEye/blob/master/README_Chinese.md)
 
-可以检测到包括网页，NSURLConnection,NSURLSession，AFNetworking,第三方库，第三方SDK等的HTTP请求，非常方便实用。并且可以统计App内流量
+NetworkEye,a iOS network debug library,It can monitor HTTP requests within the App and displays information related to the request.
 
-NetworkEye,a iOS network debug library,It can monitor all HTTP requests within the App and displays all information related to the request.
+It can be detected HTTP request include web pages, NSURLConnection, NSURLSession, AFNetworking, third-party libraries, third-party SDK ,and so on. very convenient and practical. 
+
 #### Podfile
 
 ```ruby
@@ -18,9 +18,10 @@ pod 'NetworkEye', '~> 0.9.8'
 ```
 
 
-######使用:
-注意请在DEBUG模式下使用NetworkEye
-在AppDelegate.m里面加入下面代码就可以了
+######Instruction
+Note：Use Network Eye in DEBUG mode
+
+add the code in AppDelegate.m   
 <pre>
 #import "NEHTTPEye.h"
 #if defined(DEBUG)||defined(_DEBUG)
@@ -28,28 +29,34 @@ pod 'NetworkEye', '~> 0.9.8'
 #endif
 </pre>
 
-使用的时候可以通过双指轻拍或者摇一摇（Shake Gesture）手势调出监控数据界面NEHTTPEyeViewController
-也可以用如下代码直接present出来。
+you can use a double tap or shake device to call out the monitoring data interface
+
+NEHTTPEyeViewController
+
+You can also use the following code present out directly
 <pre>
 #if defined(DEBUG)||defined(_DEBUG)
     NEHTTPEyeViewController *vc=[[NEHTTPEyeViewController alloc] init];
     [self presentViewController:vc animated:YES completion:nil];
 #endif
 </pre>
+In NEHTTPEye.h there are two parameters you can configure that is the default password of database is "networkeye" ,and by default set,you can save 300 requests.
 
-在NEHTTPEye.h里面有两个可以配置的参数即默认数据库密码是networkeye和默认监控最多300条请求，请求的保存位置在缓存目录的networkeye.sqlite内。
+
+the database name is networkeye.sqlite,and stored in the cache directory.
+
 <pre>
 #define kSQLitePassword @"networkeye"
 
 #define kSaveRequestMaxCount 300
 </pre>
 
-NetworkEye依赖仓库FMDB和SQLCipher。
-FMDB用于存储监控数据，SQLCipher用于加密数据库。
+NetworkEye rely FMDB and SQLCipher。
+FMDB be used to store data，SQLCipher be used to encrypt the database。
 
-监控数据界面支持的搜索条件为URL，statusCode，HTTPMethod，MIMEType。
+Monitoring data interface supports some search conditions ,it is URL，statusCode，HTTPMethod，MIMEType。
 
-NetworkEye的监控数据界面如图：
+the monitor data interface of NetworkEye：
 
 <img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye1_2.png" width="320" height="570">
 
