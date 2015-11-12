@@ -18,7 +18,7 @@ pod 'NetworkEye', '~> 0.9.8'
 ```
 
 
-######Instruction
+####Instruction
 Note：Use Network Eye in DEBUG mode
 
 add the code in AppDelegate.m   
@@ -55,7 +55,7 @@ NetworkEye rely FMDB and SQLCipher。
 FMDB be used to store data，SQLCipher be used to encrypt the database。
 
 Monitoring data interface supports some search conditions ,it is URL，statusCode，HTTPMethod，MIMEType。
-
+####Preview
 the monitor data interface of NetworkEye：
 
 <img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye1_2.png" width="320" height="570">
@@ -63,3 +63,18 @@ the monitor data interface of NetworkEye：
 <img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye2.png" width="320" height="570">
 
 <img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye3.png" width="320" height="570">
+
+
+
+#### Licenses
+
+All source code is licensed under the [MIT License](https://github.com/coderyi/NetworkEye/blob/master/LICENSE).
+
+####Contributors
+
+thanks!
+
+[Xi Lin](https://github.com/xilin)
+
+[Zhu Lida](https://github.com/zld)
+
