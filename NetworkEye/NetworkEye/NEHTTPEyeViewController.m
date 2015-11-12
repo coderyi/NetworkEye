@@ -146,12 +146,7 @@
     }
     cell.textLabel.font=[UIFont systemFontOfSize:12];
     cell.textLabel.textColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f];
-    NEHTTPModel *currenModel=[[NEHTTPModel alloc] init];
-    if (tableView == mySearchDisplayController.searchResultsTableView) {
-        currenModel=(NEHTTPModel *)((filterHTTPRequests)[indexPath.row]);
-    }else{
-        currenModel=(NEHTTPModel *)((httpRequests)[indexPath.row]);
-    }
+    NEHTTPModel *currenModel=[self modelForTableView:tableView atIndexPath:indexPath];
     
     cell.textLabel.text=currenModel.requestURLString;
 
@@ -183,12 +178,10 @@
     return cell;
     
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NEHTTPEyeDetailViewController *detail=[[NEHTTPEyeDetailViewController alloc] init];
-    detail.model=(NEHTTPModel *)((httpRequests)[indexPath.row]);
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NEHTTPEyeDetailViewController *detail = [[NEHTTPEyeDetailViewController alloc] init];
+    detail.model = [self modelForTableView:tableView atIndexPath:indexPath];
     [self presentViewController:detail animated:YES completion:nil];
-    
 }
 
 #pragma mark - UISearchBarDelegate
@@ -260,6 +253,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+#pragma mark - private methods
+- (NEHTTPModel *)modelForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
+    NEHTTPModel *currenModel=[[NEHTTPModel alloc] init];
+    if (tableView == mySearchDisplayController.searchResultsTableView) {
+        currenModel=(NEHTTPModel *)((filterHTTPRequests)[indexPath.row]);
+    }else{
+        currenModel=(NEHTTPModel *)((httpRequests)[indexPath.row]);
+    }
+    return currenModel;
+}
 
 @end
