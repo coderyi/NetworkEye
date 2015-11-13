@@ -104,8 +104,27 @@
     [self.connection cancel];
     ne_HTTPModel.ne_response=(NSHTTPURLResponse *)self.response;
     ne_HTTPModel.endDateString=[self stringWithDate:[NSDate date]];
-    if ([self.response.MIMEType isEqualToString:@"application/json"]) {
-        ne_HTTPModel.receiveJSONData=[self responseJSON];
+    NSString *mimeType = self.response.MIMEType;
+    if ([mimeType isEqualToString:@"application/json"]) {
+        ne_HTTPModel.receiveJSONData = [self responseJSONFromData:self.data];
+    } else if ([mimeType isEqualToString:@"text/javascript"]) {
+        // try to parse json if it is jsonp request
+        NSString *jsonString = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
+        // formalize string
+        if ([jsonString hasSuffix:@")"]) {
+            jsonString = [NSString stringWithFormat:@"%@;", jsonString];
+        }
+        if ([jsonString hasSuffix:@");"]) {
+            NSRange range = [jsonString rangeOfString:@"("];
+            if (range.location != NSNotFound) {
+                range.location++;
+                range.length = [jsonString length] - range.location - 2; // removes parens and trailing semicolon
+                jsonString = [jsonString substringWithRange:range];
+                NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+                ne_HTTPModel.receiveJSONData = [self responseJSONFromData:jsonData];
+            }
+        }
+        
     }
     double flowCount=[[[NSUserDefaults standardUserDefaults] objectForKey:@"flowCount"] doubleValue];
     if (!flowCount) {
@@ -167,10 +186,10 @@ didReceiveResponse:(NSURLResponse *)response
 
 #pragma mark - Utils
 
--(id) responseJSON {
-    if(self.data == nil) return nil;
+-(id)responseJSONFromData:(NSData *)data {
+    if(data == nil) return nil;
     NSError *error = nil;
-    id returnValue = [NSJSONSerialization JSONObjectWithData:[self data] options:0 error:&error];
+    id returnValue = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
     if(error){
         NSLog(@"JSON Parsing Error: %@", error);
         //https://github.com/coderyi/NetworkEye/issues/3
