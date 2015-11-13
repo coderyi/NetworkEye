@@ -78,3 +78,5 @@ thanks!
 
 [Zhu Lida](https://github.com/zld)
 
+[Jackrex](https://github.com/jackrex)
+
