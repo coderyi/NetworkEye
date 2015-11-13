@@ -100,28 +100,6 @@
     ne_HTTPModel.myID=myID+randomNum;
 }
 
-- (BOOL)isJSONPResponse:(NSURLResponse *)response {
-    BOOL isJSONP = NO;
-    if ([response.MIMEType isEqualToString:@"text/javascript"]) {
-        NSDictionary *queryDic = [self queryDictionaryForNSURL:self.response.URL];
-        NSString *callback = [queryDic objectForKey:@"callback"];
-        if (callback != nil && callback.length > 0) {
-            isJSONP = YES;
-        }
-    }
-    return isJSONP;
-}
-
--(NSDictionary *)queryDictionaryForNSURL:(NSURL *)url {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    for (NSString *param in [[url query] componentsSeparatedByString:@"&"]) {
-        NSArray *parts = [param componentsSeparatedByString:@"="];
-        if([parts count] < 2) continue;
-        [params setObject:[parts objectAtIndex:1] forKey:[parts objectAtIndex:0]];
-    }
-    return params;
-}
-
 - (void)stopLoading {
     [self.connection cancel];
     ne_HTTPModel.ne_response=(NSHTTPURLResponse *)self.response;
