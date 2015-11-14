@@ -32,7 +32,7 @@ add the code in AppDelegate.m
 <pre>
 #import "NEHTTPEye.h"
 #if defined(DEBUG)||defined(_DEBUG)
-    [NEHTTPEye setEnabled:NO];
+    [NEHTTPEye setEnabled:YES];
 #endif
 </pre>
 
