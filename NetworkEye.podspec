@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = "NetworkEye"
-  s.version      = "0.9.8"
-  s.summary      = "NetworkEye - iOS网络调试库，NetworkEye可以监控App内HTTP请求并显示请求相关的详细信息，方便App开发的网络调试。"
+  s.version      = "0.9.9"
+  s.summary      = "NetworkEye - a iOS network debug library ,It can monitor HTTP requests within the App and displays information related to the request."
   s.homepage     = "https://github.com/coderyi/NetworkEye"
   s.license      = "MIT"
   s.authors      = { "coderyi" => "coderyi@163.com" }
-  s.source       = { :git => "https://github.com/coderyi/NetworkEye.git", :tag => "0.9.8" }
+  s.source       = { :git => "https://github.com/coderyi/NetworkEye.git", :tag => "0.9.9" }
   s.frameworks   = 'Foundation', 'CoreGraphics', 'UIKit'
   s.library = "sqlite3"
   s.platform     = :ios, '7.0'
