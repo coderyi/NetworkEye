@@ -10,6 +10,9 @@ NetworkEye,a iOS network debug library,It can monitor HTTP requests within the A
 
 It can be detected HTTP request include web pages, NSURLConnection, NSURLSession, AFNetworking, third-party libraries, third-party SDK ,and so on. very convenient and practical. 
 
+I created a google group，this group is for general discussion NetworkEye
+,welcome to join,[https://groups.google.com/d/forum/networkeye](https://groups.google.com/d/forum/networkeye)
+
 #### Podfile
 
 ```ruby
