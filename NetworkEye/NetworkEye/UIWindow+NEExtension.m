@@ -1,16 +1,15 @@
 //
-//  UIWindow+NEShakeGesture.m
+//  UIWindow+NEExtension.m
 //  NetworkEye
 //
-//  Created by coderyi on 15/11/6.
+//  Created by coderyi on 15/11/14.
 //  Copyright © 2015年 coderyi. All rights reserved.
 //
 
-#import "UIWindow+NEShakeGesture.h"
-
+#import "UIWindow+NEExtension.h"
 #import "NEShakeGestureManager.h"
 
-@implementation UIWindow (NEShakeGesture)
+@implementation UIWindow (NEExtension)
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
     
@@ -38,4 +37,5 @@
     }
     
 }
+
 @end

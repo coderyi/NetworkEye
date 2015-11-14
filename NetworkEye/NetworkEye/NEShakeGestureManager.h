@@ -10,7 +10,16 @@
 
 @interface NEShakeGestureManager : NSObject
 
+/**
+ *  get NEShakeGestureManager's singleton object
+ *
+ *  @return singleton object
+ */
 +(NEShakeGestureManager *)defaultManager;
+
+/**
+ *  show Go NetworkEye page 's alertView
+ */
 - (void)showAlertView;
 
 @end

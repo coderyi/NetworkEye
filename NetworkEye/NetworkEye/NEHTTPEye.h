@@ -12,6 +12,17 @@
 #define kSaveRequestMaxCount 300
 
 @interface NEHTTPEye : NSURLProtocol
+/**
+ *  open or close HTTP/HTTPS monitor
+ *
+ *  @param enabled
+ */
 + (void)setEnabled:(BOOL)enabled;
+
+/**
+ *  display HTTP/HTTPS monitor state
+ *
+ *  @return HTTP/HTTPS monitor state
+ */
 + (BOOL)isEnabled;
 @end

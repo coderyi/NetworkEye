@@ -15,11 +15,43 @@
     FMDatabaseQueue *sqliteDatabase;
     NSMutableArray *allobjects;
 }
-
+/**
+ *  get recorded requests 's SQLite filename
+ *
+ *  @return filename
+ */
 +(NSString *)filename;
+
+/**
+ *  get NEHTTPModelManager's singleton object
+ *
+ *  @return singleton object
+ */
 +(NEHTTPModelManager *)defaultManager;
+
+/**
+ *  create NEHTTPModel table
+ */
 +(void)createTable;
--(int)addModel:(NEHTTPModel *) aModel error:(NSError **) error;
+
+
+/**
+ *  add a NEHTTPModel object to SQLite
+ *
+ *  @param aModel a NEHTTPModel object
+ */
+-(void)addModel:(NEHTTPModel *) aModel;
+
+/**
+ *  get SQLite all NEHTTPModel object
+ *
+ *  @return all NEHTTPModel object
+ */
 -(NSMutableArray *)allobjects;
-- (int) deleteAllItem:(NSError **) error;
+
+/**
+ *  delete all SQLite records
+ */
+- (void) deleteAllItem;
+
 @end

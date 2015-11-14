@@ -31,28 +31,19 @@
 }
 
 - (void)load {
+    
     self.isSwizzle=YES;
-
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        Class cls = NSClassFromString(@"__NSCFURLSessionConfiguration") ?: NSClassFromString(@"NSURLSessionConfiguration");
-//        [self swizzleSelector:@selector(protocolClasses) fromClass:cls toClass:[self class]];
-//    });
     Class cls = NSClassFromString(@"__NSCFURLSessionConfiguration") ?: NSClassFromString(@"NSURLSessionConfiguration");
     [self swizzleSelector:@selector(protocolClasses) fromClass:cls toClass:[self class]];
     
 }
 
 - (void)unload {
+    
     self.isSwizzle=NO;
-
     Class cls = NSClassFromString(@"__NSCFURLSessionConfiguration") ?: NSClassFromString(@"NSURLSessionConfiguration");
     [self swizzleSelector:@selector(protocolClasses) fromClass:cls toClass:[self class]];
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        Class cls = NSClassFromString(@"__NSCFURLSessionConfiguration") ?: NSClassFromString(@"NSURLSessionConfiguration");
-//        [self swizzleSelector:@selector(protocolClasses) fromClass:cls toClass:[self class]];
-//    });
+
 }
 
 - (void)swizzleSelector:(SEL)selector fromClass:(Class)original toClass:(Class)stub {

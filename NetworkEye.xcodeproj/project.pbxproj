@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A1202451BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1202441BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m */; settings = {ASSET_TAGS = (); }; };
+		0A09FAC01BF6FC3F0009EC53 /* UIWindow+NEExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A09FABF1BF6FC3F0009EC53 /* UIWindow+NEExtension.m */; settings = {ASSET_TAGS = (); }; };
 		0A1202E31BF097BC00B710A9 /* NEURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1202E21BF097BC00B710A9 /* NEURLSessionConfiguration.m */; settings = {ASSET_TAGS = (); }; };
 		0A4EF8451BEB66FF000D2D7E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8441BEB66FF000D2D7E /* main.m */; };
 		0A4EF8481BEB66FF000D2D7E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EF8471BEB66FF000D2D7E /* AppDelegate.m */; };
@@ -46,8 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A1202431BEC8C9700B710A9 /* UIWindow+NEShakeGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+NEShakeGesture.h"; sourceTree = "<group>"; };
-		0A1202441BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+NEShakeGesture.m"; sourceTree = "<group>"; };
+		0A09FABE1BF6FC3F0009EC53 /* UIWindow+NEExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+NEExtension.h"; sourceTree = "<group>"; };
+		0A09FABF1BF6FC3F0009EC53 /* UIWindow+NEExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+NEExtension.m"; sourceTree = "<group>"; };
 		0A1202E11BF097BC00B710A9 /* NEURLSessionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEURLSessionConfiguration.h; sourceTree = "<group>"; };
 		0A1202E21BF097BC00B710A9 /* NEURLSessionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEURLSessionConfiguration.m; sourceTree = "<group>"; };
 		0A4EF8401BEB66FF000D2D7E /* NetworkEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,8 +195,8 @@
 				0A4EF8881BEB6735000D2D7E /* NEHTTPModelManager.m */,
 				0A4EF8891BEB6735000D2D7E /* NEShakeGestureManager.h */,
 				0A4EF88A1BEB6735000D2D7E /* NEShakeGestureManager.m */,
-				0A1202431BEC8C9700B710A9 /* UIWindow+NEShakeGesture.h */,
-				0A1202441BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m */,
+				0A09FABE1BF6FC3F0009EC53 /* UIWindow+NEExtension.h */,
+				0A09FABF1BF6FC3F0009EC53 /* UIWindow+NEExtension.m */,
 				0A1202E11BF097BC00B710A9 /* NEURLSessionConfiguration.h */,
 				0A1202E21BF097BC00B710A9 /* NEURLSessionConfiguration.m */,
 			);
@@ -413,7 +413,7 @@
 				0A4EF8971BEB6735000D2D7E /* NEHTTPEyeViewController.m in Sources */,
 				0A4EF8991BEB6735000D2D7E /* NEHTTPModelManager.m in Sources */,
 				0ADE8CFA1BF4999A0096A1E5 /* NEHTTPEyeSettingsViewController.m in Sources */,
-				0A1202451BEC8C9700B710A9 /* UIWindow+NEShakeGesture.m in Sources */,
+				0A09FAC01BF6FC3F0009EC53 /* UIWindow+NEExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,14 +51,14 @@
     
 }
 
--(int)addModel:(NEHTTPModel *) aModel error:(NSError **) error{
+-(void)addModel:(NEHTTPModel *) aModel{
     
     if ([aModel.responseMIMEType isEqualToString:@"text/html"]) {
         aModel.receiveJSONData=@"";
     }
     
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"nenetworkhttpeyecache"] isEqualToString:@"a"]) {
-        [self deleteAllItem:nil];
+        [self deleteAllItem];
         [[NSUserDefaults standardUserDefaults] setObject:@"b" forKey:@"nenetworkhttpeyecache"];
     }
 
@@ -76,7 +76,7 @@
         [db executeUpdate:sql];
     }];
     
-    return 0;
+    return ;
     
 }
 
@@ -118,7 +118,7 @@
     
 }
 
-- (int) deleteAllItem:(NSError **) error{
+- (void) deleteAllItem{
     
     NSString *sql=[NSString stringWithFormat:@"delete from nenetworkhttpeyes"];
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
@@ -127,7 +127,7 @@
         [db executeUpdate:sql];
     }];
     
-    return 0;
+    return ;
     
 }
 

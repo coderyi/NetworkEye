@@ -10,7 +10,7 @@
 
 #import "NEHTTPModel.h"
 #import "NEHTTPModelManager.h"
-#import "UIWindow+NEShakeGesture.h"
+#import "UIWindow+NEExtension.h"
 #import "NEURLSessionConfiguration.h"
 @interface NEHTTPEye ()<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 @property (nonatomic, strong) NSURLConnection *connection;
@@ -22,9 +22,9 @@
 
 @implementation NEHTTPEye
 @synthesize ne_HTTPModel;
+#pragma mark - public
 + (void)setEnabled:(BOOL)enabled
 {
-//    BOOL previouslyEnabled =[NEHTTPEye isEnabled];
     [[NSUserDefaults standardUserDefaults] setDouble:enabled forKey:@"NetworkEyeEnable"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     NEURLSessionConfiguration * sessionConfiguration=[NEURLSessionConfiguration defaultConfiguration];
@@ -133,7 +133,7 @@
     flowCount=flowCount+self.response.expectedContentLength/(1024.0*1024.0);
     [[NSUserDefaults standardUserDefaults] setDouble:flowCount forKey:@"flowCount"];
     [[NSUserDefaults standardUserDefaults] synchronize];//https://github.com/coderyi/NetworkEye/pull/6
-    [[NEHTTPModelManager defaultManager] addModel:ne_HTTPModel error:nil];
+    [[NEHTTPModelManager defaultManager] addModel:ne_HTTPModel];
 }
 
 #pragma mark - NSURLConnectionDelegate

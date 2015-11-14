@@ -13,6 +13,10 @@ It can be detected HTTP request include web pages, NSURLConnection, NSURLSession
 I created a google group，this group is for general discussion NetworkEye
 ,welcome to join,[https://groups.google.com/d/forum/networkeye](https://groups.google.com/d/forum/networkeye)
 
+if you use NetworkEye, you can add it in here,[Who-Uses-NetworkEye](https://github.com/coderyi/NetworkEye/wiki/Who-Uses-NetworkEye)
+
+welcome to new pull request,that fix bug,add new features,add support other platform.and welcome to [new issues](https://github.com/coderyi/NetworkEye/issues).
+
 #### Podfile
 
 ```ruby
