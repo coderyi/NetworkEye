@@ -21,7 +21,7 @@ welcome to new pull request,that fix bug,add new features,add support other plat
 
 ```ruby
 platform :ios, '7.0'
-pod 'NetworkEye', '~> 0.9.8'
+pod 'NetworkEye', '~> 0.9.9'
 ```
 
 
