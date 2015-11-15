@@ -10,7 +10,7 @@
 
 #import "NEShakeGestureManager.h"
 #import "NEHTTPModel.h"
-#include "sqlite3.h"
+#include <SQLCipher/sqlite3.h>
 
 #define kSTRDoubleMarks @"\""
 #define kSQLDoubleMarks @"\"\""
