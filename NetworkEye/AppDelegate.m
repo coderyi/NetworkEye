@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DemoViewController.h"
 #import "NEHTTPEye.h"
+#import "NetworkEye/NEHTTPModelManager.h"
 @interface AppDelegate ()
 
 @end

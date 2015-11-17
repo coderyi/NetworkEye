@@ -41,7 +41,8 @@
     label.textColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f];
     label.font=[UIFont systemFontOfSize:12];
     label.numberOfLines=0;
-    label.text=@"监控App内所有HTTP请求并显示请求相关的所有信息，方便App开发的网络调试。";
+    label.text=@"NetworkEye - a iOS network debug library";
+    label.textAlignment=NSTextAlignmentCenter;
     
     UIButton *btGoMonitorViewController=[UIButton buttonWithType:UIButtonTypeCustom];
     [self.view addSubview:btGoMonitorViewController];

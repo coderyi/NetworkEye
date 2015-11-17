@@ -15,6 +15,10 @@
     FMDatabaseQueue *sqliteDatabase;
     NSMutableArray *allobjects;
 }
+
+@property(nonatomic,strong) NSString *sqlitePassword;
+@property(nonatomic,assign) int saveRequestMaxCount;
+
 /**
  *  get recorded requests 's SQLite filename
  *
@@ -32,7 +36,7 @@
 /**
  *  create NEHTTPModel table
  */
-+(void)createTable;
+-(void)createTable;
 
 
 /**

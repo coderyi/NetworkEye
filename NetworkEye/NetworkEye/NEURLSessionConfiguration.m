@@ -57,11 +57,7 @@
 }
 
 - (NSArray *)protocolClasses {
-    BOOL NetworkEyeEnable=[[[NSUserDefaults standardUserDefaults] objectForKey:@"NetworkEyeEnable"] boolValue];
-   
-//    if (!NetworkEyeEnable) {
-//        return @[];
-//    }
+    
     return @[[NEHTTPEye class]];//如果需要导入其他的自定义NSURLProtocol请在这里增加，当然在使用NSURLSessionConfiguration时增加也可以
 }
 

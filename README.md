@@ -21,7 +21,7 @@ welcome to new pull request,that fix bug,add new features,add support other plat
 
 ```ruby
 platform :ios, '7.0'
-pod 'NetworkEye', '~> 0.9.9'
+pod 'NetworkEye', '~> 1.0'
 ```
 
 
@@ -58,6 +58,11 @@ the database name is networkeye.sqlite,and stored in the cache directory.
 #define kSaveRequestMaxCount 300
 </pre>
 
+you can change it use NEHTTPModelManager
+<pre>
+    [NEHTTPModelManager defaultManager].saveRequestMaxCount=300;
+    [NEHTTPModelManager defaultManager].sqlitePassword=@"networkeye";
+</pre>
 NetworkEye rely FMDB and SQLCipher。
 FMDB be used to store data，SQLCipher be used to encrypt the database。
 
@@ -65,7 +70,7 @@ Monitoring data interface supports some search conditions ,it is URL，statusCod
 ####Preview
 the monitor data interface of NetworkEye：
 
-<img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye1_2.png" width="320" height="570">
+<img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye1_3.png" width="320" height="570">
 
 <img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye2.png" width="320" height="570">
 
