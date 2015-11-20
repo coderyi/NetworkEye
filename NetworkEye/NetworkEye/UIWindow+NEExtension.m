@@ -12,16 +12,19 @@
 @implementation UIWindow (NEExtension)
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-    
+#if defined(DEBUG)||defined(_DEBUG)
+ 
     if (event.type == UIEventTypeMotion && event.subtype == UIEventSubtypeMotionShake) {
         [[NEShakeGestureManager defaultManager] showAlertView];
     }
-    
+#endif
+  
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+#if defined(DEBUG)||defined(_DEBUG)
+ 
     int twoFingerTag=NO;
     if ([event allTouches].count==2) {
         for (UITouch *touch in [event allTouches]) {
@@ -35,7 +38,8 @@
     if (twoFingerTag) {
         [[NEShakeGestureManager defaultManager] showAlertView];
     }
-    
+#endif
+  
 }
 
 @end
