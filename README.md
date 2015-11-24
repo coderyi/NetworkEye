@@ -17,11 +17,14 @@ if you use NetworkEye, you can add it in here,[Who-Uses-NetworkEye](https://gith
 
 welcome to new pull request,that fix bug,add new features,add support other platform.and welcome to [new issues](https://github.com/coderyi/NetworkEye/issues).
 
+and thanks to [kasketis](https://github.com/kasketis) write the swift version  [netfox](https://github.com/kasketis/netfox)
+
+
 #### Podfile
 
 ```ruby
 platform :ios, '7.0'
-pod 'NetworkEye', '~> 1.0'
+pod 'NetworkEye', '~> 1.0.1'
 ```
 
 
