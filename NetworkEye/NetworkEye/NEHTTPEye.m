@@ -105,7 +105,7 @@
     ne_HTTPModel.ne_response=(NSHTTPURLResponse *)self.response;
     ne_HTTPModel.endDateString=[self stringWithDate:[NSDate date]];
     NSString *mimeType = self.response.MIMEType;
-    if ([mimeType isEqualToString:@"application/json"]) {
+    if ([mimeType isEqualToString:@"application/json"] || [mimeType isEqualToString:@"text/json"]) {
         ne_HTTPModel.receiveJSONData = [self responseJSONFromData:self.data];
     } else if ([mimeType isEqualToString:@"text/javascript"]) {
         // try to parse json if it is jsonp request
@@ -124,8 +124,10 @@
                 ne_HTTPModel.receiveJSONData = [self responseJSONFromData:jsonData];
             }
         }
-        
     }
+    
+    ne_HTTPModel.responseData = self.data;
+    
     double flowCount=[[[NSUserDefaults standardUserDefaults] objectForKey:@"flowCount"] doubleValue];
     if (!flowCount) {
         flowCount=0.0;

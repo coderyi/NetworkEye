@@ -31,9 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, strong) NSString *responseSuggestedFilename;
 @property (nonatomic,assign) int responseStatusCode;
 @property (nonatomic,nullable,strong) NSString *responseAllHeaderFields;
-
+@property (nonatomic,nullable,strong) NSData *responseData;
 //JSONData
 @property (nonatomic,strong) NSString *receiveJSONData;
+
 
 @end
 NS_ASSUME_NONNULL_END

@@ -72,6 +72,7 @@
     NSAttributedString *responseSuggestedFilename;
     NSAttributedString *responseStatusCode;
     NSAttributedString *responseAllHeaderFields;
+    NSAttributedString *responseData;
     NSAttributedString *receiveJSONData;
     
     NSAttributedString *startDateStringDetail;
@@ -88,6 +89,7 @@
     NSAttributedString *responseSuggestedFilenameDetail;
     NSAttributedString *responseStatusCodeDetail;
     NSAttributedString *responseAllHeaderFieldsDetail;
+    NSAttributedString *responseDataDetail;
     NSAttributedString *receiveJSONDataDetail;
     
     UIColor *titleColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f];
@@ -194,6 +196,11 @@
                                                                           NSForegroundColorAttributeName: titleColor
                                                                           }];
     
+    responseData = [[NSMutableAttributedString alloc] initWithString:@"[responseData]\n"
+                                                             attributes:@{
+                                                                          NSFontAttributeName : titleFont,
+                                                                          NSForegroundColorAttributeName: titleColor
+                                                                          }];
     
     
     //detail
@@ -289,13 +296,25 @@
                                                                                           }];
     
 
-        NSString *transString = [[self class] replaceUnicode:_model.receiveJSONData];
+    NSString *transString = [[self class] replaceUnicode:_model.receiveJSONData];
     receiveJSONDataDetail = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n\n",transString]
                                                                       attributes:@{
                                                                                    NSFontAttributeName : detailFont,
                                                                                    NSForegroundColorAttributeName: detailColor
                                                                                    }];
-    
+    NSStringEncoding stringEncoding = NSUTF8StringEncoding;
+    if (_model.responseTextEncodingName) {
+        CFStringEncoding encoding = CFStringConvertIANACharSetNameToEncoding((CFStringRef)_model.responseTextEncodingName);
+        if (encoding != kCFStringEncodingInvalidId) {
+            stringEncoding = CFStringConvertEncodingToNSStringEncoding(encoding);
+        }
+    }
+    NSString *responseString = [[NSString alloc] initWithData:_model.responseData encoding:stringEncoding];
+    responseDataDetail = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n\n",responseString]
+                                                                attributes:@{
+                                                                             NSFontAttributeName : detailFont,
+                                                                             NSForegroundColorAttributeName: detailColor
+                                                                             }];
     
     NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] init];
     
@@ -344,6 +363,9 @@
     [attrText appendAttributedString:receiveJSONData];
     [attrText appendAttributedString:receiveJSONDataDetail];
 
+    [attrText appendAttributedString:responseData];
+    [attrText appendAttributedString:responseDataDetail];
+    
     textView1.attributedText=attrText;
     
 }

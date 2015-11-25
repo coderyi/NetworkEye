@@ -52,7 +52,7 @@
 - (void)createTable{
     
     NSMutableString *init_sqls=[NSMutableString stringWithCapacity:1024];
-    [init_sqls appendFormat:@"create table if not exists nenetworkhttpeyes(myID double primary key,startDateString text,endDateString text,requestURLString text,requestCachePolicy text,requestTimeoutInterval double,requestHTTPMethod text,requestAllHTTPHeaderFields text,requestHTTPBody text,responseMIMEType text,responseExpectedContentLength text,responseTextEncodingName text,responseSuggestedFilename text,responseStatusCode int,responseAllHeaderFields text,receiveJSONData text);"];
+    [init_sqls appendFormat:@"create table if not exists nenetworkhttpeyes(myID double primary key,startDateString text,endDateString text,requestURLString text,requestCachePolicy text,requestTimeoutInterval double,requestHTTPMethod text,requestAllHTTPHeaderFields text,requestHTTPBody text,responseMIMEType text,responseExpectedContentLength text,responseTextEncodingName text,responseSuggestedFilename text,responseStatusCode int,responseAllHeaderFields text,receiveJSONData text,responseData text);"];
     
     FMDatabaseQueue *queue= [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
     [queue inDatabase:^(FMDatabase *db) {
@@ -81,10 +81,10 @@
     }
     NSString *receiveJSONData;
     receiveJSONData=[self stringToSQLFilter:aModel.receiveJSONData];
-    NSString *sql=[NSString stringWithFormat:@"insert into nenetworkhttpeyes values('%lf','%@','%@','%@','%@','%lf','%@','%@','%@','%@','%@','%@','%@','%d','%@','%@')",aModel.myID,aModel.startDateString,aModel.endDateString,aModel.requestURLString,aModel.requestCachePolicy,aModel.requestTimeoutInterval,aModel.requestHTTPMethod,aModel.requestAllHTTPHeaderFields,aModel.requestHTTPBody,aModel.responseMIMEType,aModel.responseExpectedContentLength,aModel.responseTextEncodingName,aModel.responseSuggestedFilename,aModel.responseStatusCode,[self stringToSQLFilter:aModel.responseAllHeaderFields],receiveJSONData];
+
     [queue inDatabase:^(FMDatabase *db) {
         [db setKey:_sqlitePassword];
-        [db executeUpdate:sql];
+        [db executeUpdate:[NSString stringWithFormat:@"insert into nenetworkhttpeyes values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"] withArgumentsInArray:@[@(aModel.myID),aModel.startDateString,aModel.endDateString,aModel.requestURLString,[self nullStringFormat:aModel.requestCachePolicy],@(aModel.requestTimeoutInterval),aModel.requestHTTPMethod,[self nullStringFormat:aModel.requestAllHTTPHeaderFields],[self nullStringFormat:aModel.requestHTTPBody],[self nullStringFormat:aModel.responseMIMEType],[self nullStringFormat:aModel.responseExpectedContentLength],[self nullStringFormat:aModel.responseTextEncodingName],[self nullStringFormat:aModel.responseSuggestedFilename],@(aModel.responseStatusCode),[self stringToSQLFilter:aModel.responseAllHeaderFields],receiveJSONData,aModel.responseData]];
     }];
     
     return ;
@@ -117,6 +117,8 @@
             model.responseStatusCode=[rs intForColumn:@"responseStatusCode"];
             model.responseAllHeaderFields=[self stringToSQLFilter:[rs stringForColumn:@"responseAllHeaderFields"]];
             model.receiveJSONData=[self stringToOBJFilter:[rs stringForColumn:@"receiveJSONData"]];
+            model.responseData = [rs dataForColumn:@"responseData"];
+            
             [array addObject:model];
         }
     }];
@@ -167,5 +169,12 @@
     }
     return str;
     
+}
+- (NSString *)nullStringFormat:(id)str
+{
+    if (!str || [str isKindOfClass:[NSString class]]) {
+        return @"";
+    }
+    return str;
 }
 @end
