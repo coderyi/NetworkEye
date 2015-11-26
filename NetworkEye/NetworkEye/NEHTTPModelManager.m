@@ -19,8 +19,7 @@
 
 @implementation NEHTTPModelManager
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         _sqlitePassword=kSQLitePassword;
@@ -29,27 +28,26 @@
     return self;
 }
 
-+(NEHTTPModelManager *)defaultManager{
++ (NEHTTPModelManager *)defaultManager {
     
     static NEHTTPModelManager *staticManager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         staticManager=[[NEHTTPModelManager alloc] init];
         [staticManager createTable];
-        
     });
     return staticManager;
     
 }
 
-+ (NSString *)filename{
++ (NSString *)filename {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *ducumentsDirectory = [paths objectAtIndex:0];
     NSString *str=[[NSString alloc] initWithFormat:@"%@/networkeye.sqlite",ducumentsDirectory];
     return  str;
 }
 
-- (void)createTable{
+- (void)createTable {
     
     NSMutableString *init_sqls=[NSMutableString stringWithCapacity:1024];
     [init_sqls appendFormat:@"create table if not exists nenetworkhttpeyes(myID double primary key,startDateString text,endDateString text,requestURLString text,requestCachePolicy text,requestTimeoutInterval double,requestHTTPMethod text,requestAllHTTPHeaderFields text,requestHTTPBody text,responseMIMEType text,responseExpectedContentLength text,responseTextEncodingName text,responseSuggestedFilename text,responseStatusCode int,responseAllHeaderFields text,receiveJSONData text);"];
@@ -62,7 +60,7 @@
     
 }
 
--(void)addModel:(NEHTTPModel *) aModel{
+- (void)addModel:(NEHTTPModel *) aModel {
     
     if ([aModel.responseMIMEType isEqualToString:@"text/html"]) {
         aModel.receiveJSONData=@"";
@@ -91,7 +89,7 @@
     
 }
 
--(NSMutableArray *)allobjects{
+- (NSMutableArray *)allobjects {
     
     FMDatabaseQueue *queue= [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
     NSString *sql =[NSString stringWithFormat:@"select * from nenetworkhttpeyes order by myID desc"];
@@ -129,7 +127,7 @@
     
 }
 
-- (void) deleteAllItem{
+- (void) deleteAllItem {
     
     NSString *sql=[NSString stringWithFormat:@"delete from nenetworkhttpeyes"];
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
@@ -145,7 +143,7 @@
 
 #pragma mark - Utils
 
--(id)stringToSQLFilter:(id)str{
+- (id)stringToSQLFilter:(id)str {
     
     if ( [str respondsToSelector:@selector(stringByReplacingOccurrencesOfString:withString:)]) {
         id temp = str;
@@ -157,7 +155,7 @@
     
 }
 
--(id)stringToOBJFilter:(id)str{
+- (id)stringToOBJFilter:(id)str {
     
     if ( [str respondsToSelector:@selector(stringByReplacingOccurrencesOfString:withString:)]) {
         id temp = str;
@@ -168,4 +166,5 @@
     return str;
     
 }
+
 @end

@@ -11,7 +11,7 @@
 #import "NEHTTPModelManager.h"
 @interface NEHTTPEyeSettingsViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>{
 
-    UITableView *tableView1;
+    UITableView *mainTableView;
 }
 
 @end
@@ -46,31 +46,29 @@
     [titleText setFont:[UIFont systemFontOfSize:15.0]];
     titleText.textAlignment=NSTextAlignmentCenter;
     [bar addSubview:titleText];
-titleText.text=@"settings";
+    titleText.text=@"settings";
 
-    
-    
-    tableView1=[[UITableView alloc] initWithFrame:CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64) style:UITableViewStyleGrouped];
-    [self.view addSubview:tableView1];
-    tableView1.dataSource=self;
-    tableView1.delegate=self;
+    mainTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64) style:UITableViewStyleGrouped];
+    [self.view addSubview:mainTableView];
+    mainTableView.dataSource=self;
+    mainTableView.delegate=self;
 }
-- (void)backBtAction{
+- (void)backBtAction {
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     return 2;
     
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell;
     
-    NSString *cellId=@"CellId1";
+    NSString *cellId=@"CellId";
     cell=[tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell==nil) {
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
@@ -79,7 +77,6 @@ titleText.text=@"settings";
             [cell.contentView addSubview:switch1];
             BOOL NetworkEyeEnable=[[[NSUserDefaults standardUserDefaults] objectForKey:@"NetworkEyeEnable"] boolValue];
             switch1.on=NetworkEyeEnable;
-            
             [switch1 addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
         }
     }
@@ -91,20 +88,20 @@ titleText.text=@"settings";
     }else{
         cell.textLabel.textColor=[UIColor colorWithRed:0.88 green:0.22 blue:0.22 alpha:1];
         cell.textLabel.text=@"Clear Recorded Requests";
-
     }
     
     return cell;
     
 }
-- (void)switchAction:(UISwitch *)switch1{
-    [[NSUserDefaults standardUserDefaults] setDouble:switch1.on forKey:@"NetworkEyeEnable"];
+
+- (void)switchAction:(UISwitch *)tempSwitch {
+    [[NSUserDefaults standardUserDefaults] setDouble:tempSwitch.on forKey:@"NetworkEyeEnable"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [NEHTTPEye setEnabled:switch1.on];
+    [NEHTTPEye setEnabled:tempSwitch.on];
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row==1) {
-        
         UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"message" message:@"Are you sure to delete it" delegate:self cancelButtonTitle:@"yes" otherButtonTitles:@"no", nil];
         [alertView show];
     }
@@ -115,7 +112,6 @@ titleText.text=@"settings";
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex NS_DEPRECATED_IOS(2_0, 9_0){
     if(buttonIndex==0){
         [[NEHTTPModelManager defaultManager] deleteAllItem];
-
     }
 }
 
@@ -123,15 +119,5 @@ titleText.text=@"settings";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

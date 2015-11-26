@@ -12,8 +12,8 @@
 #import "NEHTTPModelManager.h"
 #import "NEHTTPEyeDetailViewController.h"
 #import "NEHTTPEyeSettingsViewController.h"
-@interface NEHTTPEyeViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate>{
-    UITableView *tableView1;
+@interface NEHTTPEyeViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate> {
+    UITableView *mainTableView;
     NSArray *httpRequests;
     UISearchBar *mySearchBar;
     UISearchDisplayController *mySearchDisplayController;
@@ -32,8 +32,8 @@
     self.automaticallyAdjustsScrollViewInsets=NO;
     self.view.backgroundColor=[UIColor whiteColor];
     
-    tableView1=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64) style:UITableViewStylePlain];
-    [self.view addSubview:tableView1];
+    mainTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64) style:UITableViewStylePlain];
+    [self.view addSubview:mainTableView];
     
     double flowCount=[[[NSUserDefaults standardUserDefaults] objectForKey:@"flowCount"] doubleValue];
     if (!flowCount) {
@@ -87,46 +87,35 @@
         [settingsBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [settingsBt addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
         [bar addSubview:settingsBt];
-        
-        
-        tableView1.frame=CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64);
-        
-        
-       
+        mainTableView.frame=CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64);
         [bar addSubview:titleText];
-
-        
-
     }else{
         titleText.frame=CGRectMake(([[UIScreen mainScreen] bounds].size.width-120)/2, 0, 120, 44);
         [self.navigationController.navigationBar addSubview:titleText];
         UIBarButtonItem *right=[[UIBarButtonItem alloc] initWithTitle:@"settings" style:UIBarButtonItemStylePlain target:self action:@selector(rightAction)];
         self.navigationItem.rightBarButtonItem=right;
-   
-        
-
     }
 
-    
     [self setupSearch];
-    tableView1.dataSource=self;
-    tableView1.delegate=self;
+    mainTableView.dataSource=self;
+    mainTableView.delegate=self;
     
     httpRequests=[[NEHTTPModelManager defaultManager] allobjects];
 
 }
-- (void)viewWillAppear:(BOOL)animated
-{
+
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     httpRequests=[[NEHTTPModelManager defaultManager] allobjects];
-
-    [tableView1 reloadData];
+    [mainTableView reloadData];
 }
-- (void)rightAction{
+
+- (void)rightAction {
     NEHTTPEyeSettingsViewController *settings = [[NEHTTPEyeSettingsViewController alloc] init];
     [self presentViewController:settings animated:YES completion:nil];
 }
-- (void)setupSearch{
+
+- (void)setupSearch {
     
     filterHTTPRequests=[[NSArray alloc] init];
     mySearchBar = [[UISearchBar alloc] init];
@@ -134,16 +123,14 @@
     mySearchBar.delegate = self;
     [mySearchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
     [mySearchBar sizeToFit];
-    tableView1.tableHeaderView = mySearchBar;
+    mainTableView.tableHeaderView = mySearchBar;
     mySearchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:mySearchBar contentsController:self];
     [mySearchDisplayController setDelegate:self];
     [mySearchDisplayController setSearchResultsDataSource:self];
     [mySearchDisplayController setSearchResultsDelegate:self];
-    
-  
-    
+
 }
-- (void)backBtAction{
+- (void)backBtAction {
     
     [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -151,7 +138,7 @@
 
 #pragma mark - UITableViewDataSource  &UITableViewDelegate
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == mySearchDisplayController.searchResultsTableView) {
         return filterHTTPRequests.count;
     }
@@ -159,11 +146,11 @@
     
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell;
     
-    NSString *cellId=@"CellId1";
+    NSString *cellId=@"CellId";
     cell=[tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell==nil) {
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
@@ -209,69 +196,61 @@
 }
 
 #pragma mark - UISearchBarDelegate
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
-{
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
     if ([self.navigationController viewControllers].count>0) {
         return YES;
     }
     //准备搜寻前，把上面调整的TableView调整回全屏幕的状态
     [UIView animateWithDuration:0.2 animations:^{
-        tableView1.frame = CGRectMake(0, 20, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-20);
+        mainTableView.frame = CGRectMake(0, 20, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-20);
         
     }];
     
     return YES;
 }
 
-- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
-{
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
     if ([self.navigationController viewControllers].count>0) {
         return YES;
     }
     if (searchBar.text.length<1) {
         [UIView animateWithDuration:0.2 animations:^{
-            
-            
-            tableView1.frame = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64);
+            mainTableView.frame = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64);
         }];
     }
     //当按下search按钮后 后走这里，并且这之后按cancel按钮不会走这里；当没有按过search按钮，按cancel按钮会走这里
     return YES;
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     if ([self.navigationController viewControllers].count>0) {
         return ;
     }
     [UIView animateWithDuration:0.2 animations:^{
-        tableView1.frame = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64);
+        mainTableView.frame = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64);
     }];
 }
 #pragma mark - UISearchDisplayDelegate
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     [self updateSearchResultsWithSearchString:searchString];
-    
     return YES;
 }
 
-- (void)updateSearchResultsWithSearchString:(NSString *)searchString
-{
+- (void)updateSearchResultsWithSearchString:(NSString *)searchString {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSArray *filterHTTPRequests1 = [httpRequests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NEHTTPModel *httpRequest, NSDictionary *bindings) {
+        NSArray *tempFilterHTTPRequests = [httpRequests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NEHTTPModel *httpRequest, NSDictionary *bindings) {
             return [[NSString stringWithFormat:@"%@ %d %@ %@",httpRequest.requestURLString,httpRequest.responseStatusCode,httpRequest.requestHTTPMethod,httpRequest.responseMIMEType] rangeOfString:searchString options:NSCaseInsensitiveSearch].length > 0;
         }]];
-
-        
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([mySearchDisplayController.searchBar.text isEqual:searchString]) {
-                filterHTTPRequests = filterHTTPRequests1;
+                filterHTTPRequests = tempFilterHTTPRequests;
                 [mySearchDisplayController.searchResultsTableView reloadData];
             }
         });
     });
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

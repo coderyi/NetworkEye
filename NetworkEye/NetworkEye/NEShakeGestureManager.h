@@ -15,7 +15,7 @@
  *
  *  @return singleton object
  */
-+(NEShakeGestureManager *)defaultManager;
++ (NEShakeGestureManager *)defaultManager;
 
 /**
  *  show Go NetworkEye page 's alertView

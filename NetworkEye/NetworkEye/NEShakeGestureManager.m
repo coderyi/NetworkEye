@@ -22,7 +22,7 @@
 
 @implementation NEShakeGestureManager
 
-+(NEShakeGestureManager *)defaultManager{
++ (NEShakeGestureManager *)defaultManager {
     
     static NEShakeGestureManager *staticManager;
     static dispatch_once_t onceToken;
@@ -65,7 +65,6 @@
     
 }
 
-
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -74,8 +73,6 @@
     if ([buttonTitle isEqualToString:@"Go NetworkEye"]) {
         [self presentInformationViewController];
     }
-    
 }
-
 
 @end

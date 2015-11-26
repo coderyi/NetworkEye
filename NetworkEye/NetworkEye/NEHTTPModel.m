@@ -18,30 +18,24 @@
     switch (ne_request.cachePolicy) {
         case 0:
             self.requestCachePolicy=@"NSURLRequestUseProtocolCachePolicy";
-
             break;
         case 1:
             self.requestCachePolicy=@"NSURLRequestReloadIgnoringLocalCacheData";
-
             break;
         case 2:
             self.requestCachePolicy=@"NSURLRequestReturnCacheDataElseLoad";
-
             break;
         case 3:
             self.requestCachePolicy=@"NSURLRequestReturnCacheDataDontLoad";
-
             break;
         case 4:
             self.requestCachePolicy=@"NSURLRequestUseProtocolCachePolicy";
-            
+            break;
         case 5:
             self.requestCachePolicy=@"NSURLRequestReloadRevalidatingCacheData";
-
             break;
         default:
             self.requestCachePolicy=@"";
-
             break;
     }
     
@@ -50,7 +44,6 @@
     
     for (NSString *key in [ne_request.allHTTPHeaderFields allKeys]) {
         self.requestAllHTTPHeaderFields=[NSString stringWithFormat:@"%@%@:%@\n",self.requestAllHTTPHeaderFields,key,[ne_request.allHTTPHeaderFields objectForKey:key]];
-        
     }
     if (self.requestAllHTTPHeaderFields.length>1) {
         if ([[self.requestAllHTTPHeaderFields substringFromIndex:self.requestAllHTTPHeaderFields.length-1] isEqualToString:@"\n"]) {
@@ -66,7 +59,6 @@
     if ([ne_request HTTPBody].length>512) {
         self.requestHTTPBody=@"requestHTTPBody too long";
     }else{
-
         self.requestHTTPBody=[[NSString alloc] initWithData:[ne_request HTTPBody] encoding:NSUTF8StringEncoding];
     }
     if (self.requestHTTPBody.length>1) {
@@ -77,7 +69,7 @@
     
 }
 
--(void)setNe_response:(NSHTTPURLResponse *)ne_response_new{
+- (void)setNe_response:(NSHTTPURLResponse *)ne_response_new {
     
     ne_response=ne_response_new;
     

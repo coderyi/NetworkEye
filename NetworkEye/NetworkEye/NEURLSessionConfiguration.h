@@ -16,7 +16,7 @@
  *
  *  @return singleton object
  */
-+(NEURLSessionConfiguration *)defaultConfiguration;
++ (NEURLSessionConfiguration *)defaultConfiguration;
 
 /**
  *  swizzle NSURLSessionConfiguration's protocolClasses method

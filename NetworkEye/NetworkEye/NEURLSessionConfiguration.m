@@ -12,7 +12,7 @@
 
 @implementation NEURLSessionConfiguration
 
-+(NEURLSessionConfiguration *)defaultConfiguration{
++ (NEURLSessionConfiguration *)defaultConfiguration {
     
     static NEURLSessionConfiguration *staticConfiguration;
     static dispatch_once_t onceToken;

@@ -21,8 +21,7 @@
   
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 #if defined(DEBUG)||defined(_DEBUG)
  
     int twoFingerTag=NO;

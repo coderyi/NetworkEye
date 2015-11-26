@@ -12,6 +12,7 @@
 #import "NEHTTPModelManager.h"
 #import "UIWindow+NEExtension.h"
 #import "NEURLSessionConfiguration.h"
+
 @interface NEHTTPEye ()<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, strong) NSURLResponse *response;
@@ -23,8 +24,7 @@
 @implementation NEHTTPEye
 @synthesize ne_HTTPModel;
 #pragma mark - public
-+ (void)setEnabled:(BOOL)enabled
-{
++ (void)setEnabled:(BOOL)enabled {
     [[NSUserDefaults standardUserDefaults] setDouble:enabled forKey:@"NetworkEyeEnable"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     NEURLSessionConfiguration * sessionConfiguration=[NEURLSessionConfiguration defaultConfiguration];
@@ -34,31 +34,23 @@
         [NSURLProtocol registerClass:[NEHTTPEye class]];
         if (![sessionConfiguration isSwizzle]) {
             [sessionConfiguration load];
-
         }
     }else{
         [NSURLProtocol unregisterClass:[NEHTTPEye class]];
 
         if ([sessionConfiguration isSwizzle]) {
             [sessionConfiguration unload];
-
         }
-
     }
     
 }
 
-+ (BOOL)isEnabled
-{
++ (BOOL)isEnabled {
     return [[[NSUserDefaults standardUserDefaults] objectForKey:@"NetworkEyeEnable"] boolValue];
-;
 }
 #pragma mark - superclass methods
 + (void)load {
-    
-    
-    
-    
+ 
 }
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
@@ -129,9 +121,7 @@
         NSString *xmlString = [[NSString alloc]initWithData:self.data encoding:NSUTF8StringEncoding];
         if (xmlString && xmlString.length>0) {
             ne_HTTPModel.receiveJSONData = xmlString;//example http://webservice.webxml.com.cn/webservices/qqOnlineWebService.asmx/qqCheckOnline?qqCode=2121
-
         }
-
     }
     double flowCount=[[[NSUserDefaults standardUserDefaults] objectForKey:@"flowCount"] doubleValue];
     if (!flowCount) {
@@ -146,8 +136,7 @@
 #pragma mark - NSURLConnectionDelegate
 
 - (void)connection:(NSURLConnection *)connection
-  didFailWithError:(NSError *)error
-{
+  didFailWithError:(NSError *)error {
     [[self client] URLProtocol:self didFailWithError:error];
 }
 
@@ -166,32 +155,27 @@ didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
 }
 
 #pragma mark - NSURLConnectionDataDelegate
-- (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response
-{
-    if (response != nil)
-    {
+- (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response {
+    if (response != nil){
         [[self client] URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
     }
     return request;
 }
 
 - (void)connection:(NSURLConnection *)connection
-didReceiveResponse:(NSURLResponse *)response
-{
+didReceiveResponse:(NSURLResponse *)response {
     [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
     self.response = response;
 }
 
 - (void)connection:(NSURLConnection *)connection
-    didReceiveData:(NSData *)data
-{
+    didReceiveData:(NSData *)data {
     [[self client] URLProtocol:self didLoadData:data];
     [self.data appendData:data];
 }
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection
-                  willCacheResponse:(NSCachedURLResponse *)cachedResponse
-{
+                  willCacheResponse:(NSCachedURLResponse *)cachedResponse {
     return cachedResponse;
 }
 
@@ -205,7 +189,7 @@ didReceiveResponse:(NSURLResponse *)response
     if(data == nil) return nil;
     NSError *error = nil;
     id returnValue = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-    if(error){
+    if(error) {
         NSLog(@"JSON Parsing Error: %@", error);
         //https://github.com/coderyi/NetworkEye/issues/3
         return nil;
@@ -220,18 +204,17 @@ didReceiveResponse:(NSURLResponse *)response
     return jsonString;
 }
 
-- (NSString *)stringWithDate:(NSDate *)date{
+- (NSString *)stringWithDate:(NSDate *)date {
     NSString *destDateString = [[NEHTTPEye defaultDateFormatter] stringFromDate:date];
     return destDateString;
 }
 
-+(NSDateFormatter *)defaultDateFormatter{
++ (NSDateFormatter *)defaultDateFormatter {
     static NSDateFormatter *staticDateFormatter;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         staticDateFormatter=[[NSDateFormatter alloc] init];
         [staticDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];//zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
-
     });
     return staticDateFormatter;
 }

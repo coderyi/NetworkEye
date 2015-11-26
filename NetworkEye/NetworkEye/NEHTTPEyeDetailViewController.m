@@ -194,7 +194,7 @@
                                                                               NSFontAttributeName : titleFont,
                                                                               NSForegroundColorAttributeName: titleColor
                                                                               }];
-    }else{
+    }else {
         receiveJSONData = [[NSMutableAttributedString alloc] initWithString:@"[responseJSON]\n"
                                                                  attributes:@{
                                                                               NSFontAttributeName : titleFont,
@@ -356,7 +356,7 @@
     textView1.attributedText=attrText;
     
 }
-- (void)backBtAction{
+- (void)backBtAction {
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -364,9 +364,7 @@
 #pragma mark - Utils
 
 //unicode to utf-8
-+ (NSString*) replaceUnicode:(NSString*)aUnicodeString
-
-{
++ (NSString*) replaceUnicode:(NSString*)aUnicodeString {
     
     NSString *tempStr1 = [aUnicodeString stringByReplacingOccurrencesOfString:@"\\u"withString:@"\\U"];
     NSString *tempStr2 = [tempStr1 stringByReplacingOccurrencesOfString:@"\""withString:@"\\\""];
@@ -387,7 +385,5 @@
     return [returnStr stringByReplacingOccurrencesOfString:@"\\r\\n"withString:@"\n"];
     
 }
-
-
 
 @end
