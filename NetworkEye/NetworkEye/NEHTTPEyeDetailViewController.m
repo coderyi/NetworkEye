@@ -188,11 +188,20 @@
                                                                           NSForegroundColorAttributeName: titleColor
                                                                           }];
     
-    receiveJSONData = [[NSMutableAttributedString alloc] initWithString:@"[responseJSON]\n"
-                                                             attributes:@{
-                                                                          NSFontAttributeName : titleFont,
-                                                                          NSForegroundColorAttributeName: titleColor
-                                                                          }];
+    if ([_model.responseMIMEType isEqualToString:@"application/xml"] ||[_model.responseMIMEType isEqualToString:@"text/xml"]) {
+        receiveJSONData = [[NSMutableAttributedString alloc] initWithString:@"[responseXML]\n"
+                                                                 attributes:@{
+                                                                              NSFontAttributeName : titleFont,
+                                                                              NSForegroundColorAttributeName: titleColor
+                                                                              }];
+    }else{
+        receiveJSONData = [[NSMutableAttributedString alloc] initWithString:@"[responseJSON]\n"
+                                                                 attributes:@{
+                                                                              NSFontAttributeName : titleFont,
+                                                                              NSForegroundColorAttributeName: titleColor
+                                                                              }];
+    }
+    
     
     
     
