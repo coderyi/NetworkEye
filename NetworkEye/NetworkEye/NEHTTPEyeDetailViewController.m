@@ -10,7 +10,7 @@
 #import "NEHTTPModel.h"
 @interface NEHTTPEyeDetailViewController (){
 
-    UITextView *textView1;
+    UITextView *mainTextView;
 
 }
 
@@ -49,8 +49,8 @@
     [bar addSubview:titleText];
     titleText.text=_model.requestURLString;
     
-    textView1=[[UITextView alloc] initWithFrame:CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64)];
-    [self.view addSubview:textView1];
+    mainTextView=[[UITextView alloc] initWithFrame:CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64)];
+    [self.view addSubview:mainTextView];
 
     [self setupAttributedString];
 }
@@ -353,7 +353,7 @@
     [attrText appendAttributedString:receiveJSONData];
     [attrText appendAttributedString:receiveJSONDataDetail];
 
-    textView1.attributedText=attrText;
+    mainTextView.attributedText=attrText;
     
 }
 - (void)backBtAction {
