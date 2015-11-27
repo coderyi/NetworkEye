@@ -2,6 +2,11 @@
 [![Pod Version](http://img.shields.io/cocoapods/v/NetworkEye.svg?style=flat)](http://cocoadocs.org/docsets/NetworkEye/)
 [![Pod Platform](http://img.shields.io/cocoapods/p/NetworkEye.svg?style=flat)](http://cocoadocs.org/docsets/NetworkEye/)
 [![Pod License](http://img.shields.io/cocoapods/l/NetworkEye.svg?style=flat)](https://opensource.org/licenses/MIT)
+[![Twitter](https://img.shields.io/badge/twitter-@coderyi9-green.svg?style=flat)](http://twitter.com/coderyi9)
+[![](https://img.shields.io/github/stars/coderyi/NetworkEye.svg)](https://github.com/coderyi/NetworkEye/stargazers) 
+[![](https://img.shields.io/github/forks/coderyi/NetworkEye.svg)](https://github.com/coderyi/NetworkEye/network) 
+
+
 
 
 [README 中文](https://github.com/coderyi/NetworkEye/blob/master/README_Chinese.md)
