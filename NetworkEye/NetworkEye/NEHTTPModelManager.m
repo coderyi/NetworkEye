@@ -172,7 +172,7 @@
 }
 - (NSString *)nullStringFormat:(id)str
 {
-    if (!str || [str isKindOfClass:[NSString class]]) {
+    if (!str) {
         return @"";
     }
     return str;
