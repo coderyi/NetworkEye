@@ -157,6 +157,7 @@ didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
 #pragma mark - NSURLConnectionDataDelegate
 - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response {
     if (response != nil){
+        self.response = response;
         [[self client] URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
     }
     return request;
