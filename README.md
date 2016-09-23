@@ -5,6 +5,7 @@
 [![Twitter](https://img.shields.io/badge/twitter-@coderyi9-green.svg?style=flat)](http://twitter.com/coderyi9)
 [![](https://img.shields.io/github/stars/coderyi/NetworkEye.svg)](https://github.com/coderyi/NetworkEye/stargazers) 
 [![](https://img.shields.io/github/forks/coderyi/NetworkEye.svg)](https://github.com/coderyi/NetworkEye/network) 
+[![](https://img.shields.io/cocoapods/dt/NetworkEye.svg?maxAge=2592000)](https://github.com/coderyi/NetworkEye) 
 
 
 
