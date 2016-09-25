@@ -13,7 +13,8 @@
 @interface NEHTTPModelManager : NSObject
 {
     FMDatabaseQueue *sqliteDatabase;
-    NSMutableArray *allobjects;
+    NSMutableArray *allRequests;
+    BOOL enablePersistent;
 }
 
 @property(nonatomic,strong) NSString *sqlitePassword;

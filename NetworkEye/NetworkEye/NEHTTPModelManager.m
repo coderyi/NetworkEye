@@ -24,6 +24,7 @@
     if (self) {
         _sqlitePassword=kSQLitePassword;
         self.saveRequestMaxCount=kSaveRequestMaxCount;
+        allRequests = [NSMutableArray arrayWithCapacity:1];
     }
     return self;
 }
@@ -71,7 +72,6 @@
         [[NSUserDefaults standardUserDefaults] setObject:@"b" forKey:@"nenetworkhttpeyecache"];
     }
 
-    FMDatabaseQueue *queue= [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
     BOOL isNull;
     isNull=(aModel.receiveJSONData==nil);
     if (isNull) {
@@ -80,16 +80,28 @@
     NSString *receiveJSONData;
     receiveJSONData=[self stringToSQLFilter:aModel.receiveJSONData];
     NSString *sql=[NSString stringWithFormat:@"insert into nenetworkhttpeyes values('%lf','%@','%@','%@','%@','%lf','%@','%@','%@','%@','%@','%@','%@','%d','%@','%@')",aModel.myID,aModel.startDateString,aModel.endDateString,aModel.requestURLString,aModel.requestCachePolicy,aModel.requestTimeoutInterval,aModel.requestHTTPMethod,aModel.requestAllHTTPHeaderFields,aModel.requestHTTPBody,aModel.responseMIMEType,aModel.responseExpectedContentLength,aModel.responseTextEncodingName,aModel.responseSuggestedFilename,aModel.responseStatusCode,[self stringToSQLFilter:aModel.responseAllHeaderFields],receiveJSONData];
-    [queue inDatabase:^(FMDatabase *db) {
-        [db setKey:_sqlitePassword];
-        [db executeUpdate:sql];
-    }];
+    if (enablePersistent) {
+        FMDatabaseQueue *queue= [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
+        [queue inDatabase:^(FMDatabase *db) {
+            [db setKey:_sqlitePassword];
+            [db executeUpdate:sql];
+        }];
+    }else {
+        [allRequests addObject:aModel];
+    }
     
     return ;
     
 }
 
 - (NSMutableArray *)allobjects {
+    
+    if (!enablePersistent) {
+        if (allRequests.count>=self.saveRequestMaxCount) {
+            [[NSUserDefaults standardUserDefaults] setObject:@"a" forKey:@"nenetworkhttpeyecache"];
+        }
+        return allRequests;
+    }
     
     FMDatabaseQueue *queue= [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
     NSString *sql =[NSString stringWithFormat:@"select * from nenetworkhttpeyes order by myID desc"];
@@ -129,6 +141,10 @@
 
 - (void) deleteAllItem {
     
+    if (!enablePersistent) {
+        [allRequests removeAllObjects];
+        return;
+    }
     NSString *sql=[NSString stringWithFormat:@"delete from nenetworkhttpeyes"];
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[NEHTTPModelManager filename]];
     [queue inDatabase:^(FMDatabase *db) {
