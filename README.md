@@ -34,8 +34,8 @@ I think NetworkEye need a logo,I hope some can help me.
 ```ruby
 
 	platform :ios, '7.0'
-	pod 'NetworkEye', '~> 1.0.5'
-	# pod 'NetworkEye/FMDB', '~> 1.0.5'   # NetworkEye with FMDB ,save your requests to database
+	pod 'NetworkEye', '~> 1.0.6'
+	# pod 'NetworkEye/FMDB', '~> 1.0.6'   # NetworkEye with FMDB ,save your requests to database
 
 ```
 
