@@ -12,7 +12,7 @@
 @interface NEMapViewController (){
     
     UITextView *mainTextView;
-    
+    NEHTTPModel *model;
 }
 
 
@@ -47,9 +47,7 @@
     deleteBt.titleLabel.font=[UIFont systemFontOfSize:13];
     [deleteBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [deleteBt addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
-    if (_model.mapJSONData.length>0) {
-        [bar addSubview:deleteBt];
-    }
+    [bar addSubview:deleteBt];
     
     
     UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(([[UIScreen mainScreen] bounds].size.width-230)/2, 20, 230, 44)];
@@ -65,23 +63,43 @@
     }else {
         requestPath = [_model.requestURLString substringToIndex:requestPathRange.location];
     }
-    _model.mapPath = requestPath ;
     titleText.text=requestPath;
     titleText.lineBreakMode = NSLineBreakByTruncatingHead;
     
     mainTextView=[[UITextView alloc] initWithFrame:CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64)];
     [self.view addSubview:mainTextView];
-    mainTextView.text=_model.mapJSONData;
+    model = [[NEHTTPModel alloc] init];
+
+    NSArray *allMapRequests = [[NEHTTPModelManager defaultManager] allMapObjects];
+    for (NSInteger i=0; i < allMapRequests.count; i++) {
+        NEHTTPModel *req = [allMapRequests objectAtIndex:i];
+        if ([[_model.ne_request.URL absoluteString] containsString:req.mapPath]) {
+            mainTextView.text=req.mapJSONData;
+            model = req;
+        }
+    }
+
     
 }
 
 - (void)backBtAction {
     if (![[mainTextView.text stringByTrimmingCharactersInSet:
-          [NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:_model.mapJSONData]) {
+          [NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:model.mapJSONData] && mainTextView.text.length>0) {
 
-        _model.mapJSONData = [mainTextView.text stringByTrimmingCharactersInSet:
-                                                 [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        [[NEHTTPModelManager defaultManager] addMapObject:_model];
+        model.mapJSONData = [mainTextView.text stringByTrimmingCharactersInSet:
+                              [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        NSRange requestPathRange = [_model.requestURLString rangeOfString:@"?"];
+        NSString *requestPath;
+        if (requestPathRange.location == NSNotFound) {
+            requestPath =_model.requestURLString;
+        }else {
+            requestPath = [_model.requestURLString substringToIndex:requestPathRange.location];
+        }
+
+        model.mapPath = requestPath;
+        [[NEHTTPModelManager defaultManager] addMapObject:model];
+    }else if (mainTextView.text.length==0) {
+        [[NEHTTPModelManager defaultManager] removeMapObject:model];
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -89,7 +107,9 @@
 }
 
 - (void)rightAction {
-    [[NEHTTPModelManager defaultManager] removeMapObject:_model];
+    [[NEHTTPModelManager defaultManager] removeMapObject:model];
+    mainTextView.text=@"";
+
 }
 
 

@@ -200,6 +200,7 @@
 }
 
 - (void)removeMapObject:(NEHTTPModel *)mapReq {
+    
     for (NSInteger i=0; i < allMapRequests.count; i++) {
         NEHTTPModel *req = [allMapRequests objectAtIndex:i];
         if ([mapReq.mapPath isEqualToString:req.mapPath]) {
@@ -207,6 +208,10 @@
             return;
         }
     }
+}
+
+- (void)removeAllMapObjects {
+    [allMapRequests removeAllObjects];
 }
 
 #pragma mark - Utils

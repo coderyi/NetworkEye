@@ -60,7 +60,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 2;
+    return 3;
     
 }
 
@@ -85,10 +85,14 @@
     if (indexPath.row==0) {
         cell.textLabel.textColor=[UIColor blackColor];
         cell.textLabel.text=@"NetworkEye Enable";
+    }else if (indexPath.row==1){
+        cell.textLabel.textColor=[UIColor colorWithRed:0.88 green:0.22 blue:0.22 alpha:1];
+        cell.textLabel.text=@"Clear All Maped Requests";
     }else{
         cell.textLabel.textColor=[UIColor colorWithRed:0.88 green:0.22 blue:0.22 alpha:1];
         cell.textLabel.text=@"Clear Recorded Requests";
     }
+
     
     return cell;
     
@@ -103,13 +107,26 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row==1) {
         UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"message" message:@"Are you sure to delete it" delegate:self cancelButtonTitle:@"yes" otherButtonTitles:@"no", nil];
+        alertView.tag=101;
         [alertView show];
     }
+    if (indexPath.row==2) {
+        UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"message" message:@"Are you sure to delete it" delegate:self cancelButtonTitle:@"yes" otherButtonTitles:@"no", nil];
+        alertView.tag=102;
+        [alertView show];
+    }
+
     
 }
 
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex NS_DEPRECATED_IOS(2_0, 9_0){
+    if(alertView.tag ==101){
+        if(buttonIndex==0){
+            [[NEHTTPModelManager defaultManager] removeAllMapObjects];
+        }
+        return;
+    }
     if(buttonIndex==0){
         [[NEHTTPModelManager defaultManager] deleteAllItem];
     }
