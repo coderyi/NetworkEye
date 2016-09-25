@@ -30,8 +30,11 @@ I think NetworkEye need a logo,I hope some can help me.
 #### Podfile
 
 ```ruby
-platform :ios, '7.0'
-pod 'NetworkEye', '~> 1.0.1'
+
+	platform :ios, '7.0'
+	pod 'NetworkEye', '~> 1.0.3'
+	# pod 'NetworkEye/FMDB', '~> 1.0.3'   # NetworkEye with FMDB ,save your requests to database
+
 ```
 
 
