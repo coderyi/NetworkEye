@@ -12,11 +12,19 @@
 #import "NEHTTPModel.h"
 #if FMDB_SQLCipher
 #include "sqlite3.h"
+#import "FMDB.h"
 #endif
 #define kSTRDoubleMarks @"\""
 #define kSQLDoubleMarks @"\"\""
 #define kSTRShortMarks  @"'"
 #define kSQLShortMarks  @"''"
+@interface NEHTTPModelManager(){
+#if FMDB_SQLCipher
+    FMDatabaseQueue *sqliteDatabase;
+#endif
+
+}
+@end
 
 @implementation NEHTTPModelManager
 

@@ -7,16 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#if FMDB_SQLCipher
-#import "FMDB.h"
-#endif
+
 #import "NEHTTPEye.h"
 @class NEHTTPModel;
 @interface NEHTTPModelManager : NSObject
 {
-#if FMDB_SQLCipher
-    FMDatabaseQueue *sqliteDatabase;
-#endif
     NSMutableArray *allRequests;
     BOOL enablePersistent;
 }
