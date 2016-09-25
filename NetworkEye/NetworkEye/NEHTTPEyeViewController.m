@@ -99,14 +99,12 @@
     [self setupSearch];
     mainTableView.dataSource=self;
     mainTableView.delegate=self;
-    
-    httpRequests=[[NEHTTPModelManager defaultManager] allobjects];
-
+    httpRequests=[[[[NEHTTPModelManager defaultManager] allobjects] reverseObjectEnumerator] allObjects];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    httpRequests=[[NEHTTPModelManager defaultManager] allobjects];
+    httpRequests=[[[[NEHTTPModelManager defaultManager] allobjects] reverseObjectEnumerator] allObjects];
     [mainTableView reloadData];
 }
 

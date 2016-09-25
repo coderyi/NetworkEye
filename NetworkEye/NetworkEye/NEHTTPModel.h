@@ -35,5 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 //JSONData
 @property (nonatomic,strong) NSString *receiveJSONData;
 
+@property (nonatomic,strong) NSString *mapPath;
+@property (nonatomic,strong) NSString *mapJSONData;
+
 @end
 NS_ASSUME_NONNULL_END
