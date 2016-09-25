@@ -19,6 +19,7 @@
 #define kSTRShortMarks  @"'"
 #define kSQLShortMarks  @"''"
 @interface NEHTTPModelManager(){
+    NSMutableArray *allMapRequests;
 #if FMDB_SQLCipher
     FMDatabaseQueue *sqliteDatabase;
 #endif
@@ -34,6 +35,7 @@
         _sqlitePassword=kSQLitePassword;
         self.saveRequestMaxCount=kSaveRequestMaxCount;
         allRequests = [NSMutableArray arrayWithCapacity:1];
+        allMapRequests = [NSMutableArray arrayWithCapacity:1];
 #if FMDB_SQLCipher
         enablePersistent = YES;
 #else
@@ -179,6 +181,33 @@
 #endif
 }
 
+#pragma mark - map local
+
+- (NSMutableArray *)allMapObjects {
+    return allMapRequests;
+}
+
+- (void)addMapObject:(NEHTTPModel *)mapReq {
+    
+    for (NSInteger i=0; i < allMapRequests.count; i++) {
+        NEHTTPModel *req = [allMapRequests objectAtIndex:i];
+        if (![mapReq.mapPath isEqualToString:req.mapPath]) {
+            [allMapRequests replaceObjectAtIndex:i withObject:mapReq];
+            return;
+        }
+    }
+    [allMapRequests addObject:mapReq];
+}
+
+- (void)removeMapObject:(NEHTTPModel *)mapReq {
+    for (NSInteger i=0; i < allMapRequests.count; i++) {
+        NEHTTPModel *req = [allMapRequests objectAtIndex:i];
+        if ([mapReq.mapPath isEqualToString:req.mapPath]) {
+            [allMapRequests removeObject:mapReq];
+            return;
+        }
+    }
+}
 
 #pragma mark - Utils
 

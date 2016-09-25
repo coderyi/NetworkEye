@@ -7,6 +7,7 @@
 //
 
 #import "NEHTTPEyeDetailViewController.h"
+#import "NEMapViewController.h"
 #import "NEHTTPModel.h"
 @interface NEHTTPEyeDetailViewController (){
 
@@ -41,6 +42,14 @@
     [backBt addTarget:self action:@selector(backBtAction) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:backBt];
     
+    UIButton *settingsBt=[UIButton buttonWithType:UIButtonTypeCustom];
+    settingsBt.frame=CGRectMake([[UIScreen mainScreen] bounds].size.width-60, 27, 50, 30);
+    [settingsBt setTitle:@"map" forState:UIControlStateNormal];
+    settingsBt.titleLabel.font=[UIFont systemFontOfSize:13];
+    [settingsBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [settingsBt addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
+    [bar addSubview:settingsBt];
+    
     UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(([[UIScreen mainScreen] bounds].size.width-230)/2, 20, 230, 44)];
     titleText.backgroundColor = [UIColor clearColor];
     titleText.textColor=[UIColor whiteColor];
@@ -51,6 +60,7 @@
     
     mainTextView=[[UITextView alloc] initWithFrame:CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64)];
     [self.view addSubview:mainTextView];
+    mainTextView.editable=NO;
 
     [self setupAttributedString];
 }
@@ -359,6 +369,12 @@
 - (void)backBtAction {
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+
+- (void)rightAction {
+    NEMapViewController *map = [[NEMapViewController alloc] init];
+    map.model = _model;
+    [self presentViewController:map animated:YES completion:nil];
 }
 
 #pragma mark - Utils

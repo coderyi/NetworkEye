@@ -58,4 +58,8 @@
  */
 - (void) deleteAllItem;
 
+- (NSMutableArray *)allMapObjects;
+- (void)addMapObject:(NEHTTPModel *)mapReq;
+- (void)removeMapObject:(NEHTTPModel *)mapReq;
+
 @end

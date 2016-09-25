@@ -171,6 +171,20 @@ didReceiveResponse:(NSURLResponse *)response {
 
 - (void)connection:(NSURLConnection *)connection
     didReceiveData:(NSData *)data {
+    NSString *mimeType = self.response.MIMEType;
+    if ([mimeType isEqualToString:@"application/json"]) {
+        NSArray *allMapRequests = [[NEHTTPModelManager defaultManager] allMapObjects];
+        for (NSInteger i=0; i < allMapRequests.count; i++) {
+            NEHTTPModel *req = [allMapRequests objectAtIndex:i];
+            if ([[ne_HTTPModel.ne_request.URL absoluteString] containsString:req.mapPath]) {
+                NSData *jsonData = [req.mapJSONData dataUsingEncoding:NSUTF8StringEncoding];
+                [[self client] URLProtocol:self didLoadData:jsonData];
+                [self.data appendData:jsonData];
+                return;
+
+            }
+        }
+    }
     [[self client] URLProtocol:self didLoadData:data];
     [self.data appendData:data];
 }
