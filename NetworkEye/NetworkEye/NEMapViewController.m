@@ -41,6 +41,17 @@
     [backBt addTarget:self action:@selector(backBtAction) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:backBt];
     
+    UIButton *deleteBt=[UIButton buttonWithType:UIButtonTypeCustom];
+    deleteBt.frame=CGRectMake([[UIScreen mainScreen] bounds].size.width-60, 27, 50, 30);
+    [deleteBt setTitle:@"delete" forState:UIControlStateNormal];
+    deleteBt.titleLabel.font=[UIFont systemFontOfSize:13];
+    [deleteBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [deleteBt addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
+    if (_model.mapJSONData.length>0) {
+        [bar addSubview:deleteBt];
+    }
+    
+    
     UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(([[UIScreen mainScreen] bounds].size.width-230)/2, 20, 230, 44)];
     titleText.backgroundColor = [UIColor clearColor];
     titleText.textColor=[UIColor whiteColor];
@@ -54,25 +65,20 @@
     }else {
         requestPath = [_model.requestURLString substringToIndex:requestPathRange.location];
     }
+    _model.mapPath = requestPath ;
     titleText.text=requestPath;
     titleText.lineBreakMode = NSLineBreakByTruncatingHead;
     
     mainTextView=[[UITextView alloc] initWithFrame:CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64)];
     [self.view addSubview:mainTextView];
     mainTextView.text=_model.mapJSONData;
+    
 }
 
 - (void)backBtAction {
     if (![[mainTextView.text stringByTrimmingCharactersInSet:
           [NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:_model.mapJSONData]) {
-        NSRange requestPathRange = [_model.requestURLString rangeOfString:@"?"];
-        NSString *requestPath;
-        if (requestPathRange.location == NSNotFound) {
-            requestPath =_model.requestURLString;
-        }else {
-            requestPath = [_model.requestURLString substringToIndex:requestPathRange.location];
-        }
-        _model.mapPath = requestPath ; 
+
         _model.mapJSONData = [mainTextView.text stringByTrimmingCharactersInSet:
                                                  [NSCharacterSet whitespaceAndNewlineCharacterSet]];
         [[NEHTTPModelManager defaultManager] addMapObject:_model];
@@ -80,6 +86,10 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+
+- (void)rightAction {
+    [[NEHTTPModelManager defaultManager] removeMapObject:_model];
 }
 
 

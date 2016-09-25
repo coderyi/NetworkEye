@@ -42,13 +42,13 @@
     [backBt addTarget:self action:@selector(backBtAction) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:backBt];
     
-    UIButton *settingsBt=[UIButton buttonWithType:UIButtonTypeCustom];
-    settingsBt.frame=CGRectMake([[UIScreen mainScreen] bounds].size.width-60, 27, 50, 30);
-    [settingsBt setTitle:@"map" forState:UIControlStateNormal];
-    settingsBt.titleLabel.font=[UIFont systemFontOfSize:13];
-    [settingsBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [settingsBt addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
-    [bar addSubview:settingsBt];
+    UIButton *mapBt=[UIButton buttonWithType:UIButtonTypeCustom];
+    mapBt.frame=CGRectMake([[UIScreen mainScreen] bounds].size.width-60, 27, 50, 30);
+    [mapBt setTitle:@"map" forState:UIControlStateNormal];
+    mapBt.titleLabel.font=[UIFont systemFontOfSize:13];
+    [mapBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [mapBt addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
+    [bar addSubview:mapBt];
     
     UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(([[UIScreen mainScreen] bounds].size.width-230)/2, 20, 230, 44)];
     titleText.backgroundColor = [UIColor clearColor];
