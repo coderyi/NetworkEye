@@ -8,6 +8,7 @@
 [![](https://img.shields.io/cocoapods/dt/NetworkEye.svg?maxAge=2592000)](https://github.com/coderyi/NetworkEye) 
 
 
+<img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye_logo.png" width="100" height="100">
 
 
 [README 中文](https://github.com/coderyi/NetworkEye/blob/master/README_Chinese.md)
