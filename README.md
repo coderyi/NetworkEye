@@ -9,7 +9,7 @@
 
 <p align="center" >
 
-<img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye_logo.png" width="200" height="200">
+<img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye_logo_detail.png" width="480" height="160">
 </p>
 
 [README 中文](https://github.com/coderyi/NetworkEye/blob/master/README_Chinese.md)
