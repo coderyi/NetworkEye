@@ -12,7 +12,8 @@
 #import "NEHTTPModelManager.h"
 #import "UIWindow+NEExtension.h"
 #import "NEURLSessionConfiguration.h"
-
+#import "NEKeyboardShortcutManager.h"
+#import "NEHTTPEyeViewController.h"
 @interface NEHTTPEye ()<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, strong) NSURLResponse *response;
@@ -30,18 +31,22 @@
     NEURLSessionConfiguration * sessionConfiguration=[NEURLSessionConfiguration defaultConfiguration];
 
     if (enabled) {
-        
         [NSURLProtocol registerClass:[NEHTTPEye class]];
         if (![sessionConfiguration isSwizzle]) {
             [sessionConfiguration load];
         }
     }else{
         [NSURLProtocol unregisterClass:[NEHTTPEye class]];
-
         if ([sessionConfiguration isSwizzle]) {
             [sessionConfiguration unload];
         }
     }
+    [NEKeyboardShortcutManager sharedManager].enabled = enabled;
+    [[NEKeyboardShortcutManager sharedManager] registerSimulatorShortcutWithKey:@"n" modifiers:UIKeyModifierCommand action:^{
+        NEHTTPEyeViewController *viewController = [[NEHTTPEyeViewController alloc] init];
+        [[[[[UIApplication sharedApplication] delegate] window] rootViewController]
+         presentViewController:viewController animated:YES completion:nil];
+    } description:nil];
     
 }
 
@@ -49,6 +54,13 @@
     return [[[NSUserDefaults standardUserDefaults] objectForKey:@"NetworkEyeEnable"] boolValue];
 }
 #pragma mark - superclass methods
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+    }
+    return self;
+}
+
 + (void)load {
  
 }

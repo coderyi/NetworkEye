@@ -27,6 +27,7 @@
 		0ADE8CFA1BF4999A0096A1E5 /* NEHTTPEyeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADE8CF91BF4999A0096A1E5 /* NEHTTPEyeSettingsViewController.m */; };
 		18EBE1D31D6662D26CDE658E /* libPods-NetworkEye.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0A88B796892B331322D42D /* libPods-NetworkEye.a */; };
 		A18C22DD1D98239A008E40C6 /* NEMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18C22DC1D98239A008E40C6 /* NEMapViewController.m */; };
+		EE6CCB621DB1BB6D00EAA45F /* NEKeyboardShortcutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6CCB611DB1BB6D00EAA45F /* NEKeyboardShortcutManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,8 @@
 		78F596A72B3544114EDC0FEA /* Pods-NetworkEye.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkEye.release.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkEye/Pods-NetworkEye.release.xcconfig"; sourceTree = "<group>"; };
 		A18C22DB1D98239A008E40C6 /* NEMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEMapViewController.h; sourceTree = "<group>"; };
 		A18C22DC1D98239A008E40C6 /* NEMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEMapViewController.m; sourceTree = "<group>"; };
+		EE6CCB601DB1BB6D00EAA45F /* NEKeyboardShortcutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NEKeyboardShortcutManager.h; sourceTree = "<group>"; };
+		EE6CCB611DB1BB6D00EAA45F /* NEKeyboardShortcutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NEKeyboardShortcutManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +207,8 @@
 				0A09FABF1BF6FC3F0009EC53 /* UIWindow+NEExtension.m */,
 				0A1202E11BF097BC00B710A9 /* NEURLSessionConfiguration.h */,
 				0A1202E21BF097BC00B710A9 /* NEURLSessionConfiguration.m */,
+				EE6CCB601DB1BB6D00EAA45F /* NEKeyboardShortcutManager.h */,
+				EE6CCB611DB1BB6D00EAA45F /* NEKeyboardShortcutManager.m */,
 			);
 			path = NetworkEye;
 			sourceTree = "<group>";
@@ -233,12 +238,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A4EF86D1BEB66FF000D2D7E /* Build configuration list for PBXNativeTarget "NetworkEye" */;
 			buildPhases = (
+				A770EAC8FB7D5B8B9B0CE23A /* 📦 Check Pods Manifest.lock */,
 				1E47BF57E219846EA68141A1 /* [CP] Check Pods Manifest.lock */,
 				0A4EF83C1BEB66FF000D2D7E /* Sources */,
 				0A4EF83D1BEB66FF000D2D7E /* Frameworks */,
 				0A4EF83E1BEB66FF000D2D7E /* Resources */,
 				9C3CAAA67AB0C2C3431F3247 /* [CP] Embed Pods Frameworks */,
 				7B2F435A39B78D9EC03D90A8 /* [CP] Copy Pods Resources */,
+				84F18E0EC91F6329F079C6D3 /* 📦 Embed Pods Frameworks */,
+				B04476CE907239E9F7890B3B /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -385,6 +393,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkEye/Pods-NetworkEye-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		84F18E0EC91F6329F079C6D3 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkEye/Pods-NetworkEye-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9C3CAAA67AB0C2C3431F3247 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,6 +421,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkEye/Pods-NetworkEye-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A770EAC8FB7D5B8B9B0CE23A /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B04476CE907239E9F7890B3B /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkEye/Pods-NetworkEye-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -416,6 +469,7 @@
 				0A4EF8451BEB66FF000D2D7E /* main.m in Sources */,
 				0A4EF8981BEB6735000D2D7E /* NEHTTPModel.m in Sources */,
 				0A4EF8961BEB6735000D2D7E /* NEHTTPEyeDetailViewController.m in Sources */,
+				EE6CCB621DB1BB6D00EAA45F /* NEKeyboardShortcutManager.m in Sources */,
 				0A4EF8971BEB6735000D2D7E /* NEHTTPEyeViewController.m in Sources */,
 				0A4EF8991BEB6735000D2D7E /* NEHTTPModelManager.m in Sources */,
 				0ADE8CFA1BF4999A0096A1E5 /* NEHTTPEyeSettingsViewController.m in Sources */,
