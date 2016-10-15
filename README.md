@@ -53,7 +53,7 @@ add the code in AppDelegate.m
 #endif
 </pre>
 
-you can use a double tap or shake device to call out the monitoring data interface
+you can use use the shortcut (⌘ Command + n) , a double tap or shake device to call out the monitoring data interface
 
 NEHTTPEyeViewController
 
