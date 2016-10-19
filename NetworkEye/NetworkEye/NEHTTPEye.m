@@ -41,13 +41,14 @@
             [sessionConfiguration unload];
         }
     }
+#if TARGET_OS_SIMULATOR
     [NEKeyboardShortcutManager sharedManager].enabled = enabled;
     [[NEKeyboardShortcutManager sharedManager] registerSimulatorShortcutWithKey:@"n" modifiers:UIKeyModifierCommand action:^{
         NEHTTPEyeViewController *viewController = [[NEHTTPEyeViewController alloc] init];
         [[[[[UIApplication sharedApplication] delegate] window] rootViewController]
          presentViewController:viewController animated:YES completion:nil];
     } description:nil];
-    
+#endif
 }
 
 + (BOOL)isEnabled {
