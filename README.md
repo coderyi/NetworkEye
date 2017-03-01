@@ -6,6 +6,8 @@
 [![](https://img.shields.io/github/stars/coderyi/NetworkEye.svg)](https://github.com/coderyi/NetworkEye/stargazers) 
 [![](https://img.shields.io/github/forks/coderyi/NetworkEye.svg)](https://github.com/coderyi/NetworkEye/network) 
 [![](https://img.shields.io/cocoapods/dt/NetworkEye.svg?maxAge=2592000)](https://github.com/coderyi/NetworkEye) 
+[![](https://img.shields.io/cocoapods/dm/NetworkEye.svg?maxAge=2592000)](https://github.com/coderyi/NetworkEye) 
+[![](https://img.shields.io/cocoapods/dw/NetworkEye.svg?maxAge=2592000)](https://github.com/coderyi/NetworkEye) 
 
 <p align="center" >
 
