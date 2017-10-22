@@ -23,6 +23,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    BOOL isiPhoneX = (([[UIScreen mainScreen] bounds].size.width == 375.f && [[UIScreen mainScreen] bounds].size.height == 812.f) || ([[UIScreen mainScreen] bounds].size.height == 375.f && [[UIScreen mainScreen] bounds].size.width == 812.f));
+
     if ([[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0) {
         self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
         
@@ -30,12 +32,12 @@
     self.automaticallyAdjustsScrollViewInsets=NO;
     self.view.backgroundColor=[UIColor whiteColor];
 
-    UINavigationBar *bar=[[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64)];
+    UIView *bar=[[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64+(isiPhoneX?24:0))];
     [self.view addSubview:bar];
-    bar.barTintColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f];
+    bar.backgroundColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f];
     
     UIButton *backBt=[UIButton buttonWithType:UIButtonTypeCustom];
-    backBt.frame=CGRectMake(10, 27, 40, 30);
+    backBt.frame=CGRectMake(10, 27+(isiPhoneX?24:0), 40, 30);
     [backBt setTitle:@"back" forState:UIControlStateNormal];
     backBt.titleLabel.font=[UIFont systemFontOfSize:15];
     [backBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -43,14 +45,14 @@
     [bar addSubview:backBt];
     
     UIButton *mapBt=[UIButton buttonWithType:UIButtonTypeCustom];
-    mapBt.frame=CGRectMake([[UIScreen mainScreen] bounds].size.width-60, 27, 50, 30);
+    mapBt.frame=CGRectMake([[UIScreen mainScreen] bounds].size.width-60, 27+(isiPhoneX?24:0), 50, 30);
     [mapBt setTitle:@"map" forState:UIControlStateNormal];
     mapBt.titleLabel.font=[UIFont systemFontOfSize:13];
     [mapBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [mapBt addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:mapBt];
     
-    UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(([[UIScreen mainScreen] bounds].size.width-230)/2, 20, 230, 44)];
+    UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(([[UIScreen mainScreen] bounds].size.width-230)/2, 20+(isiPhoneX?24:0), 230, 44)];
     titleText.backgroundColor = [UIColor clearColor];
     titleText.textColor=[UIColor whiteColor];
     [titleText setFont:[UIFont systemFontOfSize:13.0]];
@@ -58,7 +60,7 @@
     [bar addSubview:titleText];
     titleText.text=_model.requestURLString;
     
-    mainTextView=[[UITextView alloc] initWithFrame:CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64)];
+    mainTextView=[[UITextView alloc] initWithFrame:CGRectMake(0, 64+(isiPhoneX?24:0), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-(isiPhoneX?24:0))];
     [self.view addSubview:mainTextView];
     mainTextView.editable=NO;
 

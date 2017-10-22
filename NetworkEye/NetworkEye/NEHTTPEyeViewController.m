@@ -18,6 +18,7 @@
     UISearchBar *mySearchBar;
     UISearchDisplayController *mySearchDisplayController;
     NSArray *filterHTTPRequests;
+    BOOL isiPhoneX;
 }
 
 @end
@@ -28,11 +29,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-  
+    isiPhoneX = (([[UIScreen mainScreen] bounds].size.width == 375.f && [[UIScreen mainScreen] bounds].size.height == 812.f) || ([[UIScreen mainScreen] bounds].size.height == 375.f && [[UIScreen mainScreen] bounds].size.width == 812.f));
+
     self.automaticallyAdjustsScrollViewInsets=NO;
     self.view.backgroundColor=[UIColor whiteColor];
     
-    mainTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64) style:UITableViewStylePlain];
+    mainTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-(isiPhoneX?24:0)) style:UITableViewStylePlain];
     [self.view addSubview:mainTableView];
     
     double flowCount=[[[NSUserDefaults standardUserDefaults] objectForKey:@"flowCount"] doubleValue];
@@ -59,7 +61,7 @@
     NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] init];
     [attrText appendAttributedString:titleString];
     [attrText appendAttributedString:flowCountString];
-    UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(([[UIScreen mainScreen] bounds].size.width-120)/2, 20, 120, 44)];
+    UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(([[UIScreen mainScreen] bounds].size.width-120)/2, 20+(isiPhoneX?24:0), 120, 44)];
     titleText.backgroundColor = [UIColor clearColor];
     titleText.textColor=[UIColor whiteColor];
     titleText.textAlignment=NSTextAlignmentCenter;
@@ -67,13 +69,13 @@
     titleText.attributedText=attrText;
     
     if ([self.navigationController viewControllers].count<1) {
-        UINavigationBar *bar=[[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64)];
+        UIView *bar=[[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64+(isiPhoneX?24:0))];
         [self.view addSubview:bar];
-        bar.barTintColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f];
+        bar.backgroundColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f];
         
         
         UIButton *backBt=[UIButton buttonWithType:UIButtonTypeCustom];
-        backBt.frame=CGRectMake(10, 27, 40, 30);
+        backBt.frame=CGRectMake(10, 27+(isiPhoneX?24:0), 40, 30);
         [backBt setTitle:@"back" forState:UIControlStateNormal];
         backBt.titleLabel.font=[UIFont systemFontOfSize:15];
         [backBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -81,13 +83,13 @@
         [bar addSubview:backBt];
         
         UIButton *settingsBt=[UIButton buttonWithType:UIButtonTypeCustom];
-        settingsBt.frame=CGRectMake([[UIScreen mainScreen] bounds].size.width-60, 27, 50, 30);
+        settingsBt.frame=CGRectMake([[UIScreen mainScreen] bounds].size.width-60, 27+(isiPhoneX?24:0), 50, 30);
         [settingsBt setTitle:@"settings" forState:UIControlStateNormal];
         settingsBt.titleLabel.font=[UIFont systemFontOfSize:13];
         [settingsBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [settingsBt addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
         [bar addSubview:settingsBt];
-        mainTableView.frame=CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64);
+        mainTableView.frame=CGRectMake(0, 64+(isiPhoneX?24:0), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-(isiPhoneX?24:0));
         [bar addSubview:titleText];
     }else{
         titleText.frame=CGRectMake(([[UIScreen mainScreen] bounds].size.width-120)/2, 0, 120, 44);
@@ -200,7 +202,7 @@
     }
     //准备搜寻前，把上面调整的TableView调整回全屏幕的状态
     [UIView animateWithDuration:0.2 animations:^{
-        mainTableView.frame = CGRectMake(0, 20, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-20);
+        mainTableView.frame = CGRectMake(0, 20+(isiPhoneX?24:0), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-20-(isiPhoneX?24:0));
         
     }];
     
@@ -213,7 +215,7 @@
     }
     if (searchBar.text.length<1) {
         [UIView animateWithDuration:0.2 animations:^{
-            mainTableView.frame = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64);
+            mainTableView.frame = CGRectMake(0, 64+(isiPhoneX?24:0), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-(isiPhoneX?24:0));
         }];
     }
     //当按下search按钮后 后走这里，并且这之后按cancel按钮不会走这里；当没有按过search按钮，按cancel按钮会走这里
