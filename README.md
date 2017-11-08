@@ -49,10 +49,10 @@ Note：Use Network Eye in DEBUG mode
 
 add the code in AppDelegate.m   
 <pre>
-#import "NEHTTPEye.h"
-#if defined(DEBUG)||defined(_DEBUG)
+# import "NEHTTPEye.h"
+# if defined(DEBUG)||defined(_DEBUG)
     [NEHTTPEye setEnabled:YES];
-#endif
+# endif
 </pre>
 
 you can use use the shortcut (⌘ Command + n) , a double tap or shake device to call out the monitoring data interface
@@ -61,10 +61,10 @@ NEHTTPEyeViewController
 
 You can also use the following code present out directly
 <pre>
-#if defined(DEBUG)||defined(_DEBUG)
+# if defined(DEBUG)||defined(_DEBUG)
     NEHTTPEyeViewController *vc=[[NEHTTPEyeViewController alloc] init];
     [self presentViewController:vc animated:YES completion:nil];
-#endif
+# endif
 </pre>
 In NEHTTPEye.h there are two parameters you can configure that is the default password of database is "networkeye" ,and by default set,you can save 300 requests.
 
@@ -72,9 +72,9 @@ In NEHTTPEye.h there are two parameters you can configure that is the default pa
 the database name is networkeye.sqlite,and stored in the cache directory.
 
 <pre>
-#define kSQLitePassword @"networkeye"
+# define kSQLitePassword @"networkeye"
 
-#define kSaveRequestMaxCount 300
+# define kSaveRequestMaxCount 300
 </pre>
 
 you can change it use NEHTTPModelManager
