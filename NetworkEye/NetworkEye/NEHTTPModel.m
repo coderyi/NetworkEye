@@ -116,7 +116,9 @@
     for (NSHTTPCookie *cookie in cookieArray) {
         NSString *domain = [cookie.properties valueForKey:NSHTTPCookieDomain];
         NSRange range = [host rangeOfString:domain];
-        if(range.location != NSNotFound)
+        NSComparisonResult result = [cookie.expiresDate compare:[NSDate date]];
+        
+        if(range.location != NSNotFound && result == NSOrderedDescending)
         {
             [cookieValueArray addObject:[NSString stringWithFormat:@"%@=%@",cookie.name,cookie.value]];
         }
