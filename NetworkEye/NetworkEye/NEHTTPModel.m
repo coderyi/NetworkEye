@@ -43,8 +43,11 @@
     self.requestHTTPMethod=ne_request.HTTPMethod;
     
     for (NSString *key in [ne_request.allHTTPHeaderFields allKeys]) {
-        self.requestAllHTTPHeaderFields=[NSString stringWithFormat:@"%@%@:%@\n",self.requestAllHTTPHeaderFields,key,[ne_request.allHTTPHeaderFields objectForKey:key]];
+        self.requestAllHTTPHeaderFields=[NSString stringWithFormat:@"%@%@",self.requestAllHTTPHeaderFields,[self formateRequestHeaderFieldKey:key object:[ne_request.allHTTPHeaderFields objectForKey:key]]];
     }
+    
+    [self appendCookieStringAfterRequestAllHTTPHeaderFields];
+    
     if (self.requestAllHTTPHeaderFields.length>1) {
         if ([[self.requestAllHTTPHeaderFields substringFromIndex:self.requestAllHTTPHeaderFields.length-1] isEqualToString:@"\n"]) {
             self.requestAllHTTPHeaderFields=[self.requestAllHTTPHeaderFields substringToIndex:self.requestAllHTTPHeaderFields.length-1];
@@ -103,6 +106,32 @@
         }
     }
     
+}
+
+- (void)appendCookieStringAfterRequestAllHTTPHeaderFields
+{
+    NSString *host = self.ne_request.URL.host;
+    NSArray *cookieArray = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+    NSMutableArray *cookieValueArray = [NSMutableArray array];
+    for (NSHTTPCookie *cookie in cookieArray) {
+        NSString *domain = [cookie.properties valueForKey:NSHTTPCookieDomain];
+        NSRange range = [host rangeOfString:domain];
+        if(range.location != NSNotFound)
+        {
+            [cookieValueArray addObject:[NSString stringWithFormat:@"%@=%@",cookie.name,cookie.value]];
+        }
+    }
+    if(cookieValueArray.count > 0)
+    {
+        NSString *cookieString = [cookieValueArray componentsJoinedByString:@";"];
+
+        self.requestAllHTTPHeaderFields = [self.requestAllHTTPHeaderFields stringByAppendingString:[self formateRequestHeaderFieldKey:@"Cookie" object:cookieString]];
+    }
+}
+
+- (NSString *)formateRequestHeaderFieldKey:(NSString *)key object:(id)obj
+{
+    return [NSString stringWithFormat:@"%@:%@\n",key?:@"",obj?:@""];
 }
 
 @end
