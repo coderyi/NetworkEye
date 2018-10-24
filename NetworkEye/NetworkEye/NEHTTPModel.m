@@ -92,7 +92,7 @@
     for (NSString *key in [ne_response.allHeaderFields allKeys]) {
         NSString *headerFieldValue=[ne_response.allHeaderFields objectForKey:key];
         if ([key isEqualToString:@"Content-Security-Policy"]) {
-            if ([[headerFieldValue substringFromIndex:12] isEqualToString:@"'none'"]) {
+            if (headerFieldValue.length > 12 && [[headerFieldValue substringFromIndex:12] isEqualToString:@"'none'"]) {
                 headerFieldValue=[headerFieldValue substringToIndex:11];
             }
         }
