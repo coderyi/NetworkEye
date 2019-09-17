@@ -12,6 +12,9 @@
 #import "NEHTTPModelManager.h"
 #import "NEHTTPEyeDetailViewController.h"
 #import "NEHTTPEyeSettingsViewController.h"
+#include <sys/types.h>
+#include <sys/sysctl.h>
+
 @interface NEHTTPEyeViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,UISearchControllerDelegate,UISearchResultsUpdating> {
     UITableView *mainTableView;
     NSArray *httpRequests;
@@ -20,6 +23,7 @@
     UISearchController *mySearchController;
     NSArray *filterHTTPRequests;
     BOOL isiPhoneX;
+    BOOL isiPhone11;
 }
 
 @end
@@ -103,6 +107,13 @@
     mainTableView.dataSource=self;
     mainTableView.delegate=self;
     httpRequests=[[[[NEHTTPModelManager defaultManager] allobjects] reverseObjectEnumerator] allObjects];
+    
+    isiPhone11 = [[self hardwareString] containsString:@"iPhone12"];
+    if (@available(iOS 13.0, *)) {
+        if ([[self hardwareString] containsString:@"x86_64"]) {
+            isiPhone11 = YES;
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -210,6 +221,9 @@
 
 #pragma mark - UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    if (isiPhone11) { // iPhone11上修改tableView的frame有bug
+        return YES;
+    }
     if ([self.navigationController viewControllers].count>0) {
         return YES;
     }
@@ -223,7 +237,7 @@
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-    if (@available(iOS 13.0, *)) {
+    if (isiPhone11) {
         return YES;
     }
     if ([self.navigationController viewControllers].count>0) {
@@ -241,6 +255,9 @@
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar;                       // called when text ends editing
 {
     if (@available(iOS 13.0, *)) {
+        if (isiPhone11) {
+            return;
+        }
         if ([self.navigationController viewControllers].count>0) {
             return;
         }
@@ -254,6 +271,9 @@
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    if (isiPhone11) {
+        return;
+    }
     if ([self.navigationController viewControllers].count>0) {
         return ;
     }
@@ -308,6 +328,18 @@
         currenModel=(NEHTTPModel *)((httpRequests)[indexPath.row]);
     }
     return currenModel;
+}
+
+- (NSString *)hardwareString {
+  int name[] = {CTL_HW,HW_MACHINE};
+  size_t size = 100;
+  sysctl(name, 2, NULL, &size, NULL, 0); // getting size of answer
+  char *hw_machine = malloc(size);
+
+  sysctl(name, 2, hw_machine, &size, NULL, 0);
+  NSString *hardware = [NSString stringWithUTF8String:hw_machine];
+  free(hw_machine);
+  return hardware;
 }
 
 @end
