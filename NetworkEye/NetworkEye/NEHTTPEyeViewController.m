@@ -12,11 +12,12 @@
 #import "NEHTTPModelManager.h"
 #import "NEHTTPEyeDetailViewController.h"
 #import "NEHTTPEyeSettingsViewController.h"
-@interface NEHTTPEyeViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate> {
+@interface NEHTTPEyeViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,UISearchControllerDelegate,UISearchResultsUpdating> {
     UITableView *mainTableView;
     NSArray *httpRequests;
     UISearchBar *mySearchBar;
     UISearchDisplayController *mySearchDisplayController;
+    UISearchController *mySearchController;
     NSArray *filterHTTPRequests;
     BOOL isiPhoneX;
 }
@@ -118,18 +119,27 @@
 - (void)setupSearch {
     
     filterHTTPRequests=[[NSArray alloc] init];
-    mySearchBar = [[UISearchBar alloc] init];
     
-    mySearchBar.delegate = self;
-    [mySearchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-    [mySearchBar sizeToFit];
-    mainTableView.tableHeaderView = mySearchBar;
-    mySearchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:mySearchBar contentsController:self];
-    [mySearchDisplayController setDelegate:self];
-    [mySearchDisplayController setSearchResultsDataSource:self];
-    [mySearchDisplayController setSearchResultsDelegate:self];
-
+    if (@available(iOS 13.0, *)) {
+        mySearchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+        mySearchController.searchResultsUpdater = self;
+        mySearchController.searchBar.delegate = self;
+        [mySearchController.searchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+        [mySearchController.searchBar sizeToFit];
+        mainTableView.tableHeaderView = mySearchController.searchBar;
+    } else {
+        mySearchBar = [[UISearchBar alloc] init];
+        mySearchBar.delegate = self;
+        [mySearchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+        [mySearchBar sizeToFit];
+        mainTableView.tableHeaderView = mySearchBar;
+        mySearchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:mySearchBar contentsController:self];
+        [mySearchDisplayController setDelegate:self];
+        [mySearchDisplayController setSearchResultsDataSource:self];
+        [mySearchDisplayController setSearchResultsDelegate:self];
+    }
 }
+
 - (void)backBtAction {
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -139,7 +149,10 @@
 #pragma mark - UITableViewDataSource  &UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView == mySearchDisplayController.searchResultsTableView) {
+    if (tableView == mySearchDisplayController.searchResultsTableView || mySearchController.isActive) {
+        if (mySearchController.isActive && mySearchController.searchBar.text.length < 1) {
+                return httpRequests.count;
+        }
         return filterHTTPRequests.count;
     }
     return httpRequests.count;
@@ -210,6 +223,9 @@
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
+    if (@available(iOS 13.0, *)) {
+        return YES;
+    }
     if ([self.navigationController viewControllers].count>0) {
         return YES;
     }
@@ -220,6 +236,21 @@
     }
     //当按下search按钮后 后走这里，并且这之后按cancel按钮不会走这里；当没有按过search按钮，按cancel按钮会走这里
     return YES;
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar;                       // called when text ends editing
+{
+    if (@available(iOS 13.0, *)) {
+        if ([self.navigationController viewControllers].count>0) {
+            return;
+        }
+        
+        if (searchBar.text.length<1) {
+            [UIView animateWithDuration:0.2 animations:^{
+                mainTableView.frame = CGRectMake(0, 64+(isiPhoneX?24:0), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-(isiPhoneX?24:0));
+            }];
+        }
+    }
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
@@ -247,8 +278,20 @@
                 filterHTTPRequests = tempFilterHTTPRequests;
                 [mySearchDisplayController.searchResultsTableView reloadData];
             }
+            if ([mySearchController.searchBar.text isEqual:searchString]) {
+                filterHTTPRequests = tempFilterHTTPRequests;
+                [mainTableView reloadData];
+            }
         });
     });
+}
+
+#pragma mark - UISearchControllerDelegate
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController;
+{
+    [self updateSearchResultsWithSearchString:searchController.searchBar.text];
+
 }
 
 - (void)didReceiveMemoryWarning {
