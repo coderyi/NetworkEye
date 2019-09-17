@@ -160,10 +160,7 @@
 #pragma mark - UITableViewDataSource  &UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView == mySearchDisplayController.searchResultsTableView || mySearchController.isActive) {
-        if (mySearchController.isActive && mySearchController.searchBar.text.length < 1) {
-                return httpRequests.count;
-        }
+    if (tableView == mySearchDisplayController.searchResultsTableView || (mySearchController.isActive && mySearchController.searchBar.text.length > 0)) {
         return filterHTTPRequests.count;
     }
     return httpRequests.count;
@@ -322,7 +319,7 @@
 #pragma mark - private methods
 - (NEHTTPModel *)modelForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
     NEHTTPModel *currenModel=[[NEHTTPModel alloc] init];
-    if (tableView == mySearchDisplayController.searchResultsTableView) {
+    if (tableView == mySearchDisplayController.searchResultsTableView || (mySearchController.isActive && mySearchController.searchBar.text.length > 0)) {
         currenModel=(NEHTTPModel *)((filterHTTPRequests)[indexPath.row]);
     }else{
         currenModel=(NEHTTPModel *)((httpRequests)[indexPath.row]);
