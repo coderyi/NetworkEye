@@ -238,15 +238,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A4EF86D1BEB66FF000D2D7E /* Build configuration list for PBXNativeTarget "NetworkEye" */;
 			buildPhases = (
-				A770EAC8FB7D5B8B9B0CE23A /* 📦 Check Pods Manifest.lock */,
 				1E47BF57E219846EA68141A1 /* [CP] Check Pods Manifest.lock */,
+				A770EAC8FB7D5B8B9B0CE23A /* 📦 Check Pods Manifest.lock */,
 				0A4EF83C1BEB66FF000D2D7E /* Sources */,
 				0A4EF83D1BEB66FF000D2D7E /* Frameworks */,
 				0A4EF83E1BEB66FF000D2D7E /* Resources */,
-				9C3CAAA67AB0C2C3431F3247 /* [CP] Embed Pods Frameworks */,
-				7B2F435A39B78D9EC03D90A8 /* [CP] Copy Pods Resources */,
-				84F18E0EC91F6329F079C6D3 /* 📦 Embed Pods Frameworks */,
-				B04476CE907239E9F7890B3B /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -370,58 +366,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NetworkEye-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		7B2F435A39B78D9EC03D90A8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkEye/Pods-NetworkEye-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		84F18E0EC91F6329F079C6D3 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkEye/Pods-NetworkEye-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9C3CAAA67AB0C2C3431F3247 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkEye/Pods-NetworkEye-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A770EAC8FB7D5B8B9B0CE23A /* 📦 Check Pods Manifest.lock */ = {
@@ -437,21 +391,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		B04476CE907239E9F7890B3B /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkEye/Pods-NetworkEye-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

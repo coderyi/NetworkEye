@@ -62,7 +62,22 @@
     if ([ne_request HTTPBody].length>512) {
         self.requestHTTPBody=@"requestHTTPBody too long";
     }else{
-        self.requestHTTPBody=[[NSString alloc] initWithData:[ne_request HTTPBody] encoding:NSUTF8StringEncoding];
+        if ([ne_request.HTTPMethod isEqualToString:@"POST"] && !ne_request.HTTPBody) {
+              uint8_t rd[1024] = {0};
+               NSInputStream *stream = ne_request.HTTPBodyStream;
+                NSMutableData *data = [[NSMutableData alloc] init];
+              [stream open];
+               while ([stream hasBytesAvailable]) {
+                   NSInteger len = [stream read:rd maxLength:1024];
+                 if (len > 0 && stream.streamError == nil) {
+                     [data appendBytes:(void *)rd length:len];
+                   }
+               }
+               self.requestHTTPBody=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+               [stream close];
+        }else{
+            self.requestHTTPBody=[[NSString alloc] initWithData:[ne_request HTTPBody] encoding:NSUTF8StringEncoding];
+        }
     }
     if (self.requestHTTPBody.length>1) {
         if ([[self.requestHTTPBody substringFromIndex:self.requestHTTPBody.length-1] isEqualToString:@"\n"]) {
