@@ -1,5 +1,7 @@
 PODS:
-  - FMDB/SQLCipher (2.7.5):
+  - FMDB/common (2.5)
+  - FMDB/SQLCipher (2.5):
+    - FMDB/common
     - SQLCipher
   - SQLCipher (3.1.0):
     - SQLCipher/standard (= 3.1.0)
@@ -10,15 +12,10 @@ PODS:
 DEPENDENCIES:
   - FMDB/SQLCipher (~> 2.5)
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - FMDB
-    - SQLCipher
-
 SPEC CHECKSUMS:
-  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   SQLCipher: 4684434d5791db86512cd7e02172aefba575849e
 
 PODFILE CHECKSUM: 9763126a952e181b99dc45f49b3235935404f17b
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.0.0
