@@ -85,9 +85,29 @@
     btSessionRequest.titleLabel.font=[UIFont systemFontOfSize:15];
 
     
+    UIButton *btURLConnectionOfPostRequest=[UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:btURLConnectionOfPostRequest];
+    [btURLConnectionOfPostRequest addTarget:self action:@selector(btURLConnectionOfPOSTRequestAction) forControlEvents:UIControlEventTouchUpInside];
+    btURLConnectionOfPostRequest.frame=CGRectMake(([[UIScreen mainScreen] bounds].size.width-300)/2, 280, 300, 35);
+    [btURLConnectionOfPostRequest setTitle:@"Click to NSURLConnection Post request" forState:UIControlStateNormal];
+    [btURLConnectionOfPostRequest setTitleColor:[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f] forState:UIControlStateNormal];
+    btURLConnectionOfPostRequest.layer.borderColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f].CGColor;
+    btURLConnectionOfPostRequest.layer.borderWidth=0.4;
+    btURLConnectionOfPostRequest.titleLabel.font=[UIFont systemFontOfSize:15];
 
     
-    UIWebView *webView=[[UIWebView alloc] initWithFrame:CGRectMake(0, 300, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-330)];
+    UIButton *btNSURLSessionOfPostRequest=[UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:btNSURLSessionOfPostRequest];
+    [btNSURLSessionOfPostRequest addTarget:self action:@selector(btNSURLSessionOfPOSTRequestAction) forControlEvents:UIControlEventTouchUpInside];
+    btNSURLSessionOfPostRequest.frame=CGRectMake(([[UIScreen mainScreen] bounds].size.width-300)/2, 310, 300, 35);
+    [btNSURLSessionOfPostRequest setTitle:@"Click to NSURLSession Post request" forState:UIControlStateNormal];
+    [btNSURLSessionOfPostRequest setTitleColor:[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f] forState:UIControlStateNormal];
+    btNSURLSessionOfPostRequest.layer.borderColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f].CGColor;
+    btNSURLSessionOfPostRequest.layer.borderWidth=0.4;
+    btNSURLSessionOfPostRequest.titleLabel.font=[UIFont systemFontOfSize:15];
+
+    
+    UIWebView *webView=[[UIWebView alloc] initWithFrame:CGRectMake(0, 360, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-360)];
     [self.view addSubview:webView];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.github.com"]]];
     
@@ -149,6 +169,40 @@
     
 }
 
+- (void)btURLConnectionOfPOSTRequestAction{
+
+    NSURL *url = [NSURL URLWithString:@"http://www.example.com"];
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.timeoutInterval = 10;
+    request.HTTPMethod = @"POST";
+
+    request.HTTPBody = [@"name=NetworkEye&password=123456" dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSOperationQueue *queue = [NSOperationQueue mainQueue];
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSLog(@"返回数据-%@",data);
+    }];
+}
+
+- (void)btNSURLSessionOfPOSTRequestAction{
+    NSURL *url = [NSURL URLWithString:@"http://www.example.com"];
+    NSMutableURLRequest *mutableRequest = [NSMutableURLRequest requestWithURL:url];
+    NSString *bobyString = @"name=NetworkEye&password=123456";
+    
+    NSData *postData = [bobyString dataUsingEncoding:NSUTF8StringEncoding];
+    [mutableRequest setHTTPMethod:@"POST"];
+    [mutableRequest setHTTPBody:postData];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionTask *task = [session dataTaskWithRequest:mutableRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error == nil) {
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            NSLog(@"dict = %@", dict);
+        }
+        
+    }];
+    [task resume];
+}
 
 - (void)testRequest {
 
