@@ -16,9 +16,9 @@
 
 [README 中文](https://github.com/coderyi/NetworkEye/blob/master/README_Chinese.md)
 
-NetworkEye,a iOS network debug library,It can monitor HTTP requests within the App and displays information related to the request.
+NetworkEye,a iOS network debug library,monitor HTTP requests.
 
-It can be detected HTTP request include web pages, NSURLConnection, NSURLSession, AFNetworking, third-party libraries, third-party SDK ,and so on. very convenient and practical. 
+It can be detected HTTP request include web pages, NSURLConnection, NSURLSession, AFNetworking, 3rd libraries, 3rd SDK ,and so on. very convenient and practical. 
 
 It can be map local json file.
 
@@ -59,14 +59,14 @@ you can use use the shortcut (⌘ Command + n) , a double tap or shake device to
 
 NEHTTPEyeViewController
 
-You can also use the following code present out directly
+You can also use the following code
 <pre>
 #if defined(DEBUG)||defined(_DEBUG)
     NEHTTPEyeViewController *vc=[[NEHTTPEyeViewController alloc] init];
     [self presentViewController:vc animated:YES completion:nil];
 #endif
 </pre>
-In NEHTTPEye.h there are two parameters you can configure that is the default password of database is "networkeye" ,and by default set,you can save 300 requests.
+In NEHTTPEye, the default password of database is "networkeye" ,and you can save 300 requests.
 
 
 the database name is networkeye.sqlite,and stored in the cache directory.
@@ -82,12 +82,11 @@ you can change it use NEHTTPModelManager
     [NEHTTPModelManager defaultManager].saveRequestMaxCount=300;
     [NEHTTPModelManager defaultManager].sqlitePassword=@"networkeye";
 </pre>
-NetworkEye rely FMDB and SQLCipher。
-FMDB be used to store data，SQLCipher be used to encrypt the database。
+NetworkEye use FMDB and SQLCipher。
+FMDB is used to store data，SQLCipher is used to encrypt the database。
 
 Monitoring data interface supports some search conditions ,it is URL，statusCode，HTTPMethod，MIMEType。
 #### Preview
-the monitor data interface of NetworkEye：
 
 <img  src="https://raw.githubusercontent.com/coderyi/NetworkEye/master/NetworkEye/Resources/networkeye1_3.png" width="320" height="570">
 
@@ -99,7 +98,7 @@ the monitor data interface of NetworkEye：
 
 #### Licenses
 
-All source code is licensed under the [MIT License](https://github.com/coderyi/NetworkEye/blob/master/LICENSE).
+[MIT License](https://github.com/coderyi/NetworkEye/blob/master/LICENSE).
 
 #### Contributors
 
