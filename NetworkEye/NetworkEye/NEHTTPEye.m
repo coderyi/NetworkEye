@@ -62,10 +62,6 @@
     return self;
 }
 
-+ (void)load {
- 
-}
-
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
     if (![request.URL.scheme isEqualToString:@"http"] &&
         ![request.URL.scheme isEqualToString:@"https"]) {
